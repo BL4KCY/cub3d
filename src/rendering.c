@@ -4,5 +4,5 @@
 
 int	rendering(t_info *info)
 {
-	
+
 }
