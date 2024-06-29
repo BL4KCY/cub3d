@@ -13,7 +13,7 @@ INCLUDES = includes
 LIB_INCLUDES = libft/includes
 
 #______mandatory and bonus files______#
-FILES = main.c exit.c inputs.c
+FILES = main.c exit.c inputs.c rendering.c draw.c
 
 #______patterns and substitutions______#
 SOURCES = $(FILES:%.c=$(SRC_DIR)/%.c)
