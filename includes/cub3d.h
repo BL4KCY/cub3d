@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:17:20 by melfersi          #+#    #+#             */
-/*   Updated: 2024/06/29 20:33:38 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/06/30 16:48:40 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@
 # include "libft.h"
 
 # define ON_KEYDOWN 2
+# define ON_KEYUP 3
 # define ON_DESTROY 17
 # define KEYPRESSMASK 1
+# define KEYRELEASEMASK 2
 # define ESC 65307
 # define W 119
 # define S 115
@@ -43,9 +45,9 @@
 
 #define HEIGHT 800
 #define WIDTH 1280
-#define TILE_SIZE 32
-// #define BCOLOR 0X00BB885E
-#define BCOLOR 0X00FFFFFF
+#define TILE_SIZE 60
+#define BCOLOR 0X00BB885E
+// #define BCOLOR 0X00FFFFFF
 
 typedef struct	s_data
 {
@@ -56,24 +58,44 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_player
+{
+	double	x;
+	double	y;
+	double	radius;
+	double	turn_direction;
+	double	walk_direction;
+	double	rotation_angle;
+	double	move_speed;
+	double	rotation_speed;
+}	t_player;
+
 typedef struct s_map
 {
 	char	**grid;
+	t_data	data;
 	int		n_row;
 	int		n_cols;
 }	t_map;
 
 typedef struct s_info
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	t_map		map;
+	t_player	player;
 }	t_info;
 
 int		ft_exit(t_info *mlx);
-int		keyboard(int keycode, t_info *mlx);
+int		keypress(int keycode, t_info *mlx);
+int		keyrelease(int keycode, t_info *mlx);
 int		rendering(t_info *info);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	*put_rec(void *mlx, int w, int h, int color);
-
+void	rect(t_data *data, int x, int y, int height, int width, int color);
+void	init_map(t_info *mlx);
+void	init_player(t_info *mlx);
+void	draw_cir(t_data *data, int x, int y, int radius, int color);
+void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color);
 #endif
