@@ -1,6 +1,6 @@
 #______command and their flags______#
 RM = rm -rf
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -fsanitize=address #-Wall -Wextra -Werror
 MLXFLAGS = -lmlx -lXext -lX11 -lm
 CC = gcc
 AR = ar -crs
@@ -13,7 +13,7 @@ INCLUDES = includes
 LIB_INCLUDES = libft/includes
 
 #______mandatory and bonus files______#
-FILES = main.c exit.c inputs.c rendering.c draw.c
+FILES = main.c exit.c inputs.c rendering.c draw.c init.c
 
 #______patterns and substitutions______#
 SOURCES = $(FILES:%.c=$(SRC_DIR)/%.c)
