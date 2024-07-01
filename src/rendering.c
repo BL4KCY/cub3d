@@ -44,6 +44,21 @@ void	update_position(t_info *mlx)
 	}
 }
 
+void	render_rays(t_info *mlx, double *ray)
+{
+	int	i;
+	double	x1 = mlx->player.x;
+	double	y1 = mlx->player.y;
+
+	i = 0;
+	while (i < 1)
+	{
+		double	x2 = x1 + cos(ray[i]) * 300;
+		double	y2 = y1 + sin(ray[i]) * 300;
+		draw_line(&mlx->map.data, x1, y1, x2, y2, 0x00ff0000);
+		i++;
+	}
+}
 int	update_player(t_info *mlx)
 {
 	update_position(mlx);
@@ -59,6 +74,8 @@ int	rendering(t_info *info)
 {
 	update_map(info);
 	update_player(info);
+	raycasting(info);
+	render_rays(info, info->player.rays);
 	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
 	return (0);
 }
