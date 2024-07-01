@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:17:20 by melfersi          #+#    #+#             */
-/*   Updated: 2024/06/30 16:48:40 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/07/01 18:22:00 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@
 #define HEIGHT 800
 #define WIDTH 1280
 #define TILE_SIZE 60
+#define FOV_ANGLE 60
+#define WALL_STRIP_WIDTH 1
+#define NUM_RAYS 320 / WALL_STRIP_WIDTH
 #define BCOLOR 0X00BB885E
 // #define BCOLOR 0X00FFFFFF
 
@@ -63,6 +66,7 @@ typedef struct s_player
 	double	x;
 	double	y;
 	double	radius;
+	double	*rays;
 	double	turn_direction;
 	double	walk_direction;
 	double	rotation_angle;
@@ -98,4 +102,8 @@ void	init_map(t_info *mlx);
 void	init_player(t_info *mlx);
 void	draw_cir(t_data *data, int x, int y, int radius, int color);
 void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color);
+double	deg_to_rad(double deg);
+double	rad_to_deg(double rad);
+void	raycasting(t_info *info);
+void	render_rays(t_info *mlx, double *ray);
 #endif
