@@ -34,4 +34,5 @@ void	init_player(t_info *mlx)
 	mlx->player.rotation_angle = M_PI_2;
 	mlx->player.move_speed = 0.5;
 	mlx->player.rotation_speed = 0.5 * (M_PI / 180);
+	mlx->player.rays = malloc(sizeof(double) * NUM_RAYS);
 }
