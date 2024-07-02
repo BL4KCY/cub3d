@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 11:17:20 by melfersi          #+#    #+#             */
-/*   Updated: 2024/07/01 18:22:00 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/07/02 16:36:38 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@
 #define WIDTH 1280
 #define TILE_SIZE 60
 #define FOV_ANGLE 60
-#define WALL_STRIP_WIDTH 1
+#define WALL_STRIP_WIDTH 320
 #define NUM_RAYS 320 / WALL_STRIP_WIDTH
 #define BCOLOR 0X00BB885E
 // #define BCOLOR 0X00FFFFFF
@@ -61,12 +61,38 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
+typedef struct s_coor
+{
+	double	x;
+	double	y;
+}			t_coor;
+
+typedef struct	s_intersec
+{
+	t_coor	h;
+	t_coor	v;
+	t_coor	step;
+	t_coor	intersec;
+	double	v_dis;
+	double	h_dis;
+}			t_intersec;
+
+typedef struct s_ray
+{
+	double	ray_ang;
+	double	ray_dis;
+	bool	is_ray_up;
+	bool	is_ray_down;
+	bool	is_ray_left;
+	bool	is_ray_right;
+}	t_ray;
+
 typedef struct s_player
 {
 	double	x;
 	double	y;
 	double	radius;
-	double	*rays;
+	t_ray	*ray;
 	double	turn_direction;
 	double	walk_direction;
 	double	rotation_angle;
@@ -92,6 +118,7 @@ typedef struct s_info
 }	t_info;
 
 int		ft_exit(t_info *mlx);
+void	*data(void);
 int		keypress(int keycode, t_info *mlx);
 int		keyrelease(int keycode, t_info *mlx);
 int		rendering(t_info *info);
@@ -105,5 +132,6 @@ void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
 void	raycasting(t_info *info);
-void	render_rays(t_info *mlx, double *ray);
+void	render_rays(t_info *mlx, t_ray *ray);
+double	normalize_angle(double angle);
 #endif
