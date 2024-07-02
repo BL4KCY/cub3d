@@ -32,7 +32,7 @@ void	init_player(t_info *mlx)
 	mlx->player.turn_direction = 0;
 	mlx->player.walk_direction = 0;
 	mlx->player.rotation_angle = M_PI_2;
-	mlx->player.move_speed = 0.5;
-	mlx->player.rotation_speed = 0.15 * (M_PI / 180);
+	mlx->player.move_speed = 1;
+	mlx->player.rotation_speed = 1 * (M_PI / 180);
 	mlx->player.ray = malloc(sizeof(t_ray) * NUM_RAYS);
 }
