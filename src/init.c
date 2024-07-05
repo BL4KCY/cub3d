@@ -7,9 +7,9 @@ void	init_map(t_info *mlx)
 	for (int i = 0; i < 11;i++)
 		grid[i] = malloc(sizeof(char) * 16);
 	ft_strlcpy(grid[0], "111111111111111", 16);
-	ft_strlcpy(grid[1], "100000000000101", 16);
-	ft_strlcpy(grid[2], "100001000000101", 16);
-	ft_strlcpy(grid[3], "111100000000101", 16);
+	ft_strlcpy(grid[1], "100000100000101", 16);
+	ft_strlcpy(grid[2], "100011000000101", 16);
+	ft_strlcpy(grid[3], "101100000000101", 16);
 	ft_strlcpy(grid[4], "100000000000101", 16);
 	ft_strlcpy(grid[5], "100000001111101", 16);
 	ft_strlcpy(grid[6], "100000000000001", 16);
@@ -21,18 +21,20 @@ void	init_map(t_info *mlx)
 	mlx->map.grid = grid;
 	mlx->map.n_row = 11;
 	mlx->map.n_cols = 15;
+	mlx->width = mlx->map.n_cols * TILE_SIZE;
+	mlx->height = mlx->map.n_row * TILE_SIZE;
 	mlx->map.data.img = NULL;
 }
 
 void	init_player(t_info *mlx)
 {
-	mlx->player.x = mlx->map.n_cols * TILE_SIZE / 2;
-	mlx->player.y = mlx->map.n_row * TILE_SIZE / 2;
+	mlx->player.x = mlx->width / 2;
+	mlx->player.y = mlx->height / 2;
 	mlx->player.radius = 4;
 	mlx->player.turn_direction = 0;
 	mlx->player.walk_direction = 0;
 	mlx->player.rotation_angle = M_PI_2;
 	mlx->player.move_speed = 1;
-	mlx->player.rotation_speed = 1 * (M_PI / 180);
+	mlx->player.rotation_speed = 0.5 * (M_PI / 180);
 	mlx->player.ray = malloc(sizeof(t_ray) * NUM_RAYS);
 }
