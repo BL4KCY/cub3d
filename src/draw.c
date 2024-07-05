@@ -13,9 +13,12 @@ void	rect(t_data *data, int x, int y, int height, int width, int color)
 	{
 		for(int j = x; j < x + width; j++)
 		{
-			if (i == y + height - 1 || j == x + width - 1)
-				my_mlx_pixel_put(data, j, i, 0x00000000);
-			else my_mlx_pixel_put(data, j, i, color);
+			if (i == y + height - 1)
+				my_mlx_pixel_put(data, j, i, 0x00c90076);
+			else if (j == x + width - 1)
+				my_mlx_pixel_put(data, j, i, 0x0033a800);
+			else
+				my_mlx_pixel_put(data, j, i, color);
 		}
 	}
 }
@@ -34,6 +37,7 @@ void	draw_cir(t_data *data, int x, int y, int radius, int color)
 
 void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color)
 {
+	t_info	*info = get_info();
 	int dx = x2 - x1;
 	int dy = y2 - y1;
 	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
@@ -41,6 +45,8 @@ void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color)
 	float Yinc = dy / (float)steps;
 	float X = x1;
 	float Y = y1;
+	if (x2 < 0 || x2 > info->width || y2 < 0 || y2 > info->height)
+		return ;
 	for (int i = 0; i <= steps; i++)
 	{
 		my_mlx_pixel_put(data, X, Y, color);
