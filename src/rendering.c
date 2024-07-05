@@ -7,7 +7,7 @@ int	update_map(t_info *mlx)
 
 	if (mlx->map.data.img)
 		mlx_destroy_image(mlx->mlx, mlx->map.data.img);
-	data.img =  mlx_new_image(mlx->mlx, mlx->map.n_cols * TILE_SIZE, mlx->map.n_row * TILE_SIZE);
+	data.img =  mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
 	for (int i = 0; i < mlx->map.n_row; i++)
 	{
@@ -63,8 +63,8 @@ void	render_rays(t_info *mlx, t_ray *ray)
 	{
 		double	x2 = x1 + cos(ray[i].ray_ang) * mlx->player.ray[i].ray_dis;
 		double	y2 = y1 + sin(ray[i].ray_ang) * mlx->player.ray[i].ray_dis;
-		ray[i].is_ray_right ? puts("right"):puts("left");
-		ray[i].is_ray_up ? puts("up"):puts("down");
+		// ray[i].is_ray_right ? puts("right"):puts("left");
+		// ray[i].is_ray_up ? puts("up"):puts("down");
 		draw_line(&mlx->map.data, x1, y1, x2, y2, 0x00ff0000);
 		i++;
 	}
@@ -77,7 +77,7 @@ int	update_player(t_info *mlx)
 	double	x2 = x1 + cos(mlx->player.rotation_angle) * 50;
 	double	y2 = y1 + sin(mlx->player.rotation_angle) * 50;
 	draw_cir(&mlx->map.data, x1, y1, mlx->player.radius, 0x00ff0000);
-	draw_line(&mlx->map.data, x1, y1, x2, y2, 0x00ff0000);
+	draw_line(&mlx->map.data, x1, y1, x2, y2, 0x00000000);
 }
 
 int	rendering(t_info *info)
@@ -86,6 +86,6 @@ int	rendering(t_info *info)
 	update_player(info);
 	raycasting(info);
 	render_rays(info, info->player.ray);
-	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
+	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 200, 75);
 	return (0);
 }
