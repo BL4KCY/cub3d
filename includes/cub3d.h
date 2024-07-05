@@ -7,6 +7,7 @@
 # include <stdbool.h>
 # include <errno.h>
 # include <stdio.h>
+# include <limits.h>
 # include <math.h>
 # include "libft.h"
 
@@ -33,8 +34,7 @@
 #define WIDTH 1280
 #define TILE_SIZE 60
 #define FOV_ANGLE 60
-#define WALL_STRIP_WIDTH 320
-#define NUM_RAYS 320 / WALL_STRIP_WIDTH
+#define NUM_RAYS 40
 #define BCOLOR 0X00BB885E
 // #define BCOLOR 0X00FFFFFF
 
@@ -99,12 +99,14 @@ typedef struct s_info
 	void		*mlx;
 	void		*win;
 	void		*img;
+	int			height;
+	int			width;
 	t_map		map;
 	t_player	player;
 }	t_info;
 
 int		ft_exit(t_info *mlx);
-void	*data(void);
+void	*get_info(void);
 int		keypress(int keycode, t_info *mlx);
 int		keyrelease(int keycode, t_info *mlx);
 int		rendering(t_info *info);
@@ -120,4 +122,9 @@ double	rad_to_deg(double rad);
 void	raycasting(t_info *info);
 void	render_rays(t_info *mlx, t_ray *ray);
 double	normalize_angle(double angle);
+void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id);
+bool	hit_wall(t_info *info, double x, double y);
+double	distence_ray(t_info *info, double x ,double y);
+void	set_vertical_intersection(t_info *info, t_intersec *intersec, int id);
+
 #endif
