@@ -6,13 +6,13 @@
 /*   By: melfersi <melfersi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:17:35 by melfersi          #+#    #+#             */
-/*   Updated: 2024/07/01 09:02:22 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/07/04 20:24:53 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	*data(void)
+void	*get_info(void)
 {
 	static t_info	mlx;
 	return (&mlx);
@@ -22,7 +22,7 @@ int	main(void)
 {
 	t_info	*mlx;
 
-	mlx = (t_info *)data();
+	mlx = (t_info *)get_info();
 	mlx->mlx = mlx_init();
 	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "cub3d");
 	mlx->img = put_rec(mlx->mlx, WIDTH, HEIGHT, BCOLOR);
