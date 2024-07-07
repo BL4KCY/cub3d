@@ -2,13 +2,8 @@
 
 int	update_map(t_info *mlx)
 {
-	t_data	data;
-	int		color;
+	int	color;
 
-	if (mlx->map.data.img)
-		mlx_destroy_image(mlx->mlx, mlx->map.data.img);
-	data.img =  mlx_new_image(mlx->mlx, mlx->width, mlx->height);
-	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
 	for (int i = 0; i < mlx->map.n_row; i++)
 	{
 		for (int j = 0; j < mlx->map.n_cols;j++)
@@ -17,14 +12,14 @@ int	update_map(t_info *mlx)
 				color = 0x00ffffff;
 			else
 				color = 0x00000000;
-			rect(&data, j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, color);
+			rect(&mlx->map.data,
+			MINIMAP_SCALE_FAC * j * TILE_SIZE,
+			MINIMAP_SCALE_FAC * i * TILE_SIZE,
+			MINIMAP_SCALE_FAC * TILE_SIZE,
+			MINIMAP_SCALE_FAC * TILE_SIZE,
+			color);
 		}
 	}
-	mlx->map.data.addr = data.addr;
-	mlx->map.data.img = data.img;
-	mlx->map.data.bits_per_pixel = data.bits_per_pixel;
-	mlx->map.data.line_length = data.line_length;
-	mlx->map.data.endian = data.endian;
 	return (0);
 }
 
@@ -63,29 +58,57 @@ void	render_rays(t_info *mlx, t_ray *ray)
 	{
 		double	x2 = x1 + cos(ray[i].ray_ang) * mlx->player.ray[i].ray_dis;
 		double	y2 = y1 + sin(ray[i].ray_ang) * mlx->player.ray[i].ray_dis;
-		// ray[i].is_ray_right ? puts("right"):puts("left");
-		// ray[i].is_ray_up ? puts("up"):puts("down");
-		draw_line(&mlx->map.data, x1, y1, x2, y2, 0x00ff0000);
+		draw_line(&mlx->map.data,
+		MINIMAP_SCALE_FAC * x1,
+		MINIMAP_SCALE_FAC * y1,
+		MINIMAP_SCALE_FAC * x2,
+		MINIMAP_SCALE_FAC * y2,
+		0x00ff0000);
 		i++;
 	}
 }
 int	update_player(t_info *mlx)
 {
 	update_position(mlx);
-	double	x1 = mlx->player.x;
-	double	y1 = mlx->player.y;
-	double	x2 = x1 + cos(mlx->player.rotation_angle) * 50;
-	double	y2 = y1 + sin(mlx->player.rotation_angle) * 50;
-	draw_cir(&mlx->map.data, x1, y1, mlx->player.radius, 0x00ff0000);
-	draw_line(&mlx->map.data, x1, y1, x2, y2, 0x00000000);
 }
 
+void	update_3d(t_info *info)
+{
+	t_data	data;
+	int		color;
+
+	if (info->map.data.img)
+		mlx_destroy_image(info->mlx, info->map.data.img);
+	data.img =  mlx_new_image(info->mlx, WIDTH, HEIGHT);
+	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
+	info->map.data.addr = data.addr;
+	info->map.data.img = data.img;
+	info->map.data.bits_per_pixel = data.bits_per_pixel;
+	info->map.data.line_length = data.line_length;
+	info->map.data.endian = data.endian;
+	rect(&data, 0, 0, HEIGHT, WIDTH, BCOLOR);
+	for (int i = 0; i < NUM_RAYS; i++)
+	{
+		if (info->player.ray[i].is_hor)
+			color = 0x00ee5900;
+		else
+			color = 0x00ab4000;
+
+		rect(&info->map.data,
+		i * STRIP_WIDTH,
+		(HEIGHT / 2) - (info->player.ray[i].strip_height / 2),
+		info->player.ray[i].strip_height,
+		STRIP_WIDTH,
+		color);
+	}
+}
 int	rendering(t_info *info)
 {
-	update_map(info);
 	update_player(info);
 	raycasting(info);
+	update_3d(info);
+	update_map(info);
 	render_rays(info, info->player.ray);
-	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 200, 75);
+	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
 	return (0);
 }
