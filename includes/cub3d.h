@@ -30,12 +30,15 @@
 # define MAX_HEIGHT 1080
 # define MAX_WIDTH 1950
 
-#define HEIGHT 800
-#define WIDTH 1280
+#define HEIGHT 720
+#define WIDTH 1080
 #define TILE_SIZE 60
+#define MINIMAP_SCALE_FAC 0.1
 #define FOV_ANGLE 60
-#define NUM_RAYS 40
-#define BCOLOR 0X00BB885E
+#define STRIP_WIDTH 1
+#define NUM_RAYS WIDTH
+// #define BCOLOR 0X00BB885E
+#define BCOLOR 0x00a0c6c0
 // #define BCOLOR 0X00FFFFFF
 
 typedef struct	s_data
@@ -67,6 +70,8 @@ typedef struct s_ray
 {
 	double	ray_ang;
 	double	ray_dis;
+	double	strip_height;
+	bool	is_hor;
 	bool	is_ray_up;
 	bool	is_ray_down;
 	bool	is_ray_left;
@@ -84,6 +89,7 @@ typedef struct s_player
 	double	rotation_angle;
 	double	move_speed;
 	double	rotation_speed;
+	double	plane_dis;
 }	t_player;
 
 typedef struct s_map
