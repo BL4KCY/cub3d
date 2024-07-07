@@ -30,32 +30,27 @@ double	distence_ray(t_info *info, double x ,double y)
 void	raycasting(t_info *info)
 {
 	t_intersec	intersec;
+	double		dis_to_plane;
+	double		correct_ray_dis;
 
-	intersec.h_dis = 0;
-	intersec.v_dis = 0;
-	intersec.h.x = 0;
-	intersec.h.y = 0;
-	intersec.v.x = 0;
-	intersec.v.y = 0;
 	create_rays(info);
-	printf("*********************************************\n");
+	dis_to_plane = (NUM_RAYS / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
+	info->player.plane_dis = dis_to_plane;
 	for (int i = 0; i < NUM_RAYS;i++)
 	{
 		set_horizonal_intersection(info, &intersec, i);
 		set_vertical_intersection(info, &intersec, i);
-		// intersec.h_dis = __DBL_MAX__;
-		// intersec.v_dis = __DBL_MAX__;
 		if (intersec.h_dis < intersec.v_dis)
+		{
 			info->player.ray[i].ray_dis = intersec.h_dis;
+			info->player.ray[i].is_hor = true;
+		}
 		else
+		{
 			info->player.ray[i].ray_dis = intersec.v_dis;
-		intersec.h_dis == __DBL_MAX__
-		? printf("hor dis[%i]: max   \t%s\t%.2lf",i, info->player.ray[i].is_ray_down ? "down":"up", rad_to_deg(info->player.ray[i].ray_ang))
-		: printf("hor dis[%i]: %.2f\t%s\t%.2lf",i, intersec.h_dis, info->player.ray[i].is_ray_down ? "down":"up", rad_to_deg(info->player.ray[i].ray_ang));
-		intersec.v_dis == __DBL_MAX__
-		? printf(", ver dis[%i]: max   \t%s\t%2.lf\n",i, info->player.ray[i].is_ray_right ? "right":"left", rad_to_deg(info->player.ray[i].ray_ang))
-		: printf(", ver dis[%i]: %.2f\t%s\t%2.lf\n",i, intersec.v_dis, info->player.ray[i].is_ray_right ? "right":"left", rad_to_deg(info->player.ray[i].ray_ang));
-		// printf("player x: %f, player y: %f, ray angle: %f, ray dis: %f\n", info->player.x, info->player.y, rad_to_deg(info->player.ray[i].ray_ang), info->player.ray[i].ray_dis);
+			info->player.ray[i].is_hor = false;
+		}
+		correct_ray_dis = info->player.ray[i].ray_dis * cos(info->player.ray[i].ray_ang - info->player.rotation_angle);
+		info->player.ray[i].strip_height = (TILE_SIZE / correct_ray_dis) * dis_to_plane;
 	}
-	printf("*********************************************\n");
 }
