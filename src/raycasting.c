@@ -44,11 +44,15 @@ void	raycasting(t_info *info)
 		{
 			info->player.ray[i].ray_dis = intersec.h_dis;
 			info->player.ray[i].is_hor = true;
+			info->player.ray[i].hit_x = intersec.h.x;
+			info->player.ray[i].hit_y = intersec.h.y;
 		}
 		else
 		{
 			info->player.ray[i].ray_dis = intersec.v_dis;
 			info->player.ray[i].is_hor = false;
+			info->player.ray[i].hit_x = intersec.v.x;
+			info->player.ray[i].hit_y = intersec.v.y;
 		}
 		correct_ray_dis = info->player.ray[i].ray_dis * cos(info->player.ray[i].ray_ang - info->player.rotation_angle);
 		info->player.ray[i].strip_height = (TILE_SIZE / correct_ray_dis) * dis_to_plane;

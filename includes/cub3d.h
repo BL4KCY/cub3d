@@ -32,14 +32,16 @@
 
 #define HEIGHT 720
 #define WIDTH 1080
-#define TILE_SIZE 60
-#define MINIMAP_SCALE_FAC 0.1
+#define TILE_SIZE 64
+#define MINIMAP_SCALE_FAC 0.15625
 #define FOV_ANGLE 60
 #define STRIP_WIDTH 1
 #define NUM_RAYS WIDTH
 // #define BCOLOR 0X00BB885E
 #define BCOLOR 0x00a0c6c0
 // #define BCOLOR 0X00FFFFFF
+#define CCOLOR 0x0088f6ff
+#define FCOLOR 0x00b8aa9f
 
 typedef struct	s_data
 {
@@ -71,6 +73,8 @@ typedef struct s_ray
 	double	ray_ang;
 	double	ray_dis;
 	double	strip_height;
+	double	hit_x;
+	double	hit_y;
 	bool	is_hor;
 	bool	is_ray_up;
 	bool	is_ray_down;
@@ -100,23 +104,43 @@ typedef struct s_map
 	int		n_cols;
 }	t_map;
 
+typedef struct s_tex
+{
+	t_coor	no_dem;
+	t_data	no_data;
+	t_coor	so_dem;
+	t_data	so_data;
+	t_coor	we_dem;
+	t_data	we_data;
+	t_coor	ea_dem;
+	t_data	ea_data;
+}	t_tex;
+
 typedef struct s_info
 {
 	void		*mlx;
 	void		*win;
-	void		*img;
 	int			height;
 	int			width;
 	t_map		map;
 	t_player	player;
+	t_tex		tex;
 }	t_info;
+
+typedef enum e_direc
+{
+	NO,
+	SO,
+	WE,
+	EA
+}	t_direc;
 
 int		ft_exit(t_info *mlx);
 void	*get_info(void);
 int		keypress(int keycode, t_info *mlx);
 int		keyrelease(int keycode, t_info *mlx);
 int		rendering(t_info *info);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_set(t_data *data, int x, int y, int color);
 void	*put_rec(void *mlx, int w, int h, int color);
 void	rect(t_data *data, int x, int y, int height, int width, int color);
 void	init_map(t_info *mlx);
@@ -132,5 +156,8 @@ void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id);
 bool	hit_wall(t_info *info, double x, double y);
 double	distence_ray(t_info *info, double x ,double y);
 void	set_vertical_intersection(t_info *info, t_intersec *intersec, int id);
+void	init_texture(t_info *info);
+unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
+unsigned int	get_color(t_info *info, int id, t_direc dir, int ys);
 
 #endif

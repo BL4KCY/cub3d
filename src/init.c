@@ -34,7 +34,20 @@ void	init_player(t_info *mlx)
 	mlx->player.turn_direction = 0;
 	mlx->player.walk_direction = 0;
 	mlx->player.rotation_angle = M_PI_2;
-	mlx->player.move_speed = 1;
+	mlx->player.move_speed = 2;
 	mlx->player.rotation_speed = 0.5 * (M_PI / 180);
 	mlx->player.ray = malloc(sizeof(t_ray) * NUM_RAYS);
+}
+
+void	init_texture(t_info *info)
+{
+	t_tex *tex;
+
+	tex = &info->tex;
+	tex->ea_data.img = mlx_xpm_file_to_image(info->mlx,
+			"textures/walls/1.xpm",
+			(int *)&info->tex.ea_dem.x,
+			(int *)&info->tex.ea_dem.y);
+	tex->ea_data.addr = mlx_get_data_addr(tex->ea_data.img, &tex->ea_data.bits_per_pixel,
+									&tex->ea_data.line_length, &tex->ea_data.endian);
 }
