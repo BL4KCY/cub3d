@@ -7,6 +7,7 @@ void	my_mlx_pixel_set(t_data *data, int x, int y, int color)
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
+
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y)
 {
 	char	*dst;
@@ -63,23 +64,3 @@ void	*put_rec(void *mlx, int w, int h, int color)
 			my_mlx_pixel_set(&data, x, y, color);
 	return (data.img);
 }
-
-// unsigned int	get_color(t_info *info, int id, t_direc dir, int ys)
-// {
-// 	unsigned int	color;
-// 	double			x;
-
-// 	if (info->player.ray[id].is_hor)
-// 		x = remainder(info->player.ray[id].hit_x, TILE_SIZE);
-// 	else
-// 		x = remainder(info->player.ray[id].hit_y, TILE_SIZE);
-// 	if (dir == EA)
-// 		color = my_mlx_pixel_get(&info->tex.ea, x, ys / info->player.ray[id].strip_height);
-// 	if (dir == NO)
-// 		color = my_mlx_pixel_get(&info->tex.no, x, ys / info->player.ray[id].strip_height);
-// 	if (dir == WE)
-// 		color = my_mlx_pixel_get(&info->tex.we, y, ys / info->player.ray[id].strip_height);
-// 	if (dir == SO)
-// 		color = my_mlx_pixel_get(&info->tex.so, y, ys / info->player.ray[id].strip_height);
-// 	return (color);
-// }
