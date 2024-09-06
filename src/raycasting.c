@@ -15,6 +15,7 @@ void	create_rays(t_info *info)
 		ray_angle += deg_to_rad(FOV_ANGLE) / NUM_RAYS;
 	}
 }
+
 bool	hit_wall(t_info *info, double x, double y)
 {
 	return (info->map.grid[(int)(y / TILE_SIZE)][(int)(x / TILE_SIZE)] == '1');
@@ -30,12 +31,12 @@ double	distence_ray(t_info *info, double x ,double y)
 void	raycasting(t_info *info)
 {
 	t_intersec	intersec;
-	double		dis_to_plane;
-	double		correct_ray_dis;
+	// double		dis_to_plane;
+	// double		correct_ray_dis;
 
 	create_rays(info);
-	dis_to_plane = (NUM_RAYS / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
-	info->player.plane_dis = dis_to_plane;
+	// dis_to_plane = (NUM_RAYS / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
+	// info->player.plane_dis = dis_to_plane;
 	for (int i = 0; i < NUM_RAYS;i++)
 	{
 		set_horizonal_intersection(info, &intersec, i);
@@ -54,7 +55,7 @@ void	raycasting(t_info *info)
 			info->player.ray[i].hit_x = intersec.v.x;
 			info->player.ray[i].hit_y = intersec.v.y;
 		}
-		correct_ray_dis = info->player.ray[i].ray_dis * cos(info->player.ray[i].ray_ang - info->player.rotation_angle);
-		info->player.ray[i].strip_height = (TILE_SIZE / correct_ray_dis) * dis_to_plane;
+		// correct_ray_dis = info->player.ray[i].ray_dis * cos(info->player.ray[i].ray_ang - info->player.rotation_angle);
+		// info->player.ray[i].strip_height = (TILE_SIZE / correct_ray_dis) * dis_to_plane;
 	}
 }

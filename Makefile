@@ -1,7 +1,7 @@
 #______command and their flags______#
 RM = rm -rf
-CFLAGS = -fsanitize=address #-Wall -Wextra -Werror
-MLXFLAGS = -lmlx -lXext -lX11 -lm
+CFLAGS = #-fsanitize=address #-Wall -Wextra -Werror
+MLXFLAGS = mlx/libmlx_Linux.a -lXext -lX11 -lm
 CC = gcc
 AR = ar -crs
 INCLUDES = includes
@@ -9,7 +9,7 @@ INCLUDES = includes
 #______directories______#
 OBJ_DIR = obj
 SRC_DIR = src
-INCLUDES = includes
+INCLUDES = inc
 LIB_INCLUDES = libft/includes
 
 #______mandatory and bonus files______#
@@ -42,6 +42,9 @@ $(LIB)/%.a:
 re: fclean all
 
 all: $(NAME)
+
+run: all
+	./$(NAME)
 
 #______cleaning______#
 clean:
