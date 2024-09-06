@@ -131,14 +131,11 @@ void	update_3d(t_info *info)
 }
 int	rendering(t_info *info)
 {
-	static int	i;
-
 	update_player(info);;
 	raycasting(info);
 	update_3d(info);
 	update_map(info);
 	render_rays(info, info->player.ray);
 	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
-	i++;
 	return (0);
 }
