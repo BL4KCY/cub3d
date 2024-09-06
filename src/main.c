@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: melfersi <melfersi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/09 21:17:35 by melfersi          #+#    #+#             */
-/*   Updated: 2024/07/07 16:31:57 by melfersi         ###   ########.fr       */
+/*   Created: 2024/06/09 21:17:35 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/06 16:47:21 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,26 @@
 
 void	*get_info(void)
 {
-	static t_info	mlx;
-	return (&mlx);
+	static t_info	info;
+	return (&info);
 }
 
 int	main(void)
 {
-	t_info	*mlx;
+	/*
+	
+	 */
+	t_info	*info;
 
-	mlx = (t_info *)get_info();
-	mlx->mlx = mlx_init();
-	mlx->win = mlx_new_window(mlx->mlx, WIDTH, HEIGHT, "cub3d");
-	mlx_hook(mlx->win, ON_DESTROY, KEYPRESSMASK, ft_exit, mlx);
-	mlx_hook(mlx->win, ON_KEYDOWN, KEYPRESSMASK, keypress, mlx);
-	mlx_hook(mlx->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, mlx);
-	init_map(mlx);
-	init_player(mlx);
-	init_texture(mlx);
-	mlx_loop_hook(mlx->mlx, rendering, mlx);
-	mlx_loop(mlx->mlx);
+	info = (t_info *)get_info();
+	info->mlx = mlx_init();
+	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");
+	mlx_hook(info->win, ON_DESTROY, KEYPRESSMASK, ft_exit, info);
+	mlx_hook(info->win, ON_KEYDOWN, KEYPRESSMASK, keypress, info);
+	mlx_hook(info->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, info);
+	init_map(info);
+	init_player(info);
+	// init_texture(info);
+	mlx_loop_hook(info->mlx, rendering, info);
+	mlx_loop(info->mlx);
 }

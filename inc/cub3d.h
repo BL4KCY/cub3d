@@ -25,18 +25,18 @@
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
-# define ADD 50
-# define RNG 4
 # define MAX_HEIGHT 1080
 # define MAX_WIDTH 1950
 
 #define HEIGHT 720
 #define WIDTH 1080
 #define TILE_SIZE 64
-#define MINIMAP_SCALE_FAC 0.15625
+#define MINIMAP_SCALE_FAC 0.75
+#define STRIP_WIDTH
+#define NUM_RAYS 1//20 //WIDTH / STRIP_WIDTH
 #define FOV_ANGLE 60
-#define STRIP_WIDTH 1
-#define NUM_RAYS WIDTH
+// #define STRIP_WIDTH 1
+// #define NUM_RAYS WIDTH
 // #define BCOLOR 0X00BB885E
 #define BCOLOR 0x00a0c6c0
 // #define BCOLOR 0X00FFFFFF
@@ -145,12 +145,13 @@ void	*put_rec(void *mlx, int w, int h, int color);
 void	rect(t_data *data, int x, int y, int height, int width, int color);
 void	init_map(t_info *mlx);
 void	init_player(t_info *mlx);
+void	init_img_data(t_info *mlx);
 void	draw_cir(t_data *data, int x, int y, int radius, int color);
 void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
 void	raycasting(t_info *info);
-void	render_rays(t_info *mlx, t_ray *ray);
+void	render_rays(t_info *mlx);
 double	normalize_angle(double angle);
 void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id);
 bool	hit_wall(t_info *info, double x, double y);
