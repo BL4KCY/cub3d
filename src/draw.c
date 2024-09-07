@@ -5,7 +5,7 @@ void	my_mlx_pixel_set(t_data *data, int x, int y, int color)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y)
@@ -13,70 +13,28 @@ unsigned int	my_mlx_pixel_get(t_data *data, int x, int y)
 	char	*dst;
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-	return (*(unsigned int*)dst);
-}
-
-void	rect(t_data *data, int x, int y, int height, int width, int color)
-{
-	for(int i = y; i < y + height; i++)
-		for(int j = x; j < x + width; j++)
-			if (j < WIDTH && j >= 0 && i >= 0 && i < HEIGHT)
-				my_mlx_pixel_set(data, j, i, color);
-}
-
-void	rect_cir(t_data *data, int x, int y, int height, int width, int cir_x, int cir_y, int radius, int color)
-{
-	for(int i = y; i < y + height; i++)
-		for(int j = x; j < x + width; j++)
-			if (sqrt(pow(j - cir_x, 2) + pow(i - cir_y, 2)) <= radius)
-				my_mlx_pixel_set(data, j, i, color);
-}
-
-void	draw_cir(t_data *data, int x, int y, int radius, int color)
-{
-	for (int i = y - radius; i < y + radius; i++)
-		for (int j = x - radius; j < x + radius; j++)
-			if (sqrt(pow(j - x, 2) + pow(i - y, 2)) <= radius)
-				my_mlx_pixel_set(data, j, i, color);
-}
-
-void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color)
-{
-	t_info	*info = get_info();
-	int dx = x2 - x1;
-	int dy = y2 - y1;
-	int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
-	float Xinc = dx / (float)steps;
-	float Yinc = dy / (float)steps;
-	float X = x1;
-	float Y = y1;
-	if (x2 < 0 || x2 > info->width || y2 < 0 || y2 > info->height)
-		return ;
-	for (int i = 0; i <= steps; i++)
-	{
-		my_mlx_pixel_set(data, X, Y, color);
-		X += Xinc;
-		Y += Yinc;
-	}
-}
-
-void	draw_empty_cir(t_data *data, int x, int y, int radius, int color)
-{
-	for (int i = y - radius; i < y + radius; i++)
-		for (int j = x - radius; j < x + radius; j++)
-			if (sqrt(pow(j - x, 2) + pow(i - y, 2)) <= radius && sqrt(pow(j - x, 2) + pow(i - y, 2)) >= radius - 3)
-				my_mlx_pixel_set(data, j, i, color);
+	return (*(unsigned int *)dst);
 }
 
 void	*put_rec(void *mlx, int w, int h, int color)
 {
 	t_data	data;
+	int		x;
+	int		y;
 
 	data.img = mlx_new_image(mlx, w, h);
-	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel, &data.line_length, &data.endian);
-
-	for (int y = 0; y < h;y++)
-		for (int x = 0; x < w; x++)
+	data.addr = mlx_get_data_addr(data.img,
+			&data.bits_per_pixel, &data.line_length, &data.endian);
+	y = 0;
+	while (y < h)
+	{
+		x = 0;
+		while (x < w)
+		{
 			my_mlx_pixel_set(&data, x, y, color);
+			x++;
+		}
+		y++;
+	}
 	return (data.img);
 }
