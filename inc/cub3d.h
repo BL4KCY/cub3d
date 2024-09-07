@@ -31,7 +31,7 @@
 #define HEIGHT 720
 #define WIDTH 1080
 #define TILE_SIZE 64
-#define MINIMAP_SCALE_FAC 0.75
+#define MINIMAP_SCALE_FAC 0.5
 #define STRIP_WIDTH
 #define NUM_RAYS 1//20 //WIDTH / STRIP_WIDTH
 #define FOV_ANGLE 60
@@ -39,6 +39,13 @@
 // #define NUM_RAYS WIDTH
 // #define BCOLOR 0X00BB885E
 #define BCOLOR 0x00a0c6c0
+#define BLUE 0x000000FF
+#define RED 0x00FF0000
+#define GREEN 0x0000FF00
+#define YELLOW 0x00FFFF00
+#define WHITE 0x00FFFFFF
+#define BLACK 0x00000000
+#define BROWN 0x00A52A2A
 // #define BCOLOR 0X00FFFFFF
 #define CCOLOR 0x0088f6ff
 #define FCOLOR 0x00b8aa9f
@@ -90,6 +97,8 @@ typedef struct s_player
 	t_ray	*ray;
 	double	turn_direction;
 	double	walk_direction;
+	double	move_updown;
+	double	move_rightleft;
 	double	rotation_angle;
 	double	move_speed;
 	double	rotation_speed;
@@ -142,12 +151,14 @@ int		keyrelease(int keycode, t_info *mlx);
 int		rendering(t_info *info);
 void	my_mlx_pixel_set(t_data *data, int x, int y, int color);
 void	*put_rec(void *mlx, int w, int h, int color);
-void	rect(t_data *data, int x, int y, int height, int width, int color);
 void	init_map(t_info *mlx);
 void	init_player(t_info *mlx);
 void	init_img_data(t_info *mlx);
+void	rect(t_data *data, int x, int y, int height, int width, int color);
+void	rect_cir(t_data *data, int x, int y, int height, int width, int cir_x, int cir_y, int radius, int color);
 void	draw_cir(t_data *data, int x, int y, int radius, int color);
 void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color);
+void	draw_empty_cir(t_data *data, int x, int y, int radius, int color);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
 void	raycasting(t_info *info);
