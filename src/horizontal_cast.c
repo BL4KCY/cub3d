@@ -26,15 +26,15 @@ bool	update_intersec_hor(t_info *info, t_intersec *intersec, int id)
 
 void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id)
 {
-	intersec->h.y = floor(info->player.y / TILE_SIZE) * TILE_SIZE;
+	intersec->h.y = floor(info->player.y / T_SIZE) * T_SIZE;
 	if (info->player.ray[id].is_ray_down)
-		intersec->h.y += TILE_SIZE;
+		intersec->h.y += T_SIZE;
 	intersec->h.x = info->player.x + ((intersec->h.y - info->player.y)
 			/ tan(info->player.ray[id].ray_ang));
-	intersec->step.y = TILE_SIZE;
+	intersec->step.y = T_SIZE;
 	if (info->player.ray[id].is_ray_up)
 		intersec->step.y *= -1;
-	intersec->step.x = TILE_SIZE / tan(info->player.ray[id].ray_ang);
+	intersec->step.x = T_SIZE / tan(info->player.ray[id].ray_ang);
 	if (info->player.ray[id].is_ray_left && intersec->step.x > 0)
 		intersec->step.x *= -1;
 	if (info->player.ray[id].is_ray_right && intersec->step.x < 0)

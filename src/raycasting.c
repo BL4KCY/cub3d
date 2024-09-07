@@ -18,7 +18,7 @@ void	create_rays(t_info *info)
 
 bool	hit_wall(t_info *info, double x, double y)
 {
-	return (info->map.grid[(int)(y / TILE_SIZE)][(int)(x / TILE_SIZE)] == '1');
+	return (info->map.grid[(int)(y / T_SIZE)][(int)(x / T_SIZE)] == '1');
 }
 
 double	distence_ray(t_info *info, double x ,double y)
@@ -56,6 +56,6 @@ void	raycasting(t_info *info)
 			info->player.ray[i].hit_y = intersec.v.y;
 		}
 		// correct_ray_dis = info->player.ray[i].ray_dis * cos(info->player.ray[i].ray_ang - info->player.rotation_angle);
-		// info->player.ray[i].strip_height = (TILE_SIZE / correct_ray_dis) * dis_to_plane;
+		// info->player.ray[i].strip_height = (T_SIZE / correct_ray_dis) * dis_to_plane;
 	}
 }

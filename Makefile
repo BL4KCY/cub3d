@@ -14,7 +14,7 @@ LIB_INCLUDES = libft/includes
 #______mandatory and bonus files______#
 FILES = main.c exit.c inputs.c rendering.c draw.c init.c\
 		convert.c raycasting.c horizontal_cast.c vertical_cast.c\
-		draw_utils.c
+		draw_utils.c image_updating.c
 
 #______patterns and substitutions______#
 SOURCES = $(FILES:%.c=$(SRC_DIR)/%.c)

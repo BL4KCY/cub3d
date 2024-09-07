@@ -31,7 +31,8 @@
 
 #define HEIGHT 720
 #define WIDTH 1080
-#define TILE_SIZE 64
+#define T_SIZE 64
+#define MM_RAD 200
 #define MINIMAP_SCALE_FAC 1
 #define STRIP_WIDTH
 #define NUM_RAYS 1//20 //WIDTH / STRIP_WIDTH
@@ -69,6 +70,9 @@ double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
 void	raycasting(t_info *info);
 void	render_rays(t_info *mlx);
+int		update_minimap(t_info *info);
+void	update_player_position(t_info *info);
+void	update_player(t_info *info);
 double	normalize_angle(double angle);
 void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id);
 bool	hit_wall(t_info *info, double x, double y);

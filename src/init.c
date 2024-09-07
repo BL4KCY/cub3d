@@ -21,8 +21,8 @@ void	init_map(t_info *info)
 	info->map.grid = grid;
 	info->map.n_row = 11;
 	info->map.n_cols = 15;
-	info->width = info->map.n_cols * TILE_SIZE;
-	info->height = info->map.n_row * TILE_SIZE;
+	info->width = info->map.n_cols * T_SIZE;
+	info->height = info->map.n_row * T_SIZE;
 	info->map.data.img = NULL;
 }
 
