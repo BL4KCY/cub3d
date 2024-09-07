@@ -16,7 +16,8 @@ int	update_minimap(t_info *info)
 				color = WHITE;
 			else
 				color = BROWN;
-			rect_cir(&info->map.data,
+
+			rect_cir(&info->map.data, (t_rect_cir){
 			MINIMAP_SCALE_FAC * j * TILE_SIZE - MINIMAP_SCALE_FAC * x,
 			MINIMAP_SCALE_FAC * i * TILE_SIZE - MINIMAP_SCALE_FAC * y,
 			MINIMAP_SCALE_FAC * TILE_SIZE,
@@ -24,7 +25,7 @@ int	update_minimap(t_info *info)
 			MINIMAP_SCALE_FAC * 200,
 			MINIMAP_SCALE_FAC * 200,
 			MINIMAP_SCALE_FAC * 200,
-			color);
+			color});
 		}
 	}
 	return (0);
@@ -63,12 +64,12 @@ void	render_rays(t_info *info)
 	i = 0;
 	while (i < NUM_RAYS)
 	{
-		draw_line(&info->map.data,
+		draw_line(&info->map.data, (t_line){
 		MINIMAP_SCALE_FAC * 200,
 		MINIMAP_SCALE_FAC * 200,
 		MINIMAP_SCALE_FAC * info->player.ray[i].hit_x,
 		MINIMAP_SCALE_FAC * info->player.ray[i].hit_y,
-		0x00ff0000);
+		RED});
 		i++;
 	}
 }
@@ -81,17 +82,27 @@ void	update_player(t_info *info)
 
 	player_x = (info->player.x < 200 ? info->player.x : 200);
 	player_y = (info->player.y < 200 ? info->player.y : 200);
-	draw_cir(&info->map.data,
+
+	draw_cir(&info->map.data, (t_cir){
 	MINIMAP_SCALE_FAC * player_x,
 	MINIMAP_SCALE_FAC * player_y,
 	MINIMAP_SCALE_FAC * info->player.radius,
-	BLUE);
+	BLUE});
 	limit_x = 200;//info->player.x <= 200 ? 200 : info->player.x;
 	limit_y = 200;//info->player.y <= 200 ? 200 : info->player.y;
-	draw_empty_cir(&info->map.data, MINIMAP_SCALE_FAC * limit_x, MINIMAP_SCALE_FAC * limit_y, MINIMAP_SCALE_FAC * 200, BLUE);
+	// draw_empty_cir(&info->map.data, (t_cir){
+	// MINIMAP_SCALE_FAC * limit_x,
+	// MINIMAP_SCALE_FAC * limit_y,
+	// MINIMAP_SCALE_FAC * 200,
+	// WHITE});
 	x2 = cos(info->player.rotation_angle) * 40 + player_x;
 	y2 = sin(info->player.rotation_angle) * 40 + player_y;
-	draw_line(&info->map.data, player_x * MINIMAP_SCALE_FAC, player_y * MINIMAP_SCALE_FAC, x2 * MINIMAP_SCALE_FAC, y2 * MINIMAP_SCALE_FAC, BLUE);
+	draw_line(&info->map.data, (t_line){
+	player_x * MINIMAP_SCALE_FAC,
+	player_y * MINIMAP_SCALE_FAC,
+	x2 * MINIMAP_SCALE_FAC,
+	y2 * MINIMAP_SCALE_FAC,
+	BLUE});
 }
 
 

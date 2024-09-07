@@ -36,8 +36,8 @@ void	init_player(t_info *info)
 	info->player.move_updown = 0;
 	info->player.move_rightleft = 0;
 	info->player.rotation_angle = M_PI_2;
-	info->player.move_speed = 2;
-	info->player.rotation_speed = 1 * (M_PI / 180);
+	info->player.move_speed = 4;
+	info->player.rotation_speed = 3 * (M_PI / 180);
 	info->player.ray = malloc(sizeof(t_ray) * NUM_RAYS);
 }
 
