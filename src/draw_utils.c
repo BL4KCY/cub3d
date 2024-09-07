@@ -1,5 +1,6 @@
 #include "cub3d.h"
 
+// drawing a rectangle
 void	rect(t_data *data, t_rect rect)
 {
 	int	i;
@@ -19,6 +20,7 @@ void	rect(t_data *data, t_rect rect)
 	}
 }
 
+// drawing a rectangle with a circle inside
 void	rect_cir(t_data *data, t_rect_cir rect_cir)
 {
 	int	i;
@@ -39,6 +41,7 @@ void	rect_cir(t_data *data, t_rect_cir rect_cir)
 	}
 }
 
+// drawing a circle
 void	draw_cir(t_data *data, t_cir cir)
 {
 	int	i;
@@ -59,6 +62,7 @@ void	draw_cir(t_data *data, t_cir cir)
 	}
 }
 
+// drawing a line
 // dx and dy are the difference between the two points
 void	draw_line(t_data *data, t_line line)
 {
@@ -86,6 +90,7 @@ void	draw_line(t_data *data, t_line line)
 	}
 }
 
+// drawing an empty circle
 void	draw_empty_cir(t_data *data, t_cir cir)
 {
 	int	i;

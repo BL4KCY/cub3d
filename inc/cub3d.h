@@ -57,7 +57,6 @@ int		keypress(int keycode, t_info *mlx);
 int		keyrelease(int keycode, t_info *mlx);
 int		rendering(t_info *info);
 void	my_mlx_pixel_set(t_data *data, int x, int y, int color);
-void	*put_rec(void *mlx, int w, int h, int color);
 void	init_map(t_info *mlx);
 void	init_player(t_info *mlx);
 void	init_img_data(t_info *mlx);
