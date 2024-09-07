@@ -24,6 +24,14 @@ void	rect(t_data *data, int x, int y, int height, int width, int color)
 				my_mlx_pixel_set(data, j, i, color);
 }
 
+void	rect_cir(t_data *data, int x, int y, int height, int width, int cir_x, int cir_y, int radius, int color)
+{
+	for(int i = y; i < y + height; i++)
+		for(int j = x; j < x + width; j++)
+			if (sqrt(pow(j - cir_x, 2) + pow(i - cir_y, 2)) <= radius)
+				my_mlx_pixel_set(data, j, i, color);
+}
+
 void	draw_cir(t_data *data, int x, int y, int radius, int color)
 {
 	for (int i = y - radius; i < y + radius; i++)
@@ -50,6 +58,14 @@ void	draw_line(t_data *data, int x1, int y1, int x2, int y2, int color)
 		X += Xinc;
 		Y += Yinc;
 	}
+}
+
+void	draw_empty_cir(t_data *data, int x, int y, int radius, int color)
+{
+	for (int i = y - radius; i < y + radius; i++)
+		for (int j = x - radius; j < x + radius; j++)
+			if (sqrt(pow(j - x, 2) + pow(i - y, 2)) <= radius && sqrt(pow(j - x, 2) + pow(i - y, 2)) >= radius - 3)
+				my_mlx_pixel_set(data, j, i, color);
 }
 
 void	*put_rec(void *mlx, int w, int h, int color)

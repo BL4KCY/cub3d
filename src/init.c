@@ -30,12 +30,14 @@ void	init_player(t_info *info)
 {
 	info->player.x = info->width / 2;
 	info->player.y = info->height / 2;
-	info->player.radius = 4;
+	info->player.radius = 6;
 	info->player.turn_direction = 0;
 	info->player.walk_direction = 0;
+	info->player.move_updown = 0;
+	info->player.move_rightleft = 0;
 	info->player.rotation_angle = M_PI_2;
 	info->player.move_speed = 2;
-	info->player.rotation_speed = 0.5 * (M_PI / 180);
+	info->player.rotation_speed = 1 * (M_PI / 180);
 	info->player.ray = malloc(sizeof(t_ray) * NUM_RAYS);
 }
 
