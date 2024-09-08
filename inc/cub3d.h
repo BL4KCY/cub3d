@@ -34,8 +34,8 @@
 #define T_SIZE 64
 #define MM_RAD 200
 #define MINIMAP_SCALE_FAC 1
-#define STRIP_WIDTH
-#define NUM_RAYS 20 //WIDTH / STRIP_WIDTH
+#define STRIP_WIDTH 1
+#define NUM_RAYS 40//WIDTH / STRIP_WIDTH
 #define FOV_ANGLE 60
 // #define STRIP_WIDTH 1
 // #define NUM_RAYS WIDTH

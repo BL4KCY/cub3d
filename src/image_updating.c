@@ -45,13 +45,33 @@ bool	check_intersec_wall(t_info *info, double i, double j)
 	return (false);
 }
 
+double	mouse_move(t_info *info)
+{
+	int			x;
+	int			y;
+
+	mlx_mouse_get_pos(info->mlx, info->win, &x, &y);
+	if (x != (int)info->mouse.x && x > WIDTH / 2)
+		return (info->mouse.x = x, info->player.rotation_speed);
+	else if (x != (int)info->mouse.x && x < WIDTH / 2)
+		return (info->mouse.x = x, -info->player.rotation_speed);
+	else
+		return (info->mouse.x = x, 0);
+}
+void	wall_collision(t_info *info, double new_x, double new_y)
+{
+	if (!hit_wall(info, new_x, info->player.y))
+		info->player.x = new_x;
+	if (!hit_wall(info, info->player.x, new_y))
+		info->player.y = new_y;
+}
 void	update_player_position(t_info *info)
 {
 	double	new_x;
 	double	new_y;
 
 	info->player.rotation_angle += info->player.rotation_speed
-		* info->player.turn_direction;
+		* info->player.turn_direction;// + mouse_move(info);
 	info->player.rotation_angle = normalize_angle(info->player.rotation_angle);
 	new_x = info->player.x + (cos(info->player.rotation_angle)
 			* info->player.move_speed * info->player.walk_direction)
@@ -65,12 +85,7 @@ void	update_player_position(t_info *info)
 		info->player.y = new_y;
 	}
 	else
-	{
-		if (!hit_wall(info, new_x, info->player.y) & !check_intersec_wall(info, new_x, info->player.y))
-			info->player.x = new_x;
-		if (!hit_wall(info, info->player.x, new_y) & !check_intersec_wall(info, info->player.x, new_y))
-			info->player.y = new_y;
-	}
+		wall_collision(info, new_x, new_y);
 }
 
 void	render_rays(t_info *info)

@@ -116,6 +116,7 @@ typedef struct s_info
 	int			width;
 	t_map		map;
 	t_player	player;
+	t_coor		mouse;
 }	t_info;
 
 
