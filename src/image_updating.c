@@ -29,6 +29,24 @@ int	update_minimap(t_info *info)
 	return (0);
 }
 
+bool	check_intersec_wall(t_info *info, double i, double j)
+{
+	int	a;
+	int	b;
+	int	x;
+	int	y;
+
+	a = (int)i / T_SIZE- (int)info->player.x / T_SIZE;
+	b = (int)j / T_SIZE - (int)info->player.y / T_SIZE;
+	if (1 == abs(a) && 1 == abs(b))
+	{
+		if (hit_wall(info, info->player.x + a * T_SIZE, info->player.y)
+			&& hit_wall(info, info->player.x, info->player.y + b * T_SIZE))
+			return (false);
+	}
+	return (true);
+}
+
 void	update_player_position(t_info *info)
 {
 	double	new_x;
@@ -43,7 +61,7 @@ void	update_player_position(t_info *info)
 	new_y = info->player.y + (sin(info->player.rotation_angle)
 			* info->player.move_speed * info->player.walk_direction)
 		+ (info->player.move_updown * info->player.move_speed);
-	if (info->map.grid[(int)(new_y / T_SIZE)][(int)(new_x / T_SIZE)] == '0')
+	if (!hit_wall(info, new_x, new_y) && check_intersec_wall(info, new_x, new_y))
 	{
 		info->player.x = new_x;
 		info->player.y = new_y;
