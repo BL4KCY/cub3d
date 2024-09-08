@@ -90,6 +90,33 @@ void	draw_line(t_data *data, t_line line)
 	}
 }
 
+void	line_in_cir(t_data *data, t_line line, t_cir cir)
+{
+	int	dx;
+	int	dy;
+	int	i;
+
+	dx = line.x2 - line.x1;
+	dy = line.y2 - line.y1;
+	if (abs(dx) > abs(dy))
+		line.step = abs(dx);
+	else
+		line.step = abs(dy);
+	line.x_inc = dx / (float)line.step;
+	line.y_inc = dy / (float)line.step;
+	if (line.x2 < 0 || line.x2 > WIDTH || line.y2 < 0 || line.y2 > HEIGHT)
+		return ;
+	i = 0;
+	while (i <= line.step)
+	{
+		if (sqrt(pow(line.x1 - cir.x, 2) + pow(line.y1 - cir.y, 2))
+			<= cir.radius)
+			my_mlx_pixel_set(data, line.x1, line.y1, line.color);
+		line.x1 += line.x_inc;
+		line.y1 += line.y_inc;
+		i++;
+	}
+}
 // drawing an empty circle
 void	draw_empty_cir(t_data *data, t_cir cir)
 {

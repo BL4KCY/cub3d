@@ -58,10 +58,10 @@ void	render_rays(t_info *info)
 	while (i < NUM_RAYS)
 	{
 		draw_line(&info->map.data, (t_line){
-			MINIMAP_SCALE_FAC * MM_RAD, MINIMAP_SCALE_FAC * MM_RAD,
+			MINIMAP_SCALE_FAC * info->player.x, MINIMAP_SCALE_FAC * info->player.y,
 			MINIMAP_SCALE_FAC * info->player.ray[i].hit_x,
 			MINIMAP_SCALE_FAC * info->player.ray[i].hit_y,
-			RED});
+			CYAN});
 		i++;
 	}
 }

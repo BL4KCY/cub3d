@@ -35,7 +35,7 @@
 #define MM_RAD 200
 #define MINIMAP_SCALE_FAC 1
 #define STRIP_WIDTH
-#define NUM_RAYS 1//20 //WIDTH / STRIP_WIDTH
+#define NUM_RAYS 20 //WIDTH / STRIP_WIDTH
 #define FOV_ANGLE 60
 // #define STRIP_WIDTH 1
 // #define NUM_RAYS WIDTH
@@ -47,7 +47,11 @@
 #define YELLOW 0x00FFFF00
 #define WHITE 0x00FFFFFF
 #define BLACK 0x00000000
-#define BROWN 0x00A52A2A
+#define BROWN 0x00820421
+#define PINK 0x00FF69B4
+#define GRAY 0x007a7a7a
+#define DARK_BLUE 0x00190482
+#define CYAN 0x0000FFFF
 // #define BCOLOR 0X00FFFFFF
 #define CCOLOR 0x0088f6ff
 #define FCOLOR 0x00b8aa9f
@@ -65,6 +69,7 @@ void	rect(t_data *data, t_rect rect);
 void	rect_cir(t_data *data, t_rect_cir rect_cir);
 void	draw_cir(t_data *data, t_cir cir);
 void	draw_line(t_data *data, t_line line);
+void	line_in_cir(t_data *data, t_line line, t_cir cir);
 void	draw_empty_cir(t_data *data, t_cir circle);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
