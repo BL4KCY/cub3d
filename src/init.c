@@ -7,11 +7,11 @@ void	init_map(t_info *info)
 	for (int i = 0; i < 11;i++)
 		grid[i] = malloc(sizeof(char) * 16);
 	ft_strlcpy(grid[0], "111111111111111", 16);
-	ft_strlcpy(grid[1], "1000001100000101", 16);
+	ft_strlcpy(grid[1], "100000100000101", 16);
 	ft_strlcpy(grid[2], "100011000000101", 16);
 	ft_strlcpy(grid[3], "101100000000101", 16);
 	ft_strlcpy(grid[4], "100000000100101", 16);
-	ft_strlcpy(grid[5], "100000000N10101", 16);
+	ft_strlcpy(grid[5], "100000000010101", 16);
 	ft_strlcpy(grid[6], "100000000100001", 16);
 	ft_strlcpy(grid[7], "100010000000001", 16);
 	ft_strlcpy(grid[8], "111110000111101", 16);
