@@ -10,9 +10,9 @@ void	init_map(t_info *info)
 	ft_strlcpy(grid[1], "100000100000101", 16);
 	ft_strlcpy(grid[2], "100011000000101", 16);
 	ft_strlcpy(grid[3], "101100000000101", 16);
-	ft_strlcpy(grid[4], "100000000000101", 16);
-	ft_strlcpy(grid[5], "100000001111101", 16);
-	ft_strlcpy(grid[6], "100000000000001", 16);
+	ft_strlcpy(grid[4], "100000000100101", 16);
+	ft_strlcpy(grid[5], "100000000010101", 16);
+	ft_strlcpy(grid[6], "100000000100001", 16);
 	ft_strlcpy(grid[7], "100010000000001", 16);
 	ft_strlcpy(grid[8], "111110000111101", 16);
 	ft_strlcpy(grid[9], "100000000000001", 16);
