@@ -33,9 +33,9 @@
 #define WIDTH 1080
 #define T_SIZE 64
 #define MM_RAD 200
-#define MINIMAP_SCALE_FAC 1
+#define MINIMAP_SCALE_FAC 0.5
 #define STRIP_WIDTH 1
-#define NUM_RAYS 40//WIDTH / STRIP_WIDTH
+#define NUM_RAYS  WIDTH / STRIP_WIDTH
 #define FOV_ANGLE 60
 // #define STRIP_WIDTH 1
 // #define NUM_RAYS WIDTH
@@ -48,8 +48,12 @@
 #define WHITE 0x00FFFFFF
 #define BLACK 0x00000000
 #define BROWN 0x00820421
+#define DARK_BROWN 0x0041393c
 #define PINK 0x00FF69B4
 #define GRAY 0x007a7a7a
+#define LIGHT_ORANGE 0x00db8858
+#define DARK_ORANGE 0x00a8592c
+#define DARK_GRAY 0x00404040
 #define DARK_BLUE 0x00190482
 #define CYAN 0x0000FFFF
 // #define BCOLOR 0X00FFFFFF
@@ -74,6 +78,7 @@ void	draw_empty_cir(t_data *data, t_cir circle);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
 void	raycasting(t_info *info);
+void	update_3d(t_info *info);
 void	render_rays(t_info *mlx);
 int		update_minimap(t_info *info);
 void	update_player_position(t_info *info);
@@ -84,4 +89,5 @@ bool	hit_wall(t_info *info, double x, double y);
 double	distence_ray(t_info *info, double x ,double y);
 void	set_vertical_intersection(t_info *info, t_intersec *intersec, int id);
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
+
 #endif
