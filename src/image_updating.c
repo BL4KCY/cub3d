@@ -9,14 +9,19 @@ int	update_minimap(t_info *info)
 	int	y;
 
 	i = -1;
-	x = (info->player.x > MM_RAD) * (info->player.x - MM_RAD);
-	y = (info->player.y > MM_RAD) * (info->player.y - MM_RAD);
+	x = (info->player.x > MM_RAD && !(info->player.x > info->width - MM_RAD))
+		* (info->player.x - MM_RAD) + (info->player.x > info->width - MM_RAD)
+		* (info->width - (MM_RAD * 2));
+	y = (info->player.y > MM_RAD && !(info->player.y > info->height - MM_RAD))
+		* (info->player.y - MM_RAD) + (info->player.y > info->height - MM_RAD)
+		* (info->height - (MM_RAD * 2));
+	printf("x: %.2f, y: %.2f\n", info->player.x, info->player.y);
 	while (++i < info->map.n_row)
 	{
 		j = 0;
 		while (j < info->map.n_cols)
 		{
-			color = (info->map.grid[i][j] == '1') * BROWN
+			color = (info->map.grid[i][j] == '1') * BLACK
 				+ (info->map.grid[i][j] == '0') * WHITE;
 			rect_cir(&info->map.data, (t_rect_cir){
 				MINIMAP_SCALE_FAC * (j++) * T_SIZE - MINIMAP_SCALE_FAC * x,
@@ -111,17 +116,24 @@ void	update_player(t_info *info)
 	int	player_x;
 	int	player_y;
 
-	player_x = (info->player.x < MM_RAD) * info->player.x
-		+ (info->player.x >= MM_RAD) * MM_RAD;
-	player_y = (info->player.y < MM_RAD) * info->player.y
-		+ (info->player.y >= MM_RAD) * MM_RAD;
+	if (info->player.x < MM_RAD)
+		player_x = info->player.x;
+	else
+		player_x = MM_RAD;
+	if (info->player.x > info->width - MM_RAD)
+		player_x = MM_RAD + (info->player.x - (info->width - MM_RAD));
+	if (info->player.y < MM_RAD)
+		player_y = info->player.y;
+	else
+		player_y = MM_RAD;
+	if (info->player.y > info->height - MM_RAD)
+		player_y = MM_RAD + (info->player.y - (info->height - MM_RAD));
 	draw_cir(&info->map.data, (t_cir){
 		MINIMAP_SCALE_FAC * player_x, MINIMAP_SCALE_FAC * player_y,
-		MINIMAP_SCALE_FAC * info->player.radius, BLUE});
+		MINIMAP_SCALE_FAC * info->player.radius, RED});
 	x2 = cos(info->player.rotation_angle) * 40 + player_x;
 	y2 = sin(info->player.rotation_angle) * 40 + player_y;
 	draw_line(&info->map.data, (t_line){
 		player_x * MINIMAP_SCALE_FAC, player_y * MINIMAP_SCALE_FAC,
-		x2 * MINIMAP_SCALE_FAC, y2 * MINIMAP_SCALE_FAC,
-		BLUE});
+		x2 * MINIMAP_SCALE_FAC, y2 * MINIMAP_SCALE_FAC, BROWN});
 }
