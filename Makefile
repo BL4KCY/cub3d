@@ -4,7 +4,6 @@ CFLAGS = #-fsanitize=address #-Wall -Wextra -Werror
 MLXFLAGS = mlx/libmlx_Linux.a -lXext -lX11 -lm
 CC = gcc
 AR = ar -crs
-INCLUDES = includes
 
 #______directories______#
 OBJ_DIR = obj
@@ -13,12 +12,14 @@ INCLUDES = inc
 LIB_INCLUDES = libft/includes
 
 #______mandatory and bonus files______#
-FILES = main.c exit.c inputs.c rendering.c draw.c init.c convert.c raycasting.c horizontal_cast.c vertical_cast.c
+FILES = main.c exit.c inputs.c rendering.c draw.c init.c\
+		convert.c raycasting.c horizontal_cast.c vertical_cast.c\
+		draw_utils.c image_updating.c
 
 #______patterns and substitutions______#
 SOURCES = $(FILES:%.c=$(SRC_DIR)/%.c)
 OBJECTS = $(SOURCES:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
-HEADERS = $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h
+HEADERS = $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES)/struct.h
 
 
 #______static library name______#
