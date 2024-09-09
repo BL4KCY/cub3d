@@ -85,3 +85,4 @@ double	distence_ray(t_info *info, double x ,double y);
 void	set_vertical_intersection(t_info *info, t_intersec *intersec, int id);
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
 #endif
+
