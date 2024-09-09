@@ -15,7 +15,6 @@ int	update_minimap(t_info *info)
 	y = (info->player.y > MM_RAD && !(info->player.y > info->height - MM_RAD))
 		* (info->player.y - MM_RAD) + (info->player.y > info->height - MM_RAD)
 		* (info->height - (MM_RAD * 2));
-	printf("x: %.2f, y: %.2f\n", info->player.x, info->player.y);
 	while (++i < info->map.n_row)
 	{
 		j = 0;

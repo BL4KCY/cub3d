@@ -10,7 +10,7 @@ void	update_3d(t_info *info)
 
 	i = -1;
 	// ceiling
-	rect(&info->map.data, (t_rect){0, 0, HEIGHT / 2, WIDTH, GRAY});
+	rect(&info->map.data, (t_rect){0, 0, HEIGHT / 2, WIDTH, rgb_int(50, 25, 100, 14)});
 	// floor
 	rect(&info->map.data, (t_rect){0, HEIGHT / 2, HEIGHT / 2, WIDTH, DARK_GRAY});
 	while (++i < NUM_RAYS)

@@ -12,7 +12,7 @@ void	init_map(t_info *info)
 	ft_strlcpy(grid[3], "100000000000001", 16);
 	ft_strlcpy(grid[4], "100000000000001", 16);
 	ft_strlcpy(grid[5], "100000000000001", 16);
-	ft_strlcpy(grid[6], "100000010000001", 16);
+	ft_strlcpy(grid[6], "100000000000001", 16);
 	ft_strlcpy(grid[7], "100000000000001", 16);
 	ft_strlcpy(grid[8], "100000000000001", 16);
 	ft_strlcpy(grid[9], "100000000000001", 16);
@@ -36,8 +36,8 @@ void	init_player(t_info *info)
 	info->player.move_updown = 0;
 	info->player.move_rightleft = 0;
 	info->player.rotation_angle = M_PI_2;
-	info->player.move_speed = 4;
-	info->player.rotation_speed = 2 * (M_PI / 180);
+	info->player.move_speed = 3;
+	info->player.rotation_speed = 0.7 * (M_PI / 180);
 	info->player.plane_dis = (info->width / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
 	info->player.ray = malloc(sizeof(t_ray) * NUM_RAYS);
 }

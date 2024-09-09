@@ -54,6 +54,7 @@
 #define LIGHT_ORANGE 0x00db8858
 #define DARK_ORANGE 0x00a8592c
 #define DARK_GRAY 0x00404040
+#define BLUE_SKY 0x0087CEEB
 #define DARK_BLUE 0x00190482
 #define CYAN 0x0000FFFF
 // #define BCOLOR 0X00FFFFFF
@@ -77,6 +78,7 @@ void	line_in_cir(t_data *data, t_line line, t_cir cir);
 void	draw_empty_cir(t_data *data, t_cir circle);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
+int		rgb_int(int t, int r, int g, int b);
 void	raycasting(t_info *info);
 void	update_3d(t_info *info);
 void	render_rays(t_info *mlx);
