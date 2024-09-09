@@ -7,13 +7,12 @@ void	rect(t_data *data, t_rect rect)
 	int	j;
 
 	i = rect.y;
-	while (i < (rect.y + rect.height))
+	while (i < (rect.y + rect.height) && i < HEIGHT && i >= 0)
 	{
 		j = rect.x;
-		while (j < (rect.x + rect.width))
+		while (j < (rect.x + rect.width) && j < WIDTH && j >= 0)
 		{
-			if (j < WIDTH && j >= 0 && i >= 0 && i < HEIGHT)
-				my_mlx_pixel_set(data, j, i, rect.color);
+			my_mlx_pixel_set(data, j, i, rect.color);
 			j++;
 		}
 		i++;
