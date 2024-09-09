@@ -7,14 +7,14 @@ void	init_map(t_info *info)
 	for (int i = 0; i < 11;i++)
 		grid[i] = malloc(sizeof(char) * 16);
 	ft_strlcpy(grid[0], "111111111111111", 16);
-	ft_strlcpy(grid[1], "100000100000101", 16);
-	ft_strlcpy(grid[2], "100011000000101", 16);
-	ft_strlcpy(grid[3], "101100000000101", 16);
-	ft_strlcpy(grid[4], "100000000100101", 16);
-	ft_strlcpy(grid[5], "100000000010101", 16);
-	ft_strlcpy(grid[6], "100000000100001", 16);
-	ft_strlcpy(grid[7], "100010000000001", 16);
-	ft_strlcpy(grid[8], "111110000111101", 16);
+	ft_strlcpy(grid[1], "100000000000001", 16);
+	ft_strlcpy(grid[2], "100000000000001", 16);
+	ft_strlcpy(grid[3], "100000000000001", 16);
+	ft_strlcpy(grid[4], "100000000000001", 16);
+	ft_strlcpy(grid[5], "100000000000001", 16);
+	ft_strlcpy(grid[6], "100000010000001", 16);
+	ft_strlcpy(grid[7], "100000000000001", 16);
+	ft_strlcpy(grid[8], "100000000000001", 16);
 	ft_strlcpy(grid[9], "100000000000001", 16);
 	ft_strlcpy(grid[10], "111111111111111", 16);
 	grid[11] = NULL;
@@ -36,8 +36,9 @@ void	init_player(t_info *info)
 	info->player.move_updown = 0;
 	info->player.move_rightleft = 0;
 	info->player.rotation_angle = M_PI_2;
-	info->player.move_speed = 6;
-	info->player.rotation_speed = 4 * (M_PI / 180);
+	info->player.move_speed = 4;
+	info->player.rotation_speed = 2 * (M_PI / 180);
+	info->player.plane_dis = (info->width / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
 	info->player.ray = malloc(sizeof(t_ray) * NUM_RAYS);
 }
 
