@@ -37,10 +37,13 @@ void	full_map(t_info *info)
 		j = -1;
 		while (++j < info->map.n_cols)
 		{
-			color = (info->map.grid[i][j] == '1') * BROWN
-				+ (info->map.grid[i][j] == '0') * GRAY;
+			color = (info->map.grid[i][j] == '1') * BROWN;
+				+ (info->map.grid[i][j] == '0') * DARK_BROWN;
 			rect(&info->map.data, (t_rect){
-				j * T_SIZE, i * T_SIZE, T_SIZE, T_SIZE, color});
+				j * T_SIZE * MINIMAP_SCALE_FAC,
+				i * T_SIZE * MINIMAP_SCALE_FAC,
+				T_SIZE * MINIMAP_SCALE_FAC,
+				T_SIZE * MINIMAP_SCALE_FAC, color});
 		}
 	}
 	update_player_pos_in_full_map(info);
@@ -51,9 +54,9 @@ int	rendering(t_info *info)
 	init_img_data(info);
 	update_player_position(info);
 	raycasting(info);
-	// update_3d(info);
-	full_map(info);
-	render_rays(info);
+	update_3d(info);
+	// full_map(info);
+	// render_rays(info);
 	update_minimap(info);
 	update_player(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
