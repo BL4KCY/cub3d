@@ -14,12 +14,12 @@ LIB_INCLUDES = libft/includes
 #______mandatory and bonus files______#
 FILES = main.c exit.c inputs.c rendering.c draw.c init.c\
 		convert.c raycasting.c horizontal_cast.c vertical_cast.c\
-		draw_utils.c image_updating.c rendering3d.c
+		draw_utils.c image_updating.c rendering3d.c init_textures.c
 
 #______patterns and substitutions______#
 SOURCES = $(FILES:%.c=$(SRC_DIR)/%.c)
 OBJECTS = $(SOURCES:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
-HEADERS = $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES)/struct.h
+HEADERS = $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES)/structs.h
 
 
 #______static library name______#
