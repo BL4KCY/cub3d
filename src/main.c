@@ -19,7 +19,7 @@ int	main(void)
 	mlx_hook(info->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, info);
 	init_map(info);
 	init_player(info);
-	// init_texture(info);
+	init_texture(info);
 	mlx_loop_hook(info->mlx, rendering, info);
 	mlx_loop(info->mlx);
 }
