@@ -75,7 +75,7 @@ void	update_player_position(t_info *info)
 	double	new_y;
 
 	info->player.rotation_angle += info->player.rotation_speed
-		* info->player.turn_direction;// + mouse_move(info);
+		* info->player.turn_direction + mouse_move(info);
 	info->player.rotation_angle = normalize_angle(info->player.rotation_angle);
 	new_x = info->player.x + (cos(info->player.rotation_angle)
 			* info->player.move_speed * info->player.walk_direction)

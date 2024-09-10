@@ -4,10 +4,10 @@
 void	init_texture(t_info *info)
 {
 	int		i;
-	char	north_path[] = "textures/walls/wall64.xpm";
-	char	south_path[] = "textures/walls/wall64.xpm";
-	char	west_path[] = "textures/walls/wall64.xpm";
-	char	east_path[] = "textures/walls/wall64.xpm";
+	char	north_path[] = "textures/walls/grayWall.xpm";
+	char	south_path[] = "textures/walls/greenWall.xpm";
+	char	west_path[] = "textures/walls/redWall.xpm";
+	char	east_path[] = "textures/walls/orangeWall.xpm";
 
 	info->tex.img[NORTH].path = north_path;
 	info->tex.img[SOUTH].path = south_path;
