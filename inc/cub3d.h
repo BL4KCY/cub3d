@@ -10,7 +10,8 @@
 # include <limits.h>
 # include <math.h>
 # include "libft.h"
-# include "struct.h"
+# include "structs.h"
+# include "enums.h"
 
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3
