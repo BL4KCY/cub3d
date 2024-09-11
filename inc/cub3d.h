@@ -70,6 +70,7 @@ int		rendering(t_info *info);
 void	my_mlx_pixel_set(t_data *data, int x, int y, int color);
 void	init_map(t_info *mlx);
 void	init_player(t_info *mlx);
+void	init_texture(t_info *info);
 void	init_img_data(t_info *mlx);
 void	rect(t_data *data, t_rect rect);
 void	rect_cir(t_data *data, t_rect_cir rect_cir);
