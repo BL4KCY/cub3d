@@ -49,7 +49,7 @@ re: fclean all
 all: $(NAME)
 
 run: all
-	./$(NAME)
+	./$(NAME) maps/map.cub
 
 #______cleaning______#
 clean:
