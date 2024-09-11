@@ -33,4 +33,5 @@ int	keyrelease(int keycode, t_info *mlx)
 		mlx->player.move_rightleft = 0;
 	if (keycode == W || keycode == S)
 		mlx->player.move_updown = 0;
+	return (0);
 }

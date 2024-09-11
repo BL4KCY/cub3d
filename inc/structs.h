@@ -108,6 +108,24 @@ typedef struct s_map
 	int		n_cols;
 }	t_map;
 
+
+typedef struct s_img
+{
+	t_data	data;
+	char	*path;
+	int		width;
+	int		height;
+}	t_img;
+
+typedef struct s_tex
+{
+	t_img	img[4];
+	int		offset_x;
+	int		offset_y;
+	int		floor_pcolor;
+	int		ceiling_pcolor;
+}	t_tex;
+
 typedef struct s_info
 {
 	void		*mlx;
@@ -116,6 +134,8 @@ typedef struct s_info
 	int			width;
 	t_map		map;
 	t_player	player;
+	t_coor		mouse;
+	t_tex		tex;
 }	t_info;
 
 
