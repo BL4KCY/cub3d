@@ -1,18 +1,15 @@
 #include "cub3d.h"
 
 
-void	init_texture(t_info *info)
+void	init_texture(t_info *info, t_condition *condition)
 {
 	int		i;
-	char	north_path[] = "textures/walls/grayWall.xpm";
-	char	south_path[] = "textures/walls/greenWall.xpm";
-	char	west_path[] = "textures/walls/redWall.xpm";
-	char	east_path[] = "textures/walls/orangeWall.xpm";
 
-	info->tex.img[NORTH].path = north_path;
-	info->tex.img[SOUTH].path = south_path;
-	info->tex.img[WEST].path = west_path;
-	info->tex.img[EAST].path = east_path;
+
+	info->tex.img[NORTH].path = ft_substr(condition->textures[0], 2, ft_strlen(condition->textures[0]));
+	info->tex.img[SOUTH].path = ft_substr(condition->textures[1], 2, ft_strlen(condition->textures[1]));
+	info->tex.img[WEST].path = ft_substr(condition->textures[2], 2, ft_strlen(condition->textures[2]));
+	info->tex.img[EAST].path = ft_substr(condition->textures[3], 2, ft_strlen(condition->textures[3]));
 	i = -1;
 	while (++i < 4)
 	{

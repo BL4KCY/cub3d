@@ -12,12 +12,12 @@ INCLUDES = inc
 LIB_INCLUDES = libft
 
 #______mandatory and bonus files______#
-FILES_EXEC = main.c exit.c inputs.c rendering.c draw.c init.c\
+FILES_EXEC = exit.c inputs.c rendering.c draw.c init.c\
 		convert.c raycasting.c horizontal_cast.c vertical_cast.c\
 		draw_utils.c image_updating.c rendering3d.c init_textures.c
-FILES_PARS =  bfs.c helper_functions.c pars_map_holdercd.c enqueue.c\
+FILES_PARS = main.c bfs.c helper_functions.c pars_map_holdercd.c enqueue.c\
 		pars_map_holdercd_cont.c ft_pars_for_each.c pars_c_Floor.c\
-		pars_texturs.c get_next_line.c pars_c_floor_utils.c
+		pars_texturs.c get_next_line.c pars_c_floor_utils.c 
 
 
 #______patterns and substitutions______#
