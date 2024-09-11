@@ -1,6 +1,6 @@
 #ifndef STRCT_H
 # define STRCT_H
-
+# include <stdint.h>
 // Image
 typedef struct	s_data
 {
@@ -154,6 +154,8 @@ typedef struct s_condition
 	int				height_of_map;
 	int				x_player;
 	int				y_player;
+	uint32_t		floor_color;
+	uint32_t		ceiling_color;
 }					t_condition;
 
 typedef struct s_queue
