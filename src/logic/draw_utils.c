@@ -116,23 +116,3 @@ void	line_in_cir(t_data *data, t_line line, t_cir cir)
 		i++;
 	}
 }
-// drawing an empty circle
-void	draw_empty_cir(t_data *data, t_cir cir)
-{
-	int	i;
-	int	j;
-
-	while (i < cir.y + cir.radius)
-	{
-		j = cir.x - cir.radius;
-		while (j < cir.x + cir.radius)
-		{
-			if (sqrt(pow(j - cir.x, 2) + pow(i - cir.y, 2))
-				<= cir.radius && sqrt(pow(j - cir.x, 2) + pow(i - cir.y, 2))
-				>= cir.radius - 3)
-				my_mlx_pixel_set(data, j, i, cir.color);
-			j++;
-		}
-		i++;
-	}
-}
