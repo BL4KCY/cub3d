@@ -23,7 +23,7 @@ HEADERS = $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES)/structs.h
 
 
 #______static library name______#
-NAME = cub
+NAME = cub3D
 LIB = libft
 
 #______________Rules______________#
