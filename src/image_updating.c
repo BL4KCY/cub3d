@@ -103,7 +103,7 @@ void	render_rays(t_info *info)
 			MINIMAP_SCALE_FAC * info->player.x, MINIMAP_SCALE_FAC * info->player.y,
 			MINIMAP_SCALE_FAC * info->player.ray[i].hit_x,
 			MINIMAP_SCALE_FAC * info->player.ray[i].hit_y,
-			CYAN});
+			CYAN, 0, 0, 0});
 		i++;
 	}
 }
@@ -134,5 +134,5 @@ void	update_player(t_info *info)
 	y2 = sin(info->player.rotation_angle) * 40 + player_y;
 	draw_line(&info->map.data, (t_line){
 		player_x * MINIMAP_SCALE_FAC, player_y * MINIMAP_SCALE_FAC,
-		x2 * MINIMAP_SCALE_FAC, y2 * MINIMAP_SCALE_FAC, BROWN});
+		x2 * MINIMAP_SCALE_FAC, y2 * MINIMAP_SCALE_FAC, BROWN, 0, 0, 0});
 }
