@@ -10,9 +10,6 @@ double	normalize_angle(double angle)
 
 void	update_player_pos_in_full_map(t_info *info)
 {
-	int	color;
-
-	color = 0x00FF00;
 	draw_cir(&info->map.data, (t_cir){
 		MINIMAP_SCALE_FAC * info->player.x,
 		MINIMAP_SCALE_FAC * info->player.y, info->player.radius, RED});
@@ -22,7 +19,7 @@ void	update_player_pos_in_full_map(t_info *info)
 		MINIMAP_SCALE_FAC * info->player.x + MINIMAP_SCALE_FAC * 50
 		* cos(info->player.rotation_angle),
 		MINIMAP_SCALE_FAC * info->player.y + MINIMAP_SCALE_FAC * 50
-		* sin(info->player.rotation_angle), RED});
+		* sin(info->player.rotation_angle), RED, 0, 0, 0});
 }
 
 void	full_map(t_info *info)
@@ -37,7 +34,7 @@ void	full_map(t_info *info)
 		j = -1;
 		while (++j < info->map.n_cols)
 		{
-			color = (info->map.grid[i][j] == '1') * BROWN;
+			color = (info->map.grid[i][j] == '1') * BROWN
 				+ (info->map.grid[i][j] == '0') * DARK_BROWN;
 			rect(&info->map.data, (t_rect){
 				j * T_SIZE * MINIMAP_SCALE_FAC,

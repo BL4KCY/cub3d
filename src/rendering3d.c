@@ -9,7 +9,7 @@ void	start_end_strip(t_info *info, int *wall_top, int *wall_bottom, int id)
 	*wall_bottom = (*wall_bottom <= HEIGHT) * *wall_bottom + (*wall_bottom > HEIGHT) * HEIGHT;
 }
 
-int	set_wall_tex_pixel(t_info *info, int x, int y)
+void	set_wall_tex_pixel(t_info *info, int x, int y)
 {
 	int	dis_from_top;
 	int	direction;
@@ -52,13 +52,13 @@ void	update_3d(t_info *info)
 	{
 		start_end_strip(info, &wall_top, &wall_bottom, x);
 		draw_line(&info->map.data, (t_line){
-			x, 0, x, wall_top, info->tex.ceiling_pcolor});
+			x, 0, x, wall_top, info->tex.ceiling_pcolor, 0, 0, 0});
 		y  = wall_top - 1;
 		while (++y < wall_bottom)
 		{
 			set_wall_tex_pixel(info, x, y);
 		}
 		draw_line(&info->map.data, (t_line){
-			x, wall_bottom, x, HEIGHT, info->tex.floor_pcolor});
+			x, wall_bottom, x, HEIGHT, info->tex.floor_pcolor, 0, 0, 0});
 	}
 }
