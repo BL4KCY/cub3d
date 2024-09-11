@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_map_holdercd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:09:12 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 12:04:59 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:12:08 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ char	**ft_create_two_dimensional_array(char **argv)
 t_list	*ft_add_substrings_to_linked_list(t_list *node, char **sub_str)
 {
 	int	i;
-
+	if (!sub_str)
+		return (NULL);
 	i = 0;
 	while (sub_str[i])
 	{

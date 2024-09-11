@@ -1,33 +1,21 @@
 #include "cub3d.h"
 
 
-void	init_map(t_info *info)
+void	init_map(t_info *info, t_condition *condition)
 {
-	char	**grid = malloc(sizeof(char*) * 12);
-	for (int i = 0; i < 11;i++)
-		grid[i] = malloc(sizeof(char) * 16);
-	ft_strlcpy(grid[0], "111111111111111", 16);
-	ft_strlcpy(grid[1], "100000000000001", 16);
-	ft_strlcpy(grid[2], "100001000100001", 16);
-	ft_strlcpy(grid[3], "100001000100001", 16);
-	ft_strlcpy(grid[4], "100001000100001", 16);
-	ft_strlcpy(grid[5], "100001000100001", 16);
-	ft_strlcpy(grid[6], "100000000100001", 16);
-	ft_strlcpy(grid[7], "100000000000001", 16);
-	ft_strlcpy(grid[8], "100000000000001", 16);
-	ft_strlcpy(grid[9], "100000000000001", 16);
-	ft_strlcpy(grid[10], "111111111111111", 16);
-	grid[11] = NULL;
-	info->map.grid = grid;
-	info->map.n_row = 11;
-	info->map.n_cols = 15;
+	info->map.grid = condition->pure_map;
+	ft_print_substr(condition->pure_map);
+	info->map.n_row = condition->height_of_map;
+	info->map.n_cols = condition->width_of_map;
 	info->width = info->map.n_cols * T_SIZE;
 	info->height = info->map.n_row * T_SIZE;
 	info->map.data.img = NULL;
 }
 
-void	init_player(t_info *info)
+void	init_player(t_info *info, t_condition *condition)
 {
+	(void)condition;
+	printf("%d %d\n", condition->x_player, condition->y_player);
 	info->player.x = info->width / 2;
 	info->player.y = info->height / 2;
 	info->player.radius = 6;

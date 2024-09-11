@@ -148,6 +148,12 @@ typedef struct s_condition
 	char			**map;
 	char			**textures;
 	char			**c_flor;
+	char			**pure_texture;
+	char			**pure_map;
+	int				width_of_map;
+	int				height_of_map;
+	int				x_player;
+	int				y_player;
 }					t_condition;
 
 typedef struct s_queue

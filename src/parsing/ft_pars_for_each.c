@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pars_for_each.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:57:09 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 15:47:01 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/11 17:41:12 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,29 +42,6 @@ bool	process_textture(char *str)
 	return (false);
 }
 
-char	**ft_buffer_to_two_d_array_textures(t_list *node, int length)
-{
-	int		i;
-	char	**sub_str;
-	t_list	*temp;
-
-	sub_str = (char **)ft_malloc(sizeof(char *) * (length + 1));
-	if (!sub_str)
-		return (NULL);
-	temp = node;
-	i = 0;
-	while (temp)
-	{
-		sub_str[i] = ft_strdup(temp->content + 3);
-		if (!sub_str[i])
-			return (NULL);
-		i++;
-		temp = temp->next;
-	}
-	sub_str[i] = NULL;
-	return (sub_str);
-}
-
 void	ft_process_game_condition(t_list *textures, t_list *c_flor, t_list *map,
 		t_condition *game_condition)
 {
@@ -89,10 +66,10 @@ void	ft_process_game_condition(t_list *textures, t_list *c_flor, t_list *map,
 		i++;
 	}
 	game_condition->textures = ft_buffer_to_two_d_array(textures,
-			ft_lstsize(textures));
+			ft_lstsize(textures), 0);
 	game_condition->c_flor = ft_buffer_to_two_d_array(c_flor,
-			ft_lstsize(c_flor));
-	game_condition->map = ft_buffer_to_two_d_array(map, ft_lstsize(map));
+			ft_lstsize(c_flor), 0);
+	game_condition->map = ft_buffer_to_two_d_array(map, ft_lstsize(map), 0);
 }
 
 bool	ft_grep_to_pars_if(char ch, t_condition *game_condition,
@@ -106,8 +83,12 @@ bool	ft_grep_to_pars_if(char ch, t_condition *game_condition,
 	c_flor = NULL;
 	map = NULL;
 	ft_process_game_condition(textures, c_flor, map, game_condition);
+	game_condition->width_of_map = ft_find_longest_line(game_condition->map, &game_condition->height_of_map);
 	textures = ft_add_substrings_to_linked_list(textures,
 			game_condition->textures);
+	game_condition->pure_texture = ft_buffer_to_two_d_array(textures, ft_lstsize(textures), 1);
+	game_condition->pure_map = fill_modified_map(game_condition->map);
+	ft_find_direction(game_condition->pure_map, &game_condition->x_player, &game_condition->y_player);
 	c_flor = ft_add_substrings_to_linked_list(c_flor, game_condition->c_flor);
 	if (ch == '.')
 		return (f(textures, game_condition));

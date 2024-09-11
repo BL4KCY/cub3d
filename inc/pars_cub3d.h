@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_cub3d.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:29:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 12:13:32 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:23:25 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int					find_specific_char(char *str, int c);
 int					ft_count_substr(char **substr);
 void				ft_print_substr(char **substr);
 bool				ft_spin(const char *str);
-char				**ft_buffer_to_two_d_array(t_list *node, int length);
+char				**ft_buffer_to_two_d_array(t_list *node, int length, int flag);
 void				ft_print_double_list(t_list **nodes);
 bool				process_c_flor(char *str);
 void				ft_print_substr(char **substr);

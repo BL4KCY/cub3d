@@ -64,23 +64,20 @@ int	main(int argc, char **argv)
 
 	ft_parse_arguments(argc, argv, &condition);
 	condition.substr = ft_create_two_dimensional_array(argv);
-	
 	if (move_on_if_map_valid(&condition) == false)
 		return (EXIT_FAILURE);
-	ft_print_substr(condition.textures);
-	return (0);
 	info = (t_info *)get_info();
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");
 	mlx_hook(info->win, ON_DESTROY, KEYPRESSMASK, ft_exit, info);
 	mlx_hook(info->win, ON_KEYDOWN, KEYPRESSMASK, keypress, info);
 	mlx_hook(info->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, info);
-	init_map(info);
-	init_player(info);
+	init_map(info, &condition);
+	init_player(info, &condition);
 	init_texture(info, &condition);
 	mlx_loop_hook(info->mlx, rendering, info);
 	mlx_loop(info->mlx);
-	
+
 	ft_hunt_leak();
 	return (EXIT_SUCCESS);
 }

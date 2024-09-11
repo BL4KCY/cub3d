@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_map_holdercd_cont.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 13:46:45 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 15:43:13 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/11 16:23:05 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_print_double_list(t_list **nodes)
 	}
 }
 
-char	**ft_buffer_to_two_d_array(t_list *node, int length)
+char	**ft_buffer_to_two_d_array(t_list *node, int length, int flag)
 {
 	int		i;
 	char	**sub_str;
@@ -37,7 +37,10 @@ char	**ft_buffer_to_two_d_array(t_list *node, int length)
 	i = 0;
 	while (temp)
 	{
-		sub_str[i] = ft_strdup(temp->content);
+		if (flag == 0)
+			sub_str[i] = ft_strdup(temp->content);
+		else
+			sub_str[i] = ft_strdup(temp->content + 3);
 		if (!sub_str[i])
 			return (NULL);
 		i++;
