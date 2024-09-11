@@ -34,14 +34,11 @@ double	distence_ray(t_info *info, double x, double y)
 
 void	raycasting(t_info *info)
 {
-	t_intersec	intersec;
-	// double		dis_to_plane;
-	// double		correct_ray_dis;
-	int			i;
+	int				i;
+	t_intersec		intersec;
+	double			correct_ray_dis;
 
 	create_rays(info);
-	// dis_to_plane = (NUM_RAYS / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
-	// info->player.plane_dis = dis_to_plane;
 	i = -1;
 	while (++i < NUM_RAYS)
 	{
@@ -61,7 +58,7 @@ void	raycasting(t_info *info)
 			info->player.ray[i].hit_x = intersec.v.x;
 			info->player.ray[i].hit_y = intersec.v.y;
 		}
-		// correct_ray_dis = info->player.ray[i].ray_dis * cos(info->player.ray[i].ray_ang - info->player.rotation_angle);
-		// info->player.ray[i].strip_height = (T_SIZE / correct_ray_dis) * dis_to_plane;
+		correct_ray_dis = info->player.ray[i].ray_dis * cos(info->player.ray[i].ray_ang - info->player.rotation_angle);
+		info->player.ray[i].strip_height = (T_SIZE / correct_ray_dis) * info->player.plane_dis;
 	}
 }
