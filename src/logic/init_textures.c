@@ -5,11 +5,11 @@ void	init_texture(t_info *info, t_condition *condition)
 {
 	int		i;
 
-
-	info->tex.img[NORTH].path = ft_substr(condition->textures[0], 2, ft_strlen(condition->textures[0]));
-	info->tex.img[SOUTH].path = ft_substr(condition->textures[1], 2, ft_strlen(condition->textures[1]));
-	info->tex.img[WEST].path = ft_substr(condition->textures[2], 2, ft_strlen(condition->textures[2]));
-	info->tex.img[EAST].path = ft_substr(condition->textures[3], 2, ft_strlen(condition->textures[3]));
+	puts(ft_substr(condition->textures[0], 3, ft_strlen(condition->textures[0])));
+	info->tex.img[NORTH].path = ft_substr(condition->textures[0], 3, ft_strlen(condition->textures[0]));
+	info->tex.img[SOUTH].path = ft_substr(condition->textures[1], 3, ft_strlen(condition->textures[1]));
+	info->tex.img[WEST].path = ft_substr(condition->textures[2], 3, ft_strlen(condition->textures[2]));
+	info->tex.img[EAST].path = ft_substr(condition->textures[3], 3, ft_strlen(condition->textures[3]));
 	i = -1;
 	while (++i < 4)
 	{
