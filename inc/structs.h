@@ -1,6 +1,6 @@
 #ifndef STRCT_H
 # define STRCT_H
-
+# include <stdint.h>
 // Image
 typedef struct	s_data
 {
@@ -138,6 +138,32 @@ typedef struct s_info
 	t_tex		tex;
 }	t_info;
 
+// parsing
+
+typedef struct s_condition
+{
+	char			*name;
+	char			**substr;
+	int				catch;
+	char			**map;
+	char			**textures;
+	char			**c_flor;
+	char			**pure_texture;
+	char			**pure_map;
+	int				width_of_map;
+	int				height_of_map;
+	int				x_player;
+	int				y_player;
+	uint32_t		floor_color;
+	uint32_t		ceiling_color;
+}					t_condition;
+
+typedef struct s_queue
+{
+	int				x;
+	int				y;
+	struct s_queue	*next;
+}					t_queue;
 
 
 #endif

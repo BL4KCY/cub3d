@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 # include <stdlib.h>
-# include <mlx.h>
+# include "../mlx/mlx.h"
 # include <fcntl.h>
 # include <string.h>
 # include <stdbool.h>
@@ -12,6 +12,7 @@
 # include "libft.h"
 # include "structs.h"
 # include "enums.h"
+# include "pars_cub3d.h"
 
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3
@@ -68,19 +69,18 @@ int		keypress(int keycode, t_info *mlx);
 int		keyrelease(int keycode, t_info *mlx);
 int		rendering(t_info *info);
 void	my_mlx_pixel_set(t_data *data, int x, int y, int color);
-void	init_map(t_info *mlx);
-void	init_player(t_info *mlx);
-void	init_texture(t_info *info);
+void	init_map(t_info *mlx, t_condition *condition);
+void	init_player(t_info *mlx, t_condition *condition);
+void	init_texture(t_info *info, t_condition *condition);
 void	init_img_data(t_info *mlx);
 void	rect(t_data *data, t_rect rect);
 void	rect_cir(t_data *data, t_rect_cir rect_cir);
 void	draw_cir(t_data *data, t_cir cir);
 void	draw_line(t_data *data, t_line line);
 void	line_in_cir(t_data *data, t_line line, t_cir cir);
-void	draw_empty_cir(t_data *data, t_cir circle);
 double	deg_to_rad(double deg);
 double	rad_to_deg(double rad);
-int		rgb_int(int t, int r, int g, int b);
+int		rgb_int(int r, int g, int b);
 void	raycasting(t_info *info);
 void	update_3d(t_info *info);
 void	render_rays(t_info *mlx);
@@ -95,3 +95,4 @@ void	set_vertical_intersection(t_info *info, t_intersec *intersec, int id);
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
 
 #endif
+
