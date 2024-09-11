@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   pars_cub3d.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammedmad <mohammedmad@student.42.fr>    +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:29:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/08 18:21:21 by mohammedmad      ###   ########.fr       */
+/*   Updated: 2024/09/11 12:13:32 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARS_CUB3D_H
 # define PARS_CUB3D_H
 
-# include "./libft/libft.h"
+# include "libft.h"
 # include <fcntl.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -24,26 +24,9 @@
 #  define BUFFER_SIZE 1
 # endif
 
-# define RED "\x1B[31m"
-# define GRN "\x1B[32m"
+# define RED_W "\x1B[31m"
+# define GRN_W "\x1B[32m"
 # define RESET "\x1B[0m"
-
-typedef struct s_condition
-{
-	char			*name;
-	char			**substr;
-	int				catch;
-	char			**map;
-	char			**textures;
-	char			**c_flor;
-}					t_condition;
-
-typedef struct s_data
-{
-	int				x;
-	int				y;
-	struct s_data	*next;
-}					t_data;
 
 char				*get_next_line(int fd);
 void				*ft_malloc(size_t n);
@@ -68,8 +51,8 @@ char				**ft_buffer_to_two_d_array(t_list *node, int length);
 void				ft_print_double_list(t_list **nodes);
 bool				process_c_flor(char *str);
 void				ft_print_substr(char **substr);
-void				ft_enqueue(int x, int y, t_data **front, t_data **rear);
-void				ft_dequeue(t_data **front, t_data **rear);
+void				ft_enqueue(int x, int y, t_queue **front, t_queue **rear);
+void				ft_dequeue(t_queue **front, t_queue **rear);
 bool				process_textture(char *str);
 int					ft_count_substr(char **substr);
 bool				ft_atoi_if(const char *nptr);

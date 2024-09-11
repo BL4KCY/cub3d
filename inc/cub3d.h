@@ -12,6 +12,7 @@
 # include "libft.h"
 # include "structs.h"
 # include "enums.h"
+# include "pars_cub3d.h"
 
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3

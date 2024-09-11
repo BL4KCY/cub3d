@@ -138,6 +138,24 @@ typedef struct s_info
 	t_tex		tex;
 }	t_info;
 
+// parsing
+
+typedef struct s_condition
+{
+	char			*name;
+	char			**substr;
+	int				catch;
+	char			**map;
+	char			**textures;
+	char			**c_flor;
+}					t_condition;
+
+typedef struct s_queue
+{
+	int				x;
+	int				y;
+	struct s_queue	*next;
+}					t_queue;
 
 
 #endif
