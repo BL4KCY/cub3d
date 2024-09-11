@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:57:09 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 12:04:59 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:47:01 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,29 @@ bool	process_textture(char *str)
 		return (true);
 	}
 	return (false);
+}
+
+char	**ft_buffer_to_two_d_array_textures(t_list *node, int length)
+{
+	int		i;
+	char	**sub_str;
+	t_list	*temp;
+
+	sub_str = (char **)ft_malloc(sizeof(char *) * (length + 1));
+	if (!sub_str)
+		return (NULL);
+	temp = node;
+	i = 0;
+	while (temp)
+	{
+		sub_str[i] = ft_strdup(temp->content + 3);
+		if (!sub_str[i])
+			return (NULL);
+		i++;
+		temp = temp->next;
+	}
+	sub_str[i] = NULL;
+	return (sub_str);
 }
 
 void	ft_process_game_condition(t_list *textures, t_list *c_flor, t_list *map,
