@@ -1,7 +1,7 @@
-NO ./textures/xpm_file/old-textured-brick-wall-background.xpm
-SO ./textures/xpm_file/old-textured-brick-wall-background.xpm
-EA ./textures/xpm_file/old-textured-brick-wall-background.xpm
-WE ./textures/xpm_file/old-textured-brick-wall-background.xpm
+NO ./textures/walls/orangeWall.xpm
+SO ./textures/walls/grayWall.xpm
+EA ./textures/walls/greenWall.xpm
+WE ./textures/walls/redWall.xpm
 
 F         255  , 30, 01
 C         225   ,30  ,   111
