@@ -1,7 +1,7 @@
 #______command and their flags______#
 RM = rm -rf
-CFLAGS = #-fsanitize=address #-Wall -Wextra -Werror
-MLXFLAGS = mlx/libmlx_Linux.a -lXext -lX11 -lm
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address 
+MLXFLAGS = -lmlx -lXext -lX11 -lm 
 CC = gcc
 AR = ar -crs
 
