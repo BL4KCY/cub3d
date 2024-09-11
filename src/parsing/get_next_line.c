@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammedmad <mohammedmad@student.42.fr>    +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 10:15:28 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/07 16:51:01 by mohammedmad      ###   ########.fr       */
+/*   Updated: 2024/09/11 12:16:31 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pars_cub3d.h"
+#include "cub3d.h"
 
 static char	*get_remainder(char *buffer)
 {
