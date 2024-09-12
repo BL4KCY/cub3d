@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:29:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 16:23:25 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/12 16:15:19 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,8 @@ int					ft_check_start_end(char **map, int *n_direction);
 int					ft_find_longest_line(char **substr, int *hight);
 void				ft_process_game_condition(t_list *textures, t_list *c_flor,
 						t_list *map, t_condition *game_condition);
+bool 				ft_find_color(char *str, char c);
+void				ft_import_colors(t_list *floor, t_list *ceiling, t_condition *condition);
+void 				ft_node_colors(t_list *node, t_condition *condition);
 
 #endif
