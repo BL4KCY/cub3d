@@ -33,7 +33,7 @@
 
 #define HEIGHT 720
 #define WIDTH 1080
-#define T_SIZE 64
+#define T_SIZE 40
 #define MM_RAD 200
 #define MINIMAP_SCALE_FAC 0.5
 #define STRIP_WIDTH 1
