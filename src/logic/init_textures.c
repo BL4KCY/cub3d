@@ -20,6 +20,6 @@ void	init_texture(t_info *info, t_condition *condition)
 			&info->tex.img[i].data.line_length,
 			&info->tex.img[i].data.endian);
 	}
-	info->tex.floor_pcolor = DARK_GRAY;
-	info->tex.ceiling_pcolor = BLUE_SKY;
+	info->tex.floor_pcolor = condition->floor_color;
+	info->tex.ceiling_pcolor = condition->ceiling_color;
 }
