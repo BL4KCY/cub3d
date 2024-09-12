@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:28:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 12:06:56 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/12 13:00:07 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ bool	breadth_first_search(char **new_map)
 	t_queue	*rear;
 	int		x;
 	int		y;
-
 	front = NULL;
 	rear = NULL;
 	ft_find_direction(new_map, &x, &y);
@@ -94,12 +93,11 @@ int	ft_n_columns_2d(char **substr)
 
 bool	ft_to_do_map(t_list *node, t_condition *game_condition)
 {
-	char	**new_map;
+	(void)node;
 	int		n_direction;
 	int		flag_second_check;
 	int		flag_bfs_true;
 
-	(void)node;
 	if (!game_condition->map)
 		return (false);
 	flag_bfs_true = 0;
@@ -111,12 +109,11 @@ bool	ft_to_do_map(t_list *node, t_condition *game_condition)
 	if (!(ft_check_start_end(game_condition->map, &n_direction) == 0
 			&& n_direction == 1))
 		return (false);
-	new_map = fill_modified_map(game_condition->map);
-	if (breadth_first_search(new_map) == true)
-		flag_bfs_true = 1;
-	if (check_for_dead_ends(new_map) == true)
+	// if (breadth_first_search(game_condition->pure_map) == true)
+	// 	flag_bfs_true = 1;
+	if (check_for_dead_ends(game_condition->pure_map) == true)
 		flag_second_check = 1;
-	if (flag_bfs_true == 1 && flag_second_check == 1)
+	if (flag_second_check == 1)
 		return (true);
 	return (false);
 }

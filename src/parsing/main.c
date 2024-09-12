@@ -66,7 +66,6 @@ int	main(int argc, char **argv)
 	condition.substr = ft_create_two_dimensional_array(argv);
 	if (move_on_if_map_valid(&condition) == false)
 		return (EXIT_FAILURE);
-	return (0);
 	info = (t_info *)get_info();
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");
