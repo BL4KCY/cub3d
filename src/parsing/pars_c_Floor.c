@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:34:10 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/12 12:06:27 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/12 15:23:55 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,9 @@ void ft_import_colors(t_list *floor, t_list *ceiling, t_condition *condition)
 	char **ceiling_substr;
 	floor_substr = ft_buffer_to_two_d_array(floor, ft_lstsize(floor), 0);
 	ceiling_substr = ft_buffer_to_two_d_array(ceiling, ft_lstsize(ceiling), 0);
-	
-	
+
 	condition->floor_color = rgb_int(ft_atoi(floor_substr[0]),
 				ft_atoi(floor_substr[1]), ft_atoi(floor_substr[2]));
-
 
 	condition->ceiling_color = rgb_int(ft_atoi(ceiling_substr[0]),
 				ft_atoi(ceiling_substr[1]), ft_atoi(ceiling_substr[2]));
@@ -161,6 +159,10 @@ bool	ft_to_do_c_floor(t_list *node, t_condition *condition)
 		return (false);
 	}
 	ft_node_colors(node, condition);
+	ft_putnbr_fd(condition->floor_color, 1);
+	printf("\n");
+	ft_putnbr_fd(condition->ceiling_color, 1);
+	printf("\n");
 	return (true);
 }
 

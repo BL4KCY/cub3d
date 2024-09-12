@@ -4,7 +4,6 @@
 void	init_map(t_info *info, t_condition *condition)
 {
 	info->map.grid = condition->pure_map;
-	ft_print_substr(condition->pure_map);
 	info->map.n_row = condition->height_of_map;
 	info->map.n_cols = condition->width_of_map;
 	info->width = info->map.n_cols * T_SIZE;
@@ -15,7 +14,6 @@ void	init_map(t_info *info, t_condition *condition)
 void	init_player(t_info *info, t_condition *condition)
 {
 	(void)condition;
-	printf("%d %d\n", condition->x_player, condition->y_player);
 	info->player.x = info->width / 2;
 	info->player.y = info->height / 2;
 	info->player.radius = 6;
