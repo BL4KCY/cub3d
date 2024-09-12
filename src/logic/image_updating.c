@@ -20,7 +20,7 @@ int	update_minimap(t_info *info)
 		j = 0;
 		while (j < info->map.n_cols)
 		{
-			color = (info->map.grid[i][j] == '1') * BLACK
+			color = (info->map.grid[i][j] == '1') * BROWN
 				+ (info->map.grid[i][j] == '0') * WHITE;
 			rect_cir(&info->map.data, (t_rect_cir){
 				MINIMAP_SCALE_FAC * (j++) * T_SIZE - MINIMAP_SCALE_FAC * x,
