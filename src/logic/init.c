@@ -30,7 +30,7 @@ void	init_player(t_info *info, t_condition *condition)
 	info->player.move_rightleft = 0;
 	info->player.rotation_angle = M_PI_2;
 	info->player.move_speed = 3;
-	info->player.rotation_speed = 1.7 * (M_PI / 180);
+	info->player.rotation_speed = 2 * (M_PI / 180);
 	info->player.plane_dis = (info->width / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
 	info->player.ray = ft_malloc(sizeof(t_ray) * NUM_RAYS);
 }
