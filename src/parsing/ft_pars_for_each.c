@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pars_for_each.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 09:57:09 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 17:41:12 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/11 19:04:46 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ bool	ft_grep_to_pars_if(char ch, t_condition *game_condition,
 			game_condition->textures);
 	game_condition->pure_texture = ft_buffer_to_two_d_array(textures, ft_lstsize(textures), 1);
 	game_condition->pure_map = fill_modified_map(game_condition->map);
-	ft_find_direction(game_condition->pure_map, &game_condition->x_player, &game_condition->y_player);
+	ft_find_direction(game_condition->pure_map, &game_condition->y_player, &game_condition->x_player);
 	c_flor = ft_add_substrings_to_linked_list(c_flor, game_condition->c_flor);
 	if (ch == '.')
 		return (f(textures, game_condition));
