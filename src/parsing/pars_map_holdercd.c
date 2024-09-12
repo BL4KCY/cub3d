@@ -49,20 +49,22 @@ char	**ft_create_two_dimensional_array(char **argv)
 	return (ft_split(str, '\n'));
 }
 
-t_list	*ft_add_substrings_to_linked_list(t_list *node, char **sub_str)
+t_list *ft_add_substrings_to_linked_list(t_list *node, char **sub_str, int flag)
 {
-	int	i;
+	int i;
 	if (!sub_str)
 		return (NULL);
 	i = 0;
 	while (sub_str[i])
 	{
-		ft_lstadd_back(&node, ft_lstnew((char *)sub_str[i]));
+		if (flag == 1)
+			ft_lstadd_back(&node, ft_lstnew(ft_strtrim(sub_str[i], " ")));
+		else
+			ft_lstadd_back(&node, ft_lstnew((char *)sub_str[i]));
 		i++;
 	}
 	return (node);
 }
-
 bool	ft_duplicates(t_list *node)
 {
 	int		count;

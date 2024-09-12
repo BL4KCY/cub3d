@@ -37,7 +37,7 @@ bool				ft_to_do_texturs(t_list *node, t_condition *game_condition);
 bool				ft_to_do_c_floor(t_list *node, t_condition *game_condition);
 bool				ft_to_do_map(t_list *node, t_condition *game_condition);
 t_list				*ft_add_substrings_to_linked_list(t_list *node,
-						char **sub_str);
+						char **sub_str, int flag);
 void				ft_print_linked_list(t_list *node);
 bool				ft_duplicates(t_list *node);
 bool				ft_pars_each_node(t_list *node,
