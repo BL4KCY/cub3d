@@ -3,8 +3,8 @@ SO ./textures/walls/grayWall.xpm
 EA ./textures/walls/greenWall.xpm
 WE ./textures/walls/redWall.xpm
 
-F         255  , 30, 1
-C         255   ,30  ,   1
+F         255  , 30, 255
+C         255   ,  30      ,   255
 
 
         1111111111111111111111111

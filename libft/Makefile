@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+         #
+#    By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 10:39:19 by mmad              #+#    #+#              #
-#    Updated: 2024/09/11 12:30:19 by melfersi         ###   ########.fr        #
+#    Updated: 2024/09/12 16:22:52 by mmad             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,12 +28,12 @@ NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 
 all: ${NAME}
+	ar rc ${NAME} $(OBJ) $(OBJBONUS)
 
 ${NAME}:${OBJ} $(OBJBONUS)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $<
-	ar rc ${NAME} $@
 
 bonus: ${OBJBONUS}
 

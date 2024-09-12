@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:34:10 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/12 16:19:38 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/12 16:21:13 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,10 @@ bool	ft_to_do_c_floor(t_list *node, t_condition *condition)
 	if (ft_duplicates(node) == false)
 		return (false);
 	if (ft_pars_colors(node) == false)
+	{
 		return (false);
+	}
 	ft_node_colors(node, condition);
+	printf("[%d] | [%d]\n", condition->floor_color, condition->ceiling_color);
 	return (true);
 }
