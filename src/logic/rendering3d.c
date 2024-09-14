@@ -11,9 +11,9 @@ void	start_end_strip(t_info *info, int *wall_top, int *wall_bottom, int id)
 
 void	set_wall_tex_pixel(t_info *info, int x, int y)
 {
-	int	dis_from_top;
-	int	direction;
-	int	color;
+	int			dis_from_top;
+	int			direction;
+	uint32_t	color;
 
 	if (info->player.ray[x].is_hor)
 	{
@@ -37,6 +37,8 @@ void	set_wall_tex_pixel(t_info *info, int x, int y)
 		info->tex.offset_x = ((int)info->player.ray[x].hit_x % T_SIZE) * (info->tex.img[direction].width / T_SIZE);
 	color = my_mlx_pixel_get(&info->tex.img[direction].data,
 						info->tex.offset_x, info->tex.offset_y);
+	float	alpha = (170 / info->player.ray[x].ray_dis);
+	color = argb(color, my_mlx_pixel_get(&info->map.data, x, y), alpha);
 	my_mlx_pixel_set(&info->map.data, x, y, color);
 }
 
