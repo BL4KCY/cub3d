@@ -165,5 +165,11 @@ typedef struct s_queue
 	struct s_queue	*next;
 }					t_queue;
 
-
+typedef	struct s_argb
+{
+	uint8_t		a;
+	uint8_t		b;
+	uint8_t		g;
+	uint8_t		r;
+}	t_argb;
 #endif
