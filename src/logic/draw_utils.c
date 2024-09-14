@@ -26,10 +26,10 @@ void	rect_cir(t_data *data, t_rect_cir rect_cir)
 	int	j;
 
 	i = rect_cir.y;
-	while (i < (rect_cir.y + rect_cir.height))
+	while (i < (rect_cir.y + rect_cir.height) && i < rect_cir.radius * 2)
 	{
 		j = rect_cir.x;
-		while (j < (rect_cir.x + rect_cir.width))
+		while (j < (rect_cir.x + rect_cir.width) && j < rect_cir.radius * 2)
 		{
 			if (sqrt(pow(j - rect_cir.cir_x, 2) + pow(i - rect_cir.cir_y, 2))
 				<= rect_cir.radius)
@@ -68,7 +68,7 @@ void	draw_line(t_data *data, t_line line)
 	int	dx;
 	int	dy;
 	int	i;
-
+	
 	dx = line.x2 - line.x1;
 	dy = line.y2 - line.y1;
 	if (abs(dx) > abs(dy))
