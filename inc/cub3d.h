@@ -13,55 +13,8 @@
 # include "structs.h"
 # include "enums.h"
 # include "pars_cub3d.h"
+# include "macros.h"
 
-# define ON_KEYDOWN 2
-# define ON_KEYUP 3
-# define ON_DESTROY 17
-# define KEYPRESSMASK 1
-# define KEYRELEASEMASK 2
-# define ESC 65307
-# define W 119
-# define S 115
-# define A 97
-# define D 100
-# define UP 65362
-# define DOWN 65364
-# define LEFT 65361
-# define RIGHT 65363
-# define MAX_HEIGHT 1080
-# define MAX_WIDTH 1950
-
-#define HEIGHT 600
-#define WIDTH 800
-#define T_SIZE 50
-#define MM_RAD 200
-#define MINIMAP_SCALE_FAC 0.25
-#define STRIP_WIDTH 1
-#define NUM_RAYS  WIDTH / STRIP_WIDTH
-#define FOV_ANGLE 60
-// #define STRIP_WIDTH 1
-// #define NUM_RAYS WIDTH
-// #define BCOLOR 0X00BB885E
-#define BCOLOR 0x00a0c6c0
-#define BLUE 0x000000FF
-#define RED 0x00FF0000
-#define GREEN 0x0000FF00
-#define YELLOW 0x00FFFF00
-#define WHITE 0x00FFFFFF
-#define BLACK 0x00000000
-#define BROWN 0x00820421
-#define DARK_BROWN 0x0041393c
-#define PINK 0x00FF69B4
-#define GRAY 0x007a7a7a
-#define LIGHT_ORANGE 0x00db8858
-#define DARK_ORANGE 0x00a8592c
-#define DARK_GRAY 0x00404040
-#define BLUE_SKY 0x0087CEEB
-#define DARK_BLUE 0x00190482
-#define CYAN 0x0000FFFF
-// #define BCOLOR 0X00FFFFFF
-#define CCOLOR 0x0088f6ff
-#define FCOLOR 0x00b8aa9f
 
 int		        ft_exit(t_info *mlx);
 void	        *get_info(void);

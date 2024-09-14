@@ -1,12 +1,11 @@
 #ifndef ENUMS_H
 # define ENUMS_H
-
-typedef enum e_direction
+typedef enum e_texture_direction
 {
 	NORTH,
 	SOUTH,
 	EAST,
 	WEST
-}	t_direction;
+}	t_texture_direction;
 
 #endif
