@@ -8,8 +8,8 @@ bool	update_intersec_hor(t_info *info, t_intersec *intersec, int id)
 
 	next_x = intersec->h.x + (intersec->step.x * start);
 	next_y = intersec->h.y + (intersec->step.y * start);
-	if (next_x < 0 || next_x > info->width
-		|| next_y < 0 || next_y > info->height)
+	if (next_x <= 0 || next_x >= info->width
+		|| next_y <= 0 || next_y >= info->height)
 	{
 		intersec->h.y = info->player.y;
 		intersec->h.x = info->player.x;
