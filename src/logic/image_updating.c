@@ -8,16 +8,16 @@ int	update_minimap(t_info *info)
 	int	x;
 	int	y;
 
-	i = -1;
 	x = (info->player.x > MM_RAD && !(info->player.x > info->width - MM_RAD))
 		* (info->player.x - MM_RAD) + (info->player.x > info->width - MM_RAD)
 		* (info->width - (MM_RAD * 2));
 	y = (info->player.y > MM_RAD && !(info->player.y > info->height - MM_RAD))
 		* (info->player.y - MM_RAD) + (info->player.y > info->height - MM_RAD)
 		* (info->height - (MM_RAD * 2));
+	i = (((info->player.y - MM_RAD) / T_SIZE - 1) * (info->player.y - MM_RAD  >= 0)) - 1;
 	while (++i < info->map.n_row)
 	{
-		j = 0;
+		j = (((info->player.x - MM_RAD) / T_SIZE - 1) * (info->player.x - MM_RAD >= 0));
 		while (j < info->map.n_cols)
 		{
 			color = (info->map.grid[i][j] == '1') * BROWN
@@ -75,7 +75,7 @@ void	update_player_position(t_info *info)
 	double	new_y;
 
 	info->player.rotation_angle += info->player.rotation_speed
-		* info->player.turn_direction + mouse_move(info);
+		* info->player.turn_direction;// + mouse_move(info);
 	info->player.rotation_angle = normalize_angle(info->player.rotation_angle);
 	new_x = info->player.x + (cos(info->player.rotation_angle)
 			* info->player.move_speed * info->player.walk_direction)
