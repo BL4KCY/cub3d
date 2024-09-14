@@ -3,7 +3,7 @@
 double	normalize_angle(double angle)
 {
 	angle = remainder(angle, (M_PI * 2));
-	if (angle < 0)
+	if (angle <= 0)
 		angle += (M_PI * 2);
 	return (angle);
 }
