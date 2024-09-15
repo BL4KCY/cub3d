@@ -79,10 +79,12 @@ void	update_player_position(t_info *info)
 	info->player.rotation_angle = normalize_angle(info->player.rotation_angle);
 	new_x = info->player.x + (cos(info->player.rotation_angle)
 			* info->player.move_speed * info->player.walk_direction)
-		+ (info->player.move_rightleft * info->player.move_speed);
+			+ (cos(info->player.rotation_angle + M_PI_2) * info->player.move_speed
+				* info->player.move_rightleft);
 	new_y = info->player.y + (sin(info->player.rotation_angle)
 			* info->player.move_speed * info->player.walk_direction)
-		+ (info->player.move_updown * info->player.move_speed);
+			+ (sin(info->player.rotation_angle + M_PI_2) * info->player.move_speed
+				* info->player.move_rightleft);
 	if (!hit_wall(info, new_x, new_y) && !check_intersec_wall(info, new_x, new_y))
 	{
 		info->player.x = new_x;
