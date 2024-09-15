@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 17:12:05 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/12 16:17:50 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/15 23:54:28 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ void ft_import_colors(t_list *floor, t_list *ceiling, t_condition *condition)
 {
 	char **floor_substr;
 	char **ceiling_substr;
+
+	if (!floor || !ceiling)
+		return;
 	floor_substr = ft_buffer_to_two_d_array(floor, ft_lstsize(floor), 0);
 	ceiling_substr = ft_buffer_to_two_d_array(ceiling, ft_lstsize(ceiling), 0);
 	condition->floor_color = rgb_int(ft_atoi(floor_substr[0]),
