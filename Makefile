@@ -1,6 +1,6 @@
 #______command and their flags______#
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -Ofast#-fsanitize=address#-Ofast
 MLXFLAGS = -lmlx -lXext -lX11 -lm 
 AR = ar -crs
 
@@ -23,7 +23,7 @@ FILES_PARS = main.c bfs.c helper_functions.c pars_map_holdercd.c enqueue.c\
 #______patterns and substitutions______#
 SOURCES = $(FILES_EXEC:%.c=$(SRC_LGC_DIR)/%.c) $(FILES_PARS:%.c=$(SRC_PARS_DIR)/%.c)
 OBJECTS = $(SOURCES:$(SRC_LGC_DIR)%.c=$(OBJ_DIR)%.o)
-HEADERS = $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES)/structs.h
+HEADERS = $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES)/structs.h $(INCLUDES)/macros.h
 
 
 #______static library name______#
@@ -57,3 +57,5 @@ clean:
 	$(MAKE) -C $(LIB) fclean
 fclean: clean
 	$(RM) $(NAME)
+
+.SECONDARY: $(OBJECTS) $(LIB)/libft.a
