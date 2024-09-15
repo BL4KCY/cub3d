@@ -4,10 +4,10 @@
 void	init_map(t_info *info, t_condition *condition)
 {
 	info->map.grid = condition->pure_map;
-	ft_print_substr(condition->pure_map);
+	// ft_print_substr(condition->pure_map);
 	info->map.n_row = condition->height_of_map;
 	info->map.n_cols = condition->width_of_map;
-	printf("x_player: %d, y_player: %d\n", condition->x_player, condition->y_player);
+	// printf("x_player: %d, y_player: %d\n", condition->x_player, condition->y_player);
 	info->map.grid[condition->y_player][condition->x_player] = '0'; 
 	info->width = info->map.n_cols * T_SIZE;
 	info->height = info->map.n_row * T_SIZE;
@@ -26,10 +26,10 @@ void	init_player(t_info *info, t_condition *condition)
 	info->player.walk_direction = 0;
 	info->player.move_updown = 0;
 	info->player.move_rightleft = 0;
-	info->player.rotation_angle = WEST_P;
-	info->player.move_speed = 3;
-	info->player.rotation_speed = 2 * (M_PI / 180);
-	info->player.plane_dis = (info->width / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
+	info->player.rotation_angle = SOUTH_P;
+	info->player.move_speed = 4;
+	info->player.rotation_speed = 1 * (M_PI / 180);
+	info->player.plane_dis = (WIDTH / 2) / tan(deg_to_rad(FOV_ANGLE / 2));
 	info->player.ray = ft_malloc(sizeof(t_ray) * NUM_RAYS);
 }
 
