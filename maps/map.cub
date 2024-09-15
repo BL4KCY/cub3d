@@ -1,7 +1,8 @@
-NO ./textures/walls/orangeWall.xpm
-SO ./textures/walls/grayWall.xpm
-EA ./textures/walls/greenWall.xpm
-WE ./textures/walls/redWall.xpm
+NO ./textures/walls/oldBrickWall.xpm
+SO ./textures/walls/oldBrickWall.xpm
+EA ./textures/walls/oldBrickWall.xpm
+WE ./textures/walls/oldBrickWall.xpm
+
 
 F         103,61,38
 C         121,190,219
