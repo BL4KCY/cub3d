@@ -6,7 +6,7 @@
 #    By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/07 10:39:19 by mmad              #+#    #+#              #
-#    Updated: 2024/09/14 13:25:27 by melfersi         ###   ########.fr        #
+#    Updated: 2024/09/15 15:03:17 by melfersi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,8 @@ CFLAGS = -Wall -Wextra -Werror
 all: ${NAME}
 
 ${NAME}:${OBJ} $(OBJBONUS)
-
-%.o : %.c
-	$(CC) $(CFLAGS) -c $<
-	ar rc ${NAME} $@
-
+	ar rc ${NAME} $^
+	
 bonus: ${OBJBONUS}
 
 clean:
@@ -46,5 +43,7 @@ fclean: clean
 
 re:     fclean all bonus
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus\
+
+.SECONDARY: ${OBJ} ${OBJBONUS}
 
