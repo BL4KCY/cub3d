@@ -1,10 +1,10 @@
-NO ./textures/walls/orangeWall.xpm
-SO ./textures/walls/grayWall.xpm
-EA ./textures/walls/greenWall.xpm
-WE ./textures/walls/redWall.xpm
+NO textures/walls/orangeWall.xpm
+SO textures/walls/grayWall.xpm
+EA textures/walls/greenWall.xpm
+WE textures/walls/redWall.xpm
 
-F         0  , 0, 0
-C         0   ,  0      ,   0
+F 1, 0,0
+  C         1  ,    1   , 1
 
 
         1111111111111111111111111

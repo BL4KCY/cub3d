@@ -1,6 +1,6 @@
 #______command and their flags______#
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address 
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 MLXFLAGS = -lmlx -lXext -lX11 -lm 
 AR = ar -crs
 

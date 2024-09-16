@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 13:46:45 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 16:23:05 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/16 00:31:46 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_print_substr(char **substr)
 	i = 0;
 	while (substr[i])
 	{
-		printf("%s\n", substr[i]);
+		printf("[%s]\n", substr[i]);
 		i++;
 	}
 }

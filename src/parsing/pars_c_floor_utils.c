@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 17:12:05 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/15 23:54:28 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/16 02:16:16 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ void ft_node_colors(t_list *node, t_condition *condition)
 	while (node)
 	{
 		if (ft_find_color(node->content, 'F') == true)
-			f = ft_split(node->content + 3, ',');
+			f = ft_split(node->content + 2, ',');
 		else if (ft_find_color(node->content, 'C') == true)
-			c = ft_split(node->content + 3, ',');
+			c = ft_split(node->content + 2, ',');
 		node = node->next;
 	}
 	floor = ft_add_substrings_to_linked_list(floor, f, 1);
