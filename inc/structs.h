@@ -156,6 +156,7 @@ typedef struct
 	int				y_player;
 	uint32_t		floor_color;
 	uint32_t		ceiling_color;
+	float			r_ang;
 }					t_condition;
 
 typedef struct s_queue
