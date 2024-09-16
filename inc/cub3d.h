@@ -1,7 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 # include <stdlib.h>
-# include "../mlx/mlx.h"
+# include "mlx.h"
 # include <fcntl.h>
 # include <string.h>
 # include <stdbool.h>

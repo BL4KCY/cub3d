@@ -1,7 +1,11 @@
-NO ./textures/walls/oldBrickWall.xpm
-SO ./textures/walls/oldBrickWall.xpm
-EA ./textures/walls/oldBrickWall.xpm
-WE ./textures/walls/oldBrickWall.xpm
+NO textures/walls/orangeWall.xpm
+SO textures/walls/grayWall.xpm
+EA textures/walls/greenWall.xpm
+WE textures/walls/redWall.xpm
+
+F 1, 0,0
+  C         1  ,    1   , 1
+
 
 
 F         103,61,38

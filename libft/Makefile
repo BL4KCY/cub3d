@@ -1,16 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/07 10:39:19 by mmad              #+#    #+#              #
-#    Updated: 2024/09/16 09:34:22 by melfersi         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
-
 SRC = ft_atoi.c ft_hunt_leak.c ft_strlen.c ft_strchr.c ft_strdup.c\
 	ft_strtrim.c ft_strncmp.c ft_substr.c ft_isdigit.c ft_strjoin.c\
 	ft_split.c ft_strrchr.c ft_strcmp.c ft_strnstr.c ft_putstr_fd.c
@@ -29,10 +16,10 @@ NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 
 all: ${NAME}
+	ar rc ${NAME} $(OBJ) $(OBJBONUS)
 
 ${NAME}:${OBJ} $(OBJBONUS)
-	ar rc ${NAME} $^
-	
+	ar rc ${NAME} $^ 
 bonus: ${OBJBONUS}
 
 clean:

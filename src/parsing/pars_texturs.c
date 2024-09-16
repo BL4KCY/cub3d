@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:30:56 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 18:02:43 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/16 00:04:38 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int ft_loop_on_files(t_list *node)
 	{
 		new_str = ft_strtrim((char *)temp->content, " ");
 		if (check_if_file_can_open(ft_substr(new_str,
-											 find_specific_char(new_str, '.'), ft_strlen(new_str))) != 0 &&
+											 find_specific_char(new_str, ' '), ft_strlen(new_str))) != 0 &&
 			!ft_strnstr(temp->content, ".xpm", ft_strlen(".xpm")))
 		{
 			flag = 1;
