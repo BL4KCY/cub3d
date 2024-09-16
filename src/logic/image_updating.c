@@ -14,7 +14,7 @@ int	update_minimap(t_info *info)
 	y = (info->player.y > MM_RAD && !(info->player.y > info->height - MM_RAD))
 		* (info->player.y - MM_RAD) + (info->player.y > info->height - MM_RAD)
 		* (info->height - (MM_RAD * 2));
-	i = (((info->player.y - MM_RAD) / T_SIZE - 1) * (info->player.y - MM_RAD  >= 0)) - 1;
+	i = (((info->player.y - MM_RAD) / T_SIZE - 1) * (info->player.y - MM_RAD  > 0)) - 1;
 	while (++i < info->map.n_row)
 	{
 		j = (((info->player.x - MM_RAD) / T_SIZE - 1) * (info->player.x - MM_RAD >= 0));
