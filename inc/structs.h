@@ -2,7 +2,7 @@
 # define STRCT_H
 # include <stdint.h>
 // Image
-typedef struct	s_data
+typedef struct
 {
 	void	*img;
 	char	*addr;
@@ -12,7 +12,7 @@ typedef struct	s_data
 }				t_data;
 
 // Shape
-typedef struct s_rect
+typedef struct
 {
 	float	x;
 	float	y;
@@ -21,7 +21,7 @@ typedef struct s_rect
 	float	color;
 }	t_rect;
 
-typedef struct s_cir
+typedef struct
 {
 	float	x;
 	float	y;
@@ -29,7 +29,7 @@ typedef struct s_cir
 	float	color;
 }	t_cir;
 
-typedef struct s_line
+typedef struct
 {
 	float	x1;
 	float	y1;
@@ -41,7 +41,7 @@ typedef struct s_line
 	int		step;
 }			t_line;
 
-typedef struct rect_cir
+typedef struct
 {
 	float	x;
 	float	y;
@@ -54,13 +54,13 @@ typedef struct rect_cir
 }	t_rect_cir;
 
 
-typedef struct s_coor
+typedef struct
 {
 	double	x;
 	double	y;
 }			t_coor;
 
-typedef struct	s_intersec
+typedef struct
 {
 	t_coor	h;
 	t_coor	v;
@@ -70,7 +70,7 @@ typedef struct	s_intersec
 	double	h_dis;
 }			t_intersec;
 
-typedef struct s_ray
+typedef struct
 {
 	double	ray_ang;
 	double	ray_dis;
@@ -84,7 +84,7 @@ typedef struct s_ray
 	bool	is_ray_right;
 }	t_ray;
 
-typedef struct s_player
+typedef struct
 {
 	double	x;
 	double	y;
@@ -100,7 +100,7 @@ typedef struct s_player
 	double	plane_dis;
 }	t_player;
 
-typedef struct s_map
+typedef struct
 {
 	char	**grid;
 	t_data	data;
@@ -109,7 +109,7 @@ typedef struct s_map
 }	t_map;
 
 
-typedef struct s_img
+typedef struct
 {
 	t_data	data;
 	char	*path;
@@ -117,7 +117,7 @@ typedef struct s_img
 	int		height;
 }	t_img;
 
-typedef struct s_tex
+typedef struct
 {
 	t_img	img[4];
 	int		offset_x;
@@ -126,7 +126,7 @@ typedef struct s_tex
 	int		ceiling_pcolor;
 }	t_tex;
 
-typedef struct s_info
+typedef struct
 {
 	void		*mlx;
 	void		*win;
@@ -140,7 +140,7 @@ typedef struct s_info
 
 // parsing
 
-typedef struct s_condition
+typedef struct
 {
 	char			*name;
 	char			**substr;
@@ -165,11 +165,20 @@ typedef struct s_queue
 	struct s_queue	*next;
 }					t_queue;
 
-typedef	struct s_argb
+typedef	struct
 {
 	uint8_t		a;
 	uint8_t		b;
 	uint8_t		g;
 	uint8_t		r;
 }	t_argb;
+
+typedef struct
+{
+	t_info	*info;
+	char	*message;
+	bool	is_window;
+	int		status;
+}	t_exit;
+
 #endif
