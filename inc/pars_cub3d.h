@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:29:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/12 16:15:19 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:39:28 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ bool				ft_atoi_if(const char *nptr);
 int					ft_count_specific_char(char *str, char c);
 bool				ft_check_up(char *str);
 char				**fill_modified_map(char **map);
-void				ft_find_direction(char **new_map, int *x, int *y);
+void				ft_find_direction(char **new_map, int *x, int *y, t_condition *game_condition);
 int					ft_check_start_end(char **map, int *n_direction);
 int					ft_find_longest_line(char **substr, int *hight);
 void				ft_process_game_condition(t_list *textures, t_list *c_flor,

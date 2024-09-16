@@ -3,16 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 15:17:21 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 12:04:59 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/16 16:40:14 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	ft_find_direction(char **new_map, int *x, int *y)
+void ft_return_rotatio_angle(char c, t_condition *game_condition)
+{
+	if (c == 'N')
+		game_condition->r_ang = NORTH_P;
+	if (c == 'E')
+		game_condition->r_ang = EAST_P;
+	if (c == 'S')
+		game_condition->r_ang = SOUTH_P;
+	if (c == 'W')
+		game_condition->r_ang = WEST_P;
+}
+void	ft_find_direction(char **new_map, int *x, int *y, t_condition *game_condition)
 {
 	int	i;
 	int	j;
@@ -28,7 +39,8 @@ void	ft_find_direction(char **new_map, int *x, int *y)
 			{
 				*x = i;
 				*y = j;
-				return ;
+				ft_return_rotatio_angle(new_map[i][j], game_condition);
+				return;
 			}
 			j++;
 		}

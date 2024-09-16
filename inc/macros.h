@@ -22,7 +22,7 @@
 #define WIDTH 1080
 #define T_SIZE 64
 #define MM_RAD 200
-#define MINIMAP_SCALE_FAC 0.25
+#define MINIMAP_SCALE_FAC 0.5
 #define STRIP_WIDTH 1
 #define NUM_RAYS  WIDTH / STRIP_WIDTH
 #define FOV_ANGLE 60

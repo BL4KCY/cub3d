@@ -25,7 +25,7 @@ void	init_player(t_info *info, t_condition *condition)
 	info->player.walk_direction = 0;
 	info->player.move_updown = 0;
 	info->player.move_rightleft = 0;
-	info->player.rotation_angle = NORTH_P;//condition->r_ang;
+	info->player.rotation_angle = condition->r_ang;
 	info->player.move_speed = 4;
 	info->player.rotation_speed = 3 * (M_PI / 180);
 	info->player.plane_dis = (WIDTH / 2) / tan(deg_to_rad(FOV_ANGLE) / 2);

@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:28:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/12 15:13:44 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/16 16:34:51 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ bool	ft_check_if_d(char **new_map, t_queue *front, int *x, int *y)
 	return (true);
 }
 
-bool breadth_first_search(char **new_map)
+bool breadth_first_search(char **new_map, t_condition *game_condition)
 {
 	t_queue *front;
 	t_queue *rear;
@@ -32,7 +32,7 @@ bool breadth_first_search(char **new_map)
 	int y;
 	front = NULL;
 	rear = NULL;
-	ft_find_direction(new_map, &x, &y);
+	ft_find_direction(new_map, &x, &y, game_condition);
 	ft_enqueue(x, y, &front, &rear);
 	while (front)
 	{
@@ -107,7 +107,7 @@ bool	ft_to_do_map(t_list *node, t_condition *game_condition)
 	if (!(ft_check_start_end(game_condition->map, &n_direction) == 0
 			&& n_direction == 1))
 		return (false);
-	if (breadth_first_search(new_map) && check_for_dead_ends(new_map))
+	if (breadth_first_search(new_map, game_condition) && check_for_dead_ends(new_map))
 		return (true);
 	return (false);
 }
