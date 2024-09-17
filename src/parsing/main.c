@@ -21,6 +21,7 @@ void	ft_give_prompt_back(int i, int argc, char **argv)
 	exit(1);
 }
 
+
 bool	move_on_if_map_valid(t_condition *condition)
 {
 	if (condition->substr == NULL)
@@ -29,7 +30,7 @@ bool	move_on_if_map_valid(t_condition *condition)
 		ft_hunt_leak();
 		return (false);
 	}
-	if (ft_grep_to_pars_if('.', condition, ft_to_do_texturs)
+	if (ft_grep_to_pars_if('.', condition, ft_to_do_textures)
 		&& ft_grep_to_pars_if(',', condition, ft_to_do_c_floor)
 		&& ft_grep_to_pars_if('1', condition, ft_to_do_map))
 	{
@@ -64,8 +65,9 @@ int	main(int argc, char **argv)
 
 	ft_parse_arguments(argc, argv, &condition);
 	condition.substr = ft_create_two_dimensional_array(argv);
-	if (move_on_if_map_valid(&condition) == false)
+	if (move_on_if_map_valid_bonus(&condition) == false)
 		return (EXIT_FAILURE);
+	// return 0;
 	info = (t_info *)get_info();
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");

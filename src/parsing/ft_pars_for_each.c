@@ -87,5 +87,6 @@ bool	ft_grep_to_pars_if(char ch, t_condition *game_condition,
 		if (f(map, game_condition) != true)
 			return (false);
 	}
+	// ft_print_substr(game_condition->pure_texture);
 	return (true);
 }

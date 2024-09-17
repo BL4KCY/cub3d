@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:28:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/16 16:34:51 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/17 11:50:08 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,30 @@ bool	check_for_dead_ends(char **new_map)
 	return (true);
 }
 
+bool	check_if_wall_can_exist(char **new_map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (new_map[++i])
+	{
+		j = -1;
+		while (new_map[i][++j])
+		{
+			if (new_map[i][j] == 'B')
+			{
+				if ((new_map[i - 1] && new_map[i - 1][j] == 'd') || (new_map[i
+						+ 1] && new_map[i + 1][j] == 'd') || (new_map[i][j + 1]
+						&& new_map[i][j + 1] == '0') || (j > 0 && new_map[i][j
+						- 1] && new_map[i][j - 1] == '0'))
+					return (false);
+			}
+		}
+	}
+	return (true);
+}
+
 int	ft_n_columns_2d(char **substr)
 {
 	int	i;
@@ -104,10 +128,12 @@ bool	ft_to_do_map(t_list *node, t_condition *game_condition)
 		|| ft_check_up(game_condition->map[ft_n_columns_2d(game_condition->map)
 				- 1]) == false)
 		return (false);
-	if (!(ft_check_start_end(game_condition->map, &n_direction) == 0
+	if (!(ft_check_start_end(game_condition->map, &n_direction, 0) == 0
 			&& n_direction == 1))
-		return (false);
+        return (false);
 	if (breadth_first_search(new_map, game_condition) && check_for_dead_ends(new_map))
 		return (true);
 	return (false);
 }
+
+

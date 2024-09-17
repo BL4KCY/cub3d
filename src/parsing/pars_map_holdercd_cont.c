@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 13:46:45 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/16 00:31:46 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/16 19:04:26 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	**ft_buffer_to_two_d_array(t_list *node, int length, int flag)
 	int		i;
 	char	**sub_str;
 	t_list	*temp;
+	char *new_substr;
 
 	sub_str = (char **)ft_malloc(sizeof(char *) * (length + 1));
 	if (!sub_str)
@@ -38,9 +39,15 @@ char	**ft_buffer_to_two_d_array(t_list *node, int length, int flag)
 	while (temp)
 	{
 		if (flag == 0)
+		{
 			sub_str[i] = ft_strdup(temp->content);
+		}
 		else
-			sub_str[i] = ft_strdup(temp->content + 3);
+		{
+			new_substr = ft_strtrim(temp->content , " ");
+			new_substr = new_substr + find_specific_char(new_substr, ' ');
+			sub_str[i] = ft_strdup(ft_strtrim(new_substr, " "));
+		}
 		if (!sub_str[i])
 			return (NULL);
 		i++;

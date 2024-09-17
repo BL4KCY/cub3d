@@ -4,12 +4,15 @@
 void	init_texture(t_info *info, t_condition *condition)
 {
 	int		i;
-
-	puts(ft_substr(condition->textures[0], 3, ft_strlen(condition->textures[0])));
+	
 	info->tex.img[NORTH].path = condition->pure_texture[0];
 	info->tex.img[SOUTH].path = condition->pure_texture[1];
 	info->tex.img[WEST].path = condition->pure_texture[2];
 	info->tex.img[EAST].path = condition->pure_texture[3];
+	// printf("%s\n", info->tex.img[NORTH].path);
+	// printf("%s\n", info->tex.img[SOUTH].path);
+	// printf("%s\n", info->tex.img[WEST].path);
+	// printf("%s\n", info->tex.img[EAST].path);
 	i = -1;
 	while (++i < 4)
 	{

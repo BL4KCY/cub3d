@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:30:56 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/16 00:04:38 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/17 11:43:06 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,9 @@ bool ft_pars_each_node(t_list *node, t_condition *condition)
 	return (true);
 }
 
-bool ft_to_do_texturs(t_list *node, t_condition *condition)
+bool ft_to_do_textures(t_list *node, t_condition *condition)
 {
 	t_list *temp;
-	// ft_print_linked_list(node);
 	temp = node;
 	while (temp)
 	{
