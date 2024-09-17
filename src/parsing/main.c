@@ -21,6 +21,7 @@ void	ft_give_prompt_back(int i, int argc, char **argv)
 	exit(1);
 }
 
+
 bool	move_on_if_map_valid(t_condition *condition)
 {
 	if (condition->substr == NULL)
@@ -29,7 +30,7 @@ bool	move_on_if_map_valid(t_condition *condition)
 		ft_hunt_leak();
 		return (false);
 	}
-	if (ft_grep_to_pars_if('.', condition, ft_to_do_texturs)
+	if (ft_grep_to_pars_if('.', condition, ft_to_do_textures)
 		&& ft_grep_to_pars_if(',', condition, ft_to_do_c_floor)
 		&& ft_grep_to_pars_if('1', condition, ft_to_do_map))
 	{
@@ -60,24 +61,25 @@ void	ft_parse_arguments(int argc, char **argv, t_condition *condition)
 int	main(int argc, char **argv)
 {
 	t_info	*info;
-	t_condition	condition;
+	t_condition	game_condition;
 
-	ft_parse_arguments(argc, argv, &condition);
-	condition.substr = ft_create_two_dimensional_array(argv);
-	if (move_on_if_map_valid(&condition) == false)
+	ft_parse_arguments(argc, argv, &game_condition);
+	game_condition.substr = ft_create_two_dimensional_array(argv);
+	if (move_on_if_map_valid_bonus(&game_condition) == false)
 		return (EXIT_FAILURE);
+	ft_print_substr(game_condition.pure_map);
+	ft_print_queue(game_condition.queue);
 	info = (t_info *)get_info();
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");
 	mlx_hook(info->win, ON_DESTROY, KEYPRESSMASK, ft_exit, info);
 	mlx_hook(info->win, ON_KEYDOWN, KEYPRESSMASK, keypress, info);
 	mlx_hook(info->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, info);
-	init_map(info, &condition);
-	init_player(info, &condition);
-	init_texture(info, &condition);
+	init_map(info, &game_condition);
+	init_player(info, &game_condition);
+	init_texture(info, &game_condition);
 	mlx_loop_hook(info->mlx, rendering, info);
 	mlx_loop(info->mlx);
-
 	ft_hunt_leak();
 	return (EXIT_SUCCESS);
 }

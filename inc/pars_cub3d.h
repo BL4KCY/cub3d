@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:29:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/16 16:39:28 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/17 18:34:52 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void				*ft_malloc(size_t n);
 char				**ft_create_two_dimensional_array(char **argv);
 bool				ft_grep_to_pars_if(char ch, t_condition *game_condition,
 						bool (*f)(t_list *, t_condition *));
-bool				ft_to_do_texturs(t_list *node, t_condition *game_condition);
+bool				ft_to_do_textures(t_list *node, t_condition *game_condition);
 bool				ft_to_do_c_floor(t_list *node, t_condition *game_condition);
 bool				ft_to_do_map(t_list *node, t_condition *game_condition);
 t_list				*ft_add_substrings_to_linked_list(t_list *node,
@@ -58,14 +58,19 @@ int					ft_count_substr(char **substr);
 bool				ft_atoi_if(const char *nptr);
 int					ft_count_specific_char(char *str, char c);
 bool				ft_check_up(char *str);
-char				**fill_modified_map(char **map);
+int	                ft_n_columns_2d(char **substr);
+void				fill_modified_map(t_condition *game_condition);
+bool                breadth_first_search(char **new_map, t_condition *game_condition);
 void				ft_find_direction(char **new_map, int *x, int *y, t_condition *game_condition);
-int					ft_check_start_end(char **map, int *n_direction);
+int					ft_check_start_end(char **map, int *n_direction, int flag);
+bool	            check_for_dead_ends(char **new_map);
 int					ft_find_longest_line(char **substr, int *hight);
 void				ft_process_game_condition(t_list *textures, t_list *c_flor,
 						t_list *map, t_condition *game_condition);
 bool 				ft_find_color(char *str, char c);
 void				ft_import_colors(t_list *floor, t_list *ceiling, t_condition *condition);
 void 				ft_node_colors(t_list *node, t_condition *condition);
-
+bool                ft_to_do_map_bonus(t_list *node, t_condition *game_condition);
+bool	            move_on_if_map_valid_bonus(t_condition *condition);
+void 				ft_print_queue(t_queue *front);
 #endif

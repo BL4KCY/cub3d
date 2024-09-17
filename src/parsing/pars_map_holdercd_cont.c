@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pars_map_holdercd_cont.c                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/08 13:46:45 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/16 19:01:14 by melfersi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cub3d.h"
 
 void	ft_print_double_list(t_list **nodes)
@@ -28,8 +16,8 @@ char	**ft_buffer_to_two_d_array(t_list *node, int length, int flag)
 {
 	int		i;
 	char	**sub_str;
-	char	*new_sub_str;
 	t_list	*temp;
+	char 	*new_substr;
 
 	sub_str = (char **)ft_malloc(sizeof(char *) * (length + 1));
 	if (!sub_str)
@@ -39,12 +27,14 @@ char	**ft_buffer_to_two_d_array(t_list *node, int length, int flag)
 	while (temp)
 	{
 		if (flag == 0)
+		{
 			sub_str[i] = ft_strdup(temp->content);
+		}
 		else
 		{
-			new_sub_str = ft_strtrim(temp->content, " ");
-			new_sub_str = new_sub_str + find_specific_char(new_sub_str, ' ');
-			sub_str[i] = ft_strdup(ft_strtrim(new_sub_str, " "));
+			new_substr = ft_strtrim(temp->content , " ");
+			new_substr = new_substr + find_specific_char(new_substr, ' ');
+			sub_str[i] = ft_strdup(ft_strtrim(new_substr, " "));
 		}
 		if (!sub_str[i])
 			return (NULL);

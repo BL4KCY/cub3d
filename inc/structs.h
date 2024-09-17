@@ -126,6 +126,7 @@ typedef struct
 	int		ceiling_pcolor;
 }	t_tex;
 
+
 typedef struct
 {
 	void		*mlx;
@@ -139,6 +140,12 @@ typedef struct
 }	t_info;
 
 // parsing
+typedef struct s_queue
+{
+	int				x;
+	int				y;
+	struct s_queue	*next;
+}					t_queue;
 
 typedef struct
 {
@@ -157,14 +164,9 @@ typedef struct
 	uint32_t		floor_color;
 	uint32_t		ceiling_color;
 	float			r_ang;
+	t_queue			*queue;
 }					t_condition;
 
-typedef struct s_queue
-{
-	int				x;
-	int				y;
-	struct s_queue	*next;
-}					t_queue;
 
 typedef	struct
 {

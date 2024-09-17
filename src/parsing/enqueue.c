@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 15:03:59 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 17:52:14 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/17 18:51:31 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,48 +70,67 @@ bool	ft_check_up(char *str)
 	return (true);
 }
 
-void	fill_modified_map_container(char **new_map, char **map, int *i, int *j)
-{
-	int	hight;
-	int	find_longest_line;
 
-	find_longest_line = ft_find_longest_line(map, &hight);
-	while (map[*i][*j])
-	{
-		if (map[*i][*j] == ' ')
-			new_map[*i][*j] = 'd';
-		else
-			new_map[*i][*j] = map[*i][*j];
-		(*j)++;
-	}
-	while (*j < find_longest_line)
-	{
-		new_map[*i][*j] = 'd';
-		(*j)++;
-	}
+void fill_modified_map_container(t_condition *game_condition, int *i, int *j,t_queue **rear)
+{
+    int hight;
+    int find_longest_line;
+
+    find_longest_line = ft_find_longest_line(game_condition->map, &hight);
+
+    while (game_condition->map[*i][*j])
+    {
+        if (game_condition->map[*i][*j] == ' ')
+            game_condition->pure_map[*i][*j] = 'd';
+        else if (game_condition->map[*i][*j] == 'B')
+        {
+            game_condition->pure_map[*i][*j] = '0';
+            ft_enqueue(*i, *j, &game_condition->queue, rear);
+        }
+        else
+            game_condition->pure_map[*i][*j] = game_condition->map[*i][*j];
+        
+        (*j)++;
+    }
+    
+    while (*j < find_longest_line)
+    {
+        game_condition->pure_map[*i][*j] = 'd';
+        (*j)++;
+    }
 }
 
-char	**fill_modified_map(char **map)
+void ft_print_queue(t_queue *front)
 {
-	int		find_longest_line;
-	char	**new_map;
-	int		hight;
+	t_queue *current;
+
+	current = front;
+	while (current)
+	{
+		printf("[%d | %d]\n", current->x, current->y);
+		current = current->next;
+	}
+	
+}
+void	fill_modified_map(t_condition *game_condition)
+{
 	int		i;
 	int		j;
+    t_queue *rear;
 
-	find_longest_line = ft_find_longest_line(map, &hight);
-	new_map = (char **)ft_malloc(sizeof(char *) * (hight + 1));
-	if (!new_map)
-		return (false);
+	rear  = NULL;
+	game_condition->queue = NULL;
+	game_condition->pure_map = (char **)ft_malloc(sizeof(char *) * (game_condition->height_of_map + 1));
+	if (!game_condition->pure_map)
+		return ;
 	i = 0;
-	while (map[i])
+	while (game_condition->map[i])
 	{
-		new_map[i] = (char *)ft_malloc(sizeof(char) * (find_longest_line + 1));
+		game_condition->pure_map[i] = (char *)ft_malloc(sizeof(char) * (game_condition->width_of_map + 1));
 		j = 0;
-		fill_modified_map_container(new_map, map, &i, &j);
-		new_map[i][j] = '\0';
+		fill_modified_map_container(game_condition, &i, &j, &rear);
+		game_condition->pure_map[i][j] = '\0';
 		i++;
 	}
-	new_map[i] = NULL;
-	return (new_map);
+	game_condition->pure_map[i] = NULL;
 }
