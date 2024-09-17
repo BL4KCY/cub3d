@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_map_holdercd_cont.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 13:46:45 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/16 00:31:46 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/16 19:01:14 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ char	**ft_buffer_to_two_d_array(t_list *node, int length, int flag)
 {
 	int		i;
 	char	**sub_str;
+	char	*new_sub_str;
 	t_list	*temp;
 
 	sub_str = (char **)ft_malloc(sizeof(char *) * (length + 1));
@@ -40,7 +41,11 @@ char	**ft_buffer_to_two_d_array(t_list *node, int length, int flag)
 		if (flag == 0)
 			sub_str[i] = ft_strdup(temp->content);
 		else
-			sub_str[i] = ft_strdup(temp->content + 3);
+		{
+			new_sub_str = ft_strtrim(temp->content, " ");
+			new_sub_str = new_sub_str + find_specific_char(new_sub_str, ' ');
+			sub_str[i] = ft_strdup(ft_strtrim(new_sub_str, " "));
+		}
 		if (!sub_str[i])
 			return (NULL);
 		i++;
