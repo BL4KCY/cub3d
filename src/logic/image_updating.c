@@ -17,7 +17,7 @@ int	update_minimap(t_info *info)
 	i = (((info->player.y - MM_RAD) / T_SIZE - 1) * (info->player.y - MM_RAD  > 0)) - 1;
 	while (++i < info->map.n_row)
 	{
-		j = (((info->player.x - MM_RAD) / T_SIZE - 1) * (info->player.x - MM_RAD >= 0));
+		j = (((info->player.x - MM_RAD) / T_SIZE - 1) * (info->player.x - MM_RAD > 0));
 		while (j < info->map.n_cols)
 		{
 			color = (info->map.grid[i][j] == '1') * BROWN
