@@ -21,8 +21,10 @@ FILES_EXEC := exit.c inputs.c rendering.c draw.c init.c\
 		draw_utils.c image_updating.c rendering3d.c init_textures.c
 FILES_PARS := main.c bfs.c helper_functions.c pars_map_holdercd.c enqueue.c\
 		pars_map_holdercd_cont.c ft_pars_for_each.c pars_c_Floor.c\
-		pars_texturs.c get_next_line.c pars_c_floor_utils.c func_bonus.c
-
+		pars_texturs.c get_next_line.c pars_c_floor_utils.c 
+#______bonus files______#
+FILES_EXEC_BNS := $(FILES_EXEC)
+FILES_PARS_BNS := $(FILES_PARS) func_bonus.c
 
 #______patterns and substitutions______#
 SOURCES := $(addprefix $(SRC_LGC_DIR)/, $(FILES_EXEC)) $(addprefix $(SRC_PARS_DIR)/, $(FILES_PARS))
@@ -31,7 +33,7 @@ OBJECTS := $(patsubst $(SRC_PARS_DIR)/%.c, $(OBJ_DIR)/%.o, $(OBJECTS))
 HEADERS := $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES)/structs.h $(INCLUDES)/macros.h
 
 #______patterns and substitutions <bonus>______#
-SOURCES_BNS := $(addprefix $(SRC_LGC_DIR_BNS)/, $(FILES_EXEC)) $(addprefix $(SRC_PARS_DIR_BNS)/, $(FILES_PARS))
+SOURCES_BNS := $(addprefix $(SRC_LGC_DIR_BNS)/, $(FILES_EXEC_BNS)) $(addprefix $(SRC_PARS_DIR_BNS)/, $(FILES_PARS_BNS))
 OBJECTS_BNS := $(patsubst $(SRC_LGC_DIR_BNS)/%.c, $(OBJ_DIR_BNS)/%.o, $(SOURCES_BNS))
 OBJECTS_BNS := $(patsubst $(SRC_PARS_DIR_BNS)/%.c, $(OBJ_DIR_BNS)/%.o, $(OBJECTS_BNS))
 HEADERS_BNS := $(INCLUDES_BNS)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES_BNS)/structs.h $(INCLUDES_BNS)/macros.h
@@ -77,8 +79,10 @@ $(LIB)/%.a:
 re: fclean all
 
 
-run: all
-	./$(NAME) maps/map.cub
+run: $(NAME)
+	./$< maps/good/library.cub
+runbonus: $(BONUS_NAME)
+	./$< maps/good/library.cub
 
 bonus: $(BONUS_NAME)
 #______cleaning______#
