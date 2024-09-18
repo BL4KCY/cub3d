@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 15:17:21 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/17 18:47:13 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/17 20:51:41 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,4 +144,13 @@ int	ft_find_longest_line(char **substr, int *hight)
 	}
 	*hight = i;
 	return (length);
+}
+int	ft_n_columns_2d(char **substr)
+{
+	int	i;
+
+	i = 0;
+	while (substr[i])
+		i++;
+	return (i);
 }

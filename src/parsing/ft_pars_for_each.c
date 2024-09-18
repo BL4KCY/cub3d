@@ -71,13 +71,17 @@ bool	ft_grep_to_pars_if(char ch, t_condition *game_condition,
 	c_flor = NULL;
 	map = NULL;
 	ft_process_game_condition(textures, c_flor, map, game_condition);
-	game_condition->width_of_map = ft_find_longest_line(game_condition->map, &game_condition->height_of_map);
+	game_condition->width_of_map = ft_find_longest_line(game_condition->map,
+			&game_condition->height_of_map);
 	textures = ft_add_substrings_to_linked_list(textures,
 			game_condition->textures, 0);
-	game_condition->pure_texture = ft_buffer_to_two_d_array(textures, ft_lstsize(textures), 1);
+	game_condition->pure_texture = ft_buffer_to_two_d_array(textures,
+			ft_lstsize(textures), 1);
 	fill_modified_map(game_condition);
-	ft_find_direction(game_condition->pure_map, &game_condition->y_player, &game_condition->x_player, game_condition);
-	c_flor = ft_add_substrings_to_linked_list(c_flor, game_condition->c_flor, 0);
+	ft_find_direction(game_condition->pure_map, &game_condition->y_player,
+		&game_condition->x_player, game_condition);
+	c_flor = ft_add_substrings_to_linked_list(c_flor, game_condition->c_flor,
+			0);
 	if (ch == '.')
 		return (f(textures, game_condition));
 	else if (ch == ',')
@@ -87,6 +91,5 @@ bool	ft_grep_to_pars_if(char ch, t_condition *game_condition,
 		if (f(map, game_condition) != true)
 			return (false);
 	}
-	// ft_print_substr(game_condition->pure_texture);
 	return (true);
 }
