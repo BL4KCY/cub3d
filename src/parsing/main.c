@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 
 	ft_parse_arguments(argc, argv, &game_condition);
 	game_condition.substr = ft_create_two_dimensional_array(argv);
-	if (move_on_if_map_valid_bonus(&game_condition) == false)
+	if (move_on_if_map_valid(&game_condition) == false)
 		return (EXIT_FAILURE);
 	ft_print_substr(game_condition.pure_map);
 	ft_print_queue(game_condition.queue);
