@@ -68,7 +68,6 @@ int	main(int argc, char **argv)
 	if (move_on_if_map_valid_bonus(&game_condition) == false)
 		return (EXIT_FAILURE);
 	ft_print_substr(game_condition.pure_map);
-	ft_print_queue(game_condition.queue);
 	info = (t_info *)get_info();
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");

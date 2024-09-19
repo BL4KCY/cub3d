@@ -1,18 +1,5 @@
 #include "cub3d.h"
 
-void	ft_print_queue(t_queue *front)
-{
-	t_queue	*current;
-
-	current = front;
-	while (current)
-	{
-		printf("[%d | %d]\n", current->x, current->y);
-		current = current->next;
-	}
-}
-
-
 bool	ft_to_do_map_bonus(t_list *node, t_condition *game_condition)
 {
 	(void)node;
