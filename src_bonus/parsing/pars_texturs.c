@@ -6,15 +6,15 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:30:56 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/17 11:43:06 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/22 04:24:31 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int check_if_file_can_open(char *str)
+int	check_if_file_can_open(char *str)
 {
-	int fd;
+	int	fd;
 
 	fd = open(ft_strtrim(str, " "), O_RDONLY, 0777);
 	if (fd < 0)
@@ -22,11 +22,11 @@ int check_if_file_can_open(char *str)
 	return (0);
 }
 
-int ft_loop_on_files(t_list *node)
+int	ft_loop_on_files(t_list *node)
 {
-	t_list *temp;
-	int flag;
-	char *new_str;
+	t_list	*temp;
+	int		flag;
+	char	*new_str;
 
 	temp = node;
 	flag = 0;
@@ -34,8 +34,8 @@ int ft_loop_on_files(t_list *node)
 	{
 		new_str = ft_strtrim((char *)temp->content, " ");
 		if (check_if_file_can_open(ft_substr(new_str,
-											 find_specific_char(new_str, ' '), ft_strlen(new_str))) != 0 &&
-			!ft_strnstr(temp->content, ".xpm", ft_strlen(".xpm")))
+					find_specific_char(new_str, ' '), ft_strlen(new_str))) != 0
+			&& !ft_strnstr(temp->content, ".xpm", ft_strlen(".xpm")))
 		{
 			flag = 1;
 		}
@@ -44,11 +44,14 @@ int ft_loop_on_files(t_list *node)
 	return (flag);
 }
 
-bool ft_pars_portion(char **substr, t_condition *condition)
+bool	ft_pars_portion(char **substr, t_condition *condition)
 {
 	if (!substr)
 		return (false);
-	if ((ft_strncmp(substr[0], "NO", ft_strlen(substr[0])) == 0) || (ft_strncmp(substr[0], "SO", ft_strlen(substr[0])) == 0) || (ft_strncmp(substr[0], "EA", ft_strlen(substr[0])) == 0) || (ft_strncmp(substr[0], "WE", ft_strlen(substr[0])) == 0))
+	if ((ft_strncmp(substr[0], "NO", ft_strlen(substr[0])) == 0)
+		|| (ft_strncmp(substr[0], "SO", ft_strlen(substr[0])) == 0)
+		|| (ft_strncmp(substr[0], "EA", ft_strlen(substr[0])) == 0)
+		|| (ft_strncmp(substr[0], "WE", ft_strlen(substr[0])) == 0))
 	{
 		condition->catch = 0;
 		return (true);
@@ -61,11 +64,11 @@ bool ft_pars_portion(char **substr, t_condition *condition)
 	return (true);
 }
 
-bool ft_pars_each_node(t_list *node, t_condition *condition)
+bool	ft_pars_each_node(t_list *node, t_condition *condition)
 {
-	t_list *temp;
-	char **sub_str;
-	char *newstr;
+	t_list	*temp;
+	char	**sub_str;
+	char	*newstr;
 
 	if (!node)
 		return (false);
@@ -74,7 +77,8 @@ bool ft_pars_each_node(t_list *node, t_condition *condition)
 	sub_str = ft_split(newstr, ' ');
 	if (ft_count_substr(sub_str) == 2)
 	{
-		if (ft_pars_portion(sub_str, condition) == true && condition->catch == 0)
+		if (ft_pars_portion(sub_str, condition) == true
+			&& condition->catch == 0)
 			return (true);
 		else
 			return (false);
@@ -84,9 +88,10 @@ bool ft_pars_each_node(t_list *node, t_condition *condition)
 	return (true);
 }
 
-bool ft_to_do_textures(t_list *node, t_condition *condition)
+bool	ft_to_do_textures(t_list *node, t_condition *condition)
 {
-	t_list *temp;
+	t_list	*temp;
+
 	temp = node;
 	while (temp)
 	{

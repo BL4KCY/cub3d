@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:28:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/18 15:06:55 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/22 04:40:44 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ bool	ft_check_if_d(char **new_map, t_queue *front, int *x, int *y)
 
 bool	breadth_first_search(char **new_map, t_condition *game_condition)
 {
-	t_queue	*front;
-	t_queue	*rear;
 	int		x;
 	int		y;
+	t_queue	*front;
+	t_queue	*rear;
 
 	front = NULL;
 	rear = NULL;
@@ -110,8 +110,8 @@ bool	check_if_wall_can_exist(char **new_map)
 
 bool	ft_to_do_map(t_list *node, t_condition *game_condition)
 {
-	int	n_direction;
-	t_list *new_map;
+	int		n_direction;
+	t_list	*new_map;
 
 	new_map = NULL;
 	(void)node;
@@ -125,8 +125,10 @@ bool	ft_to_do_map(t_list *node, t_condition *game_condition)
 	if (!(ft_check_start_end(game_condition->map, &n_direction, 0) == 0
 			&& n_direction == 1))
 		return (false);
-	new_map = ft_add_substrings_to_linked_list(new_map, game_condition->pure_map, 0);
-	if (breadth_first_search(ft_buffer_to_two_d_array(new_map, ft_lstsize(new_map), 0), game_condition)
+	new_map = ft_add_substrings_to_linked_list(new_map,
+			game_condition->pure_map, 0);
+	if (breadth_first_search(ft_buffer_to_two_d_array(new_map,
+				ft_lstsize(new_map), 0), game_condition)
 		&& check_for_dead_ends(game_condition->pure_map))
 		return (true);
 	ft_print_substr(game_condition->pure_map);

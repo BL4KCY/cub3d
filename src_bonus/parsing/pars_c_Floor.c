@@ -6,53 +6,17 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:34:10 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/16 02:40:09 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/22 04:21:56 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_contain_only_digit(char *str)
+int	is_now_valid(char *str)
 {
 	int	i;
-	int	error;
-
-	error = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]) == 0)
-			error = -1;
-		i++;
-	}
-	if (error == -1)
-		return (-1);
-	if (ft_atoi_if(str) == false || ft_atoi(str) > 255)
-		return (-1);
-	return (0);
-}
-
-int ft_may_contain_digit(char *str)
-{
-	int i;
-	int faced_a_digit;
-
-	faced_a_digit = 0;
-	i = 0;
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]) == 0)
-			faced_a_digit = 1;
-		i++;
-	}
-	return (faced_a_digit);
-}
-
-int is_now_valid(char *str)
-{
-	int i;
-	int start;
-	int digit;
+	int	start;
+	int	digit;
 
 	i = 1;
 	start = i;
@@ -67,7 +31,7 @@ int is_now_valid(char *str)
 				{
 					digit++;
 					start = i;
-					break;
+					break ;
 				}
 				start++;
 			}
@@ -77,7 +41,7 @@ int is_now_valid(char *str)
 	return (digit);
 }
 
-bool ft_track_comma(char *str)
+bool	ft_track_comma(char *str)
 {
 	int		i;
 	int		flag;
@@ -90,8 +54,7 @@ bool ft_track_comma(char *str)
 		if (is_now_valid(ft_strtrim(str, " ")) != 3)
 			return (false);
 		substr = ft_split(ft_substr(ft_strtrim(str, " "),
-									find_specific_char(str, ' ') + 1, ft_strlen(str)),
-						  ',');
+					find_specific_char(str, ' ') + 1, ft_strlen(str)), ',');
 		while (substr[i])
 		{
 			if (ft_contain_only_digit(ft_strtrim(substr[i], " ")) == -1)
@@ -134,8 +97,8 @@ bool	ft_spin(const char *str)
 	if (!substr)
 		return (false);
 	str_len = ft_strlen(str);
-	return (ft_strncmp(substr[0], "C", str_len) == 0
-		|| ft_strncmp(substr[0], "F", str_len) == 0);
+	return (ft_strncmp(substr[0], "C", str_len) == 0 || ft_strncmp(substr[0],
+			"F", str_len) == 0);
 }
 
 bool	ft_to_do_c_floor(t_list *node, t_condition *condition)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pars_for_each.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/22 03:52:24 by mmad              #+#    #+#             */
+/*   Updated: 2024/09/22 03:53:44 by mmad             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 bool	process_c_flor(char *str)
@@ -63,10 +75,7 @@ void	ft_process_game_condition(t_list *textures, t_list *c_flor, t_list *map,
 bool	ft_grep_to_pars_if(char ch, t_condition *game_condition,
 		bool (*f)(t_list *, t_condition *condition))
 {
-	t_list	*textures;
-	t_list	*c_flor;
-	t_list	*map;
-
+	t_list (*textures), (*c_flor), (*map);
 	textures = NULL;
 	c_flor = NULL;
 	map = NULL;

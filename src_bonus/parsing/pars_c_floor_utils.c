@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 17:12:05 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/16 02:16:16 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/22 04:23:06 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ bool	ft_atoi_if(const char *nptr)
 	}
 	return (true);
 }
-bool ft_find_color(char *str, char c)
+
+bool	ft_find_color(char *str, char c)
 {
 	if (!str)
 		return (false);
@@ -51,28 +52,29 @@ bool ft_find_color(char *str, char c)
 	return (false);
 }
 
-void ft_import_colors(t_list *floor, t_list *ceiling, t_condition *condition)
+void	ft_import_colors(t_list *floor, t_list *ceiling, t_condition *condition)
 {
-	char **floor_substr;
-	char **ceiling_substr;
+	char	**floor_substr;
+	char	**ceiling_substr;
 
 	if (!floor || !ceiling)
-		return;
+		return ;
 	floor_substr = ft_buffer_to_two_d_array(floor, ft_lstsize(floor), 0);
 	ceiling_substr = ft_buffer_to_two_d_array(ceiling, ft_lstsize(ceiling), 0);
 	condition->floor_color = rgb_int(ft_atoi(floor_substr[0]),
-				ft_atoi(floor_substr[1]), ft_atoi(floor_substr[2]));
+			ft_atoi(floor_substr[1]), ft_atoi(floor_substr[2]));
 	condition->ceiling_color = rgb_int(ft_atoi(ceiling_substr[0]),
-				ft_atoi(ceiling_substr[1]), ft_atoi(ceiling_substr[2]));
+			ft_atoi(ceiling_substr[1]), ft_atoi(ceiling_substr[2]));
 }
-void ft_node_colors(t_list *node, t_condition *condition)
-{
-	(void)condition;
-	t_list *floor;
-	t_list *ceiling;
-	char **f;
-	char **c;
 
+void	ft_node_colors(t_list *node, t_condition *condition)
+{
+	t_list	*floor;
+	t_list	*ceiling;
+	char	**f;
+	char	**c;
+
+	(void)condition;
 	floor = NULL;
 	ceiling = NULL;
 	f = NULL;

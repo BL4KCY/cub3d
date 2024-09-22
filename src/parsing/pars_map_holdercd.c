@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 10:09:12 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/11 16:12:08 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/22 03:40:44 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ char	**ft_create_two_dimensional_array(char **argv)
 	return (ft_split(str, '\n'));
 }
 
-t_list *ft_add_substrings_to_linked_list(t_list *node, char **sub_str, int flag)
+t_list	*ft_add_substrings_to_linked_list(t_list *node, char **sub_str,
+		int flag)
 {
-	int i;
+	int	i;
+
 	if (!sub_str)
 		return (NULL);
 	i = 0;
@@ -65,6 +67,7 @@ t_list *ft_add_substrings_to_linked_list(t_list *node, char **sub_str, int flag)
 	}
 	return (node);
 }
+
 bool	ft_duplicates(t_list *node)
 {
 	int		count;
