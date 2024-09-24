@@ -35,7 +35,9 @@ void	full_map(t_info *info)
 		while (++j < info->map.n_cols)
 		{
 			color = (info->map.grid[i][j] == '1') * BROWN
-				+ (info->map.grid[i][j] == '0') * DARK_BROWN;
+				+ (info->map.grid[i][j] == '0') * DARK_BROWN
+				+ (info->map.grid[i][j] == 'B') * RED
+				+ (info->map.grid[i][j] == 'b') * GREEN;
 			rect(&info->map.data, (t_rect){
 				j * T_SIZE * MINIMAP_SCALE_FAC,
 				i * T_SIZE * MINIMAP_SCALE_FAC,
@@ -46,16 +48,45 @@ void	full_map(t_info *info)
 	update_player_pos_in_full_map(info);
 }
 
+void	door_key(t_info *info)
+{
+	t_intersec	intersec;
+	int			x;
+	int			y;
+
+	set_horizonal_intersection(info, &intersec, (int)MID_ANG_ID, C_DOOR | O_DOOR | WALL);
+	set_vertical_intersection(info, &intersec, (int)MID_ANG_ID, C_DOOR | O_DOOR | WALL);
+	if (intersec.h_dis < intersec.v_dis)
+	{
+		x = (int)intersec.h.x / T_SIZE;
+		y = (int)(intersec.h.y - info->player.ray[(int)MID_ANG_ID].is_ray_up) / T_SIZE;
+		if (intersec.h_hit == C_DOOR && intersec.h_dis <= DOOR_RANGE_DIST)
+			info->map.grid[y][x] = 'b';
+		if (intersec.h_hit == O_DOOR && intersec.h_dis <= DOOR_RANGE_DIST)
+			info->map.grid[y][x] = 'B';
+	}
+	else
+	{
+		x = (int)(intersec.v.x - info->player.ray[(int)MID_ANG_ID].is_ray_left) / T_SIZE; 
+		y = (int)intersec.v.y / T_SIZE;
+		if (intersec.v_hit == C_DOOR && intersec.v_dis <= DOOR_RANGE_DIST)
+			info->map.grid[y][x] = 'b';
+		if (intersec.v_hit == O_DOOR && intersec.v_dis <= DOOR_RANGE_DIST)
+			info->map.grid[y][x] = 'B';
+	}
+}
+
 int	rendering(t_info *info)
 {
 	init_img_data(info);
 	update_player_position(info);
 	raycasting(info);
-	update_3d(info);
-	// full_map(info);
-	// render_rays(info);
-	update_minimap(info);
-	update_player(info);
+	// update_3d(info);
+	full_map(info);
+	render_rays(info);
+	// update_minimap(info);
+	// update_player(info);
+	// update_sprite(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
 	return (0);
 }

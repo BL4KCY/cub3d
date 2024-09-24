@@ -1,6 +1,6 @@
 #include "cub3d.h"
 
-bool	update_intersec_hor(t_info *info, t_intersec *intersec, int id)
+bool	update_intersec_hor(t_info *info, t_intersec *intersec, int id, int type_hit)
 {
 	static double	start = 0;
 	double			next_x;
@@ -8,23 +8,17 @@ bool	update_intersec_hor(t_info *info, t_intersec *intersec, int id)
 
 	next_x = intersec->h.x + (intersec->step.x * start);
 	next_y = intersec->h.y + (intersec->step.y * start);
-	if (next_x <= 0 || next_x >= info->width
-		|| next_y <= 0 || next_y >= info->height)
-	{
-		intersec->h.y = info->player.y;
-		intersec->h.x = info->player.x;
-		return (start = 0, false);
-	}
 	intersec->h.x = next_x;
 	intersec->h.y = next_y;
-	if (hit_wall(info, intersec->h.x, intersec->h.y
-			- info->player.ray[id].is_ray_up))
+	intersec->h_hit = hit(info, intersec->h.x, intersec->h.y
+			- info->player.ray[id].is_ray_up);
+	if (intersec->h_hit & type_hit)
 		return (start = 0, false);
 	start = 1;
 	return (true);
 }
 
-void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id)
+void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id, int type_hit)
 {
 	intersec->h.y = floor(info->player.y / T_SIZE) * T_SIZE;
 	if (info->player.ray[id].is_ray_down)
@@ -39,7 +33,7 @@ void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id)
 		intersec->step.x *= -1;
 	if (info->player.ray[id].is_ray_right && intersec->step.x < 0)
 		intersec->step.x *= -1;
-	while (update_intersec_hor(info, intersec, id))
+	while (update_intersec_hor(info, intersec, id, type_hit))
 		;
 	intersec->h_dis = distence_ray(info, intersec->h.x, intersec->h.y);
 }

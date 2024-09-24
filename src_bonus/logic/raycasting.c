@@ -20,9 +20,22 @@ void	create_rays(t_info *info)
 	}
 }
 
-bool	hit_wall(t_info *info, double x, double y)
+t_type	hit(t_info *info, double x, double y)
 {
-	return (info->map.grid[(int)(y / T_SIZE)][(int)(x / T_SIZE)] == '1');
+	int		j;
+	int		i;
+
+	j = (int)(x / T_SIZE);
+	i = (int)(y / T_SIZE);
+	if (x < 0 || x > info->width || y < 0 || y > info->height)
+		return (WALL);
+	if (info->map.grid[i][j] == '1')
+		return (WALL);
+	if (info->map.grid[i][j] == 'B')
+		return (C_DOOR);
+	if (info->map.grid[i][j] == 'b')
+		return (O_DOOR);
+	return (EMPTY);
 }
 
 double	distence_ray(t_info *info, double x, double y)
@@ -42,14 +55,15 @@ void	raycasting(t_info *info)
 	i = -1;
 	while (++i < NUM_RAYS)
 	{
-		set_horizonal_intersection(info, &intersec, i);
-		set_vertical_intersection(info, &intersec, i);
+		set_horizonal_intersection(info, &intersec, i, WALL | C_DOOR);
+		set_vertical_intersection(info, &intersec, i, WALL | C_DOOR);
 		if (intersec.h_dis < intersec.v_dis)
 		{
 			info->player.ray[i].ray_dis = intersec.h_dis;
 			info->player.ray[i].is_hor = true;
 			info->player.ray[i].hit_x = intersec.h.x;
 			info->player.ray[i].hit_y = intersec.h.y;
+			info->player.ray[i].hit = intersec.h_hit;
 		}
 		else
 		{
@@ -57,6 +71,7 @@ void	raycasting(t_info *info)
 			info->player.ray[i].is_hor = false;
 			info->player.ray[i].hit_x = intersec.v.x;
 			info->player.ray[i].hit_y = intersec.v.y;
+			info->player.ray[i].hit = intersec.v_hit;
 		}
 		correct_ray_dis = info->player.ray[i].ray_dis * cos(info->player.ray[i].ray_ang - info->player.rotation_angle);
 		info->player.ray[i].strip_height = (T_SIZE / correct_ray_dis) * info->player.plane_dis;

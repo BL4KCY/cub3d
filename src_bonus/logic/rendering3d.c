@@ -9,26 +9,28 @@ void	start_end_strip(t_info *info, int *wall_top, int *wall_bottom, int id)
 	*wall_bottom = (*wall_bottom <= HEIGHT) * *wall_bottom + (*wall_bottom > HEIGHT) * HEIGHT;
 }
 
+int	check_direction(t_info *info, int x)
+{
+	if (info->player.ray[x].hit == C_DOOR)
+		return (DOOR_ID);
+	if (info->player.ray[x].is_hor && info->player.ray[x].is_ray_down)
+		return (NORTH_ID);
+	if (info->player.ray[x].is_hor && info->player.ray[x].is_ray_up)
+		return (SOUTH_ID);
+	if (!info->player.ray[x].is_hor && info->player.ray[x].is_ray_left)
+		return (WEST_ID);
+	if (!info->player.ray[x].is_hor && info->player.ray[x].is_ray_right)
+		return (EAST_ID);
+	return (0);
+}
+
 void	set_wall_tex_pixel(t_info *info, int x, int y)
 {
 	int			dis_from_top;
 	int			direction;
 	uint32_t	color;
 
-	if (info->player.ray[x].is_hor)
-	{
-		if (info->player.ray[x].is_ray_up)
-			direction = NORTH;
-		else
-			direction = SOUTH;
-	}
-	else
-	{
-		if (info->player.ray[x].is_ray_left)
-			direction = WEST;
-		else
-			direction = EAST;
-	}
+	direction = check_direction(info, x);
 	dis_from_top = y + (info->player.ray[x].strip_height / 2) - (HEIGHT / 2);
 	info->tex.offset_y = dis_from_top
 		* (info->tex.img[direction].height / info->player.ray[x].strip_height);

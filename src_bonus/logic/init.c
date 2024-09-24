@@ -1,5 +1,14 @@
 #include "cub3d.h"
 
+void	set_walls(t_info *info, t_queue *door_coor)
+{
+	while (door_coor)
+	{
+		info->map.grid[door_coor->x][door_coor->y] = 'B';
+		printf("x: %d, y: %d\n", door_coor->x, door_coor->y);
+		door_coor = door_coor->next;
+	}
+}
 
 void	init_map(t_info *info, t_condition *condition)
 {
@@ -11,6 +20,7 @@ void	init_map(t_info *info, t_condition *condition)
 	info->width = info->map.n_cols * T_SIZE;
 	info->height = info->map.n_row * T_SIZE;
 	info->map.data.img = NULL;
+	set_walls(info, condition->queue);
 }
 
 // double	get_red
@@ -26,8 +36,8 @@ void	init_player(t_info *info, t_condition *condition)
 	info->player.move_updown = 0;
 	info->player.move_rightleft = 0;
 	info->player.rotation_angle = condition->r_ang;
-	info->player.move_speed = 4;
-	info->player.rotation_speed = 3 * (M_PI / 180);
+	info->player.move_speed = 0.75;
+	info->player.rotation_speed = 0.3 * (M_PI / 180);
 	info->player.plane_dis = (WIDTH / 2) / tan(deg_to_rad(FOV_ANGLE) / 2);
 	info->player.ray = ft_malloc(sizeof(t_ray) * NUM_RAYS);
 }
