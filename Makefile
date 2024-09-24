@@ -1,6 +1,6 @@
 #______command and their flags______#
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3 #-Ofast
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g #-Ofast
 MLXFLAGS = -lmlx -lXext -lX11 -lm 
 
 #______directories______#
@@ -36,7 +36,7 @@ HEADERS := $(INCLUDES)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES)/structs.h $(I
 SOURCES_BNS := $(addprefix $(SRC_LGC_DIR_BNS)/, $(FILES_EXEC_BNS)) $(addprefix $(SRC_PARS_DIR_BNS)/, $(FILES_PARS_BNS))
 OBJECTS_BNS := $(patsubst $(SRC_LGC_DIR_BNS)/%.c, $(OBJ_DIR_BNS)/%.o, $(SOURCES_BNS))
 OBJECTS_BNS := $(patsubst $(SRC_PARS_DIR_BNS)/%.c, $(OBJ_DIR_BNS)/%.o, $(OBJECTS_BNS))
-HEADERS_BNS := $(INCLUDES_BNS)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES_BNS)/structs.h $(INCLUDES_BNS)/macros.h
+HEADERS_BNS := $(INCLUDES_BNS)/cub3d.h $(LIB_INCLUDES)/libft.h $(INCLUDES_BNS)/structs.h $(INCLUDES_BNS)/macros.h $(INCLUDES_BNS)/enums.h
 
 #______static library name______#
 NAME = cub3D
@@ -63,13 +63,13 @@ $(BONUS_NAME): $(OBJECTS_BNS) $(LIB)/libft.a
 	$(CC) $(CFLAGS) $^ -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) $(MLXFLAGS) -o $@
 
 # impicit rule for logic bonus
-$(OBJ_DIR_BNS)/%.o: $(SRC_LGC_DIR_BNS)/%.c $(HEADERS)
+$(OBJ_DIR_BNS)/%.o: $(SRC_LGC_DIR_BNS)/%.c $(HEADERS_BNS)
 	@mkdir -p $(OBJ_DIR_BNS)
-	$(CC) $(CFLAGS) -I$(INCLUDES) -I$(LIB_INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) -c $< -o $@
 # impicit rule for parsing bonus
-$(OBJ_DIR_BNS)/%.o: $(SRC_PARS_DIR_BNS)/%.c $(HEADERS)
+$(OBJ_DIR_BNS)/%.o: $(SRC_PARS_DIR_BNS)/%.c $(HEADERS_BNS)
 	@mkdir -p $(OBJ_DIR_BNS)
-	$(CC) $(CFLAGS) -I$(INCLUDES) -I$(LIB_INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) -c $< -o $@
 
 $(LIB)/%.a:
 	@echo "Compiling libft"
