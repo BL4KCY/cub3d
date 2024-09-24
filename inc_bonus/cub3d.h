@@ -42,11 +42,12 @@ int				update_minimap(t_info *info);
 void			update_player_position(t_info *info);
 void			update_player(t_info *info);
 double			normalize_angle(double angle);
-void			set_horizonal_intersection(t_info *info, t_intersec *intersec, int id);
-bool			hit_wall(t_info *info, double x, double y);
+void			set_horizonal_intersection(t_info *info, t_intersec *intersec, int id, int type_hit);
+t_type			hit(t_info *info, double x, double y);
 double			distence_ray(t_info *info, double x ,double y);
-void			set_vertical_intersection(t_info *info, t_intersec *intersec, int id);
+void			set_vertical_intersection(t_info *info, t_intersec *intersec, int id, int type_hit);
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
+void            door_key(t_info *info);
 
 #endif
 

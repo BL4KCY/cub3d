@@ -1,6 +1,8 @@
 #ifndef STRCT_H
 # define STRCT_H
+# include <stdbool.h>
 # include <stdint.h>
+# include "enums.h"
 // Image
 typedef struct
 {
@@ -68,6 +70,8 @@ typedef struct
 	t_coor	intersec;
 	double	v_dis;
 	double	h_dis;
+	t_type	v_hit;
+	t_type	h_hit;
 }			t_intersec;
 
 typedef struct
@@ -77,6 +81,7 @@ typedef struct
 	double	strip_height;
 	double	hit_x;
 	double	hit_y;
+	t_type	hit;
 	bool	is_hor;
 	bool	is_ray_up;
 	bool	is_ray_down;
@@ -98,6 +103,7 @@ typedef struct
 	double	move_speed;
 	double	rotation_speed;
 	double	plane_dis;
+	bool	open_door;
 }	t_player;
 
 typedef struct
@@ -119,7 +125,7 @@ typedef struct
 
 typedef struct
 {
-	t_img	img[4];
+	t_img	img[5];
 	int		offset_x;
 	int		offset_y;
 	int		floor_pcolor;
