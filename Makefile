@@ -81,9 +81,9 @@ re: fclean all
 
 
 run: $(NAME)
-	./$< maps/good/library.cub
+	./$< maps/mandatory/library.cub
 runbonus: $(BONUS_NAME)
-	./$< maps/good/library.cub
+	./$< maps/bonus/library.cub
 
 bonus: $(BONUS_NAME)
 #______cleaning______#
