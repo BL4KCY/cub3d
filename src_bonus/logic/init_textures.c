@@ -9,7 +9,7 @@ void	init_texture(t_info *info, t_condition *condition)
 	info->tex.img[SOUTH_ID].path = condition->pure_texture[1];
 	info->tex.img[WEST_ID].path = condition->pure_texture[2];
 	info->tex.img[EAST_ID].path = condition->pure_texture[3];
-	info->tex.img[DOOR_ID].path = "textures/xpm/ironDoor3_64^2.xpm";
+	info->tex.img[DOOR_ID].path = "textures/xpm/woodDoor_128.xpm";
 	i = -1;
 	while (++i < 5)
 	{
