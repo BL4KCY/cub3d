@@ -24,9 +24,9 @@
 // textures
 #define T_SIZE 64
 #define MM_RAD 100
-#define MINIMAP_SCALE_FAC 1
+#define MINIMAP_SCALE_FAC 0.5
 #define STRIP_WIDTH 1
-#define NUM_RAYS 1//WIDTH / STRIP_WIDTH
+#define NUM_RAYS WIDTH / STRIP_WIDTH
 #define MID_ANG_ID NUM_RAYS / 2
 #define FOV_ANGLE 60
 #define COLLISION_OFFSET 10
