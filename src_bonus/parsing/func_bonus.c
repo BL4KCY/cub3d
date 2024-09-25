@@ -1,12 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   func_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/22 04:17:08 by mmad              #+#    #+#             */
+/*   Updated: 2024/09/25 18:45:48 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
+
 
 bool	ft_to_do_map_bonus(t_list *node, t_condition *game_condition)
 {
-	(void)node;
-	t_list *new_map;
-
-	new_map = NULL;
+	t_list	*new_map;
 	int		n_direction;
+
+	(void)node;
+	new_map = NULL;
 	if (!game_condition->map)
 		return (false);
 	fill_modified_map(game_condition);
@@ -17,8 +30,11 @@ bool	ft_to_do_map_bonus(t_list *node, t_condition *game_condition)
 	if (!(ft_check_start_end(game_condition->map, &n_direction, 1) == 0
 			&& n_direction == 1))
 		return (false);
-	new_map = ft_add_substrings_to_linked_list(new_map, game_condition->pure_map, 0);
-	if (breadth_first_search(ft_buffer_to_two_d_array(new_map, ft_lstsize(new_map), 0), game_condition) && check_for_dead_ends(game_condition->pure_map))
+	new_map = ft_add_substrings_to_linked_list(new_map,
+			game_condition->pure_map, 0);
+	if (breadth_first_search(ft_buffer_to_two_d_array(new_map,
+				ft_lstsize(new_map), 0), game_condition)
+		&& check_for_dead_ends(game_condition->pure_map))
 		return (true);
 	return (false);
 }

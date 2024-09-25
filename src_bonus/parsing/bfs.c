@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:28:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/17 18:58:30 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/22 04:39:14 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ bool	ft_check_if_d(char **new_map, t_queue *front, int *x, int *y)
 	return (true);
 }
 
-bool breadth_first_search(char **new_map, t_condition *game_condition)
+bool	breadth_first_search(char **new_map, t_condition *game_condition)
 {
-	t_queue *front;
-	t_queue *rear;
-	int x;
-	int y;
+	t_queue	*front;
+	t_queue	*rear;
+	int		x;
+	int		y;
+
 	front = NULL;
 	rear = NULL;
 	ft_find_direction(new_map, &x, &y, game_condition);
@@ -105,21 +106,11 @@ bool	check_if_wall_can_exist(char **new_map)
 	return (true);
 }
 
-int	ft_n_columns_2d(char **substr)
-{
-	int	i;
-
-	i = 0;
-	while (substr[i])
-		i++;
-	return (i);
-}
-
 bool	ft_to_do_map(t_list *node, t_condition *game_condition)
 {
-	(void)node;
-	int		n_direction;
+	int	n_direction;
 
+	(void)node;
 	if (!game_condition->map)
 		return (false);
 	fill_modified_map(game_condition);
@@ -129,10 +120,9 @@ bool	ft_to_do_map(t_list *node, t_condition *game_condition)
 		return (false);
 	if (!(ft_check_start_end(game_condition->map, &n_direction, 0) == 0
 			&& n_direction == 1))
-        return (false);
-	if (breadth_first_search(game_condition->pure_map, game_condition) && check_for_dead_ends(game_condition->pure_map))
+		return (false);
+	if (breadth_first_search(game_condition->pure_map, game_condition)
+		&& check_for_dead_ends(game_condition->pure_map))
 		return (true);
 	return (false);
 }
-
-

@@ -6,14 +6,14 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 15:17:21 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/17 18:47:13 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/22 04:20:01 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include <macros.h>
 
-void ft_return_rotatio_angle(char c, t_condition *game_condition)
+void	ft_return_rotatio_angle(char c, t_condition *game_condition)
 {
 	if (c == 'N')
 		game_condition->r_ang = NORTH_P;
@@ -24,7 +24,9 @@ void ft_return_rotatio_angle(char c, t_condition *game_condition)
 	if (c == 'W')
 		game_condition->r_ang = WEST_P;
 }
-void	ft_find_direction(char **new_map, int *x, int *y, t_condition *game_condition)
+
+void	ft_find_direction(char **new_map, int *x, int *y,
+		t_condition *game_condition)
 {
 	int	i;
 	int	j;
@@ -41,7 +43,7 @@ void	ft_find_direction(char **new_map, int *x, int *y, t_condition *game_conditi
 				*x = i;
 				*y = j;
 				ft_return_rotatio_angle(new_map[i][j], game_condition);
-				return;
+				return ;
 			}
 			j++;
 		}
@@ -91,9 +93,9 @@ bool	check_for_connectedness_b(char *str, int *n_directions)
 		if (new_str[i] == 'N' || new_str[i] == 'E' || new_str[i] == 'S'
 			|| new_str[i] == 'W')
 			count_directions++;
-		if (new_str[i] != 'B' && new_str[i] != 'N' && new_str[i] != 'E' && new_str[i] != 'S'
-			&& new_str[i] != 'W' && new_str[i] != ' ' && new_str[i] != '0'
-			&& new_str[i] != '1')
+		if (new_str[i] != 'B' && new_str[i] != 'N' && new_str[i] != 'E'
+			&& new_str[i] != 'S' && new_str[i] != 'W' && new_str[i] != ' '
+			&& new_str[i] != '0' && new_str[i] != '1')
 			return (false);
 	}
 	*n_directions = count_directions;
@@ -127,21 +129,4 @@ int	ft_check_start_end(char **map, int *n_direction, int flag)
 		i++;
 	}
 	return (0);
-}
-
-int	ft_find_longest_line(char **substr, int *hight)
-{
-	int	i;
-	int	length;
-
-	i = 0;
-	length = 0;
-	while (substr[i])
-	{
-		if ((int)ft_strlen(substr[i]) > length)
-			length = ft_strlen(substr[i]);
-		i++;
-	}
-	*hight = i;
-	return (length);
 }
