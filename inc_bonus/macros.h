@@ -8,6 +8,7 @@
 # define KEYRELEASEMASK 2
 // keycodes
 # define ESC 65307
+# define M 109
 # define W 119
 # define S 115
 # define A 97
@@ -25,6 +26,7 @@
 #define T_SIZE 64
 #define MM_RAD 100
 #define MINIMAP_SCALE_FAC 0.5
+#define MOUSE_SENSITIVITY 0.04
 #define STRIP_WIDTH 1
 #define NUM_RAYS WIDTH / STRIP_WIDTH
 #define MID_ANG_ID NUM_RAYS / 2

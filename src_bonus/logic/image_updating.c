@@ -57,12 +57,17 @@ double	mouse_move(t_info *info)
 	int			y;
 
 	mlx_mouse_get_pos(info->mlx, info->win, &x, &y);
-	if (x != (int)info->mouse.x && x > WIDTH / 2)
-		return (info->mouse.x = x, info->player.rotation_speed);
-	else if (x != (int)info->mouse.x && x < WIDTH / 2)
-		return (info->mouse.x = x, -info->player.rotation_speed);
-	else
-		return (info->mouse.x = x, 0);
+	if (x > WIDTH / 2)
+	{
+		mlx_mouse_move(info->mlx, info->win, WIDTH / 2, HEIGHT / 2);
+		return (MOUSE_SENSITIVITY);
+	}
+	if (x < WIDTH / 2)
+	{
+		mlx_mouse_move(info->mlx, info->win, WIDTH / 2, HEIGHT / 2);
+		return (-MOUSE_SENSITIVITY);
+	}
+	return (0);
 }
 void	wall_collision(t_info *info, double new_x, double new_y)
 {
@@ -77,7 +82,7 @@ void	update_player_position(t_info *info)
 	double	new_y;
 
 	info->player.rotation_angle += info->player.rotation_speed
-		* info->player.turn_direction;// + mouse_move(info);
+		* info->player.turn_direction + mouse_move(info);
 	info->player.rotation_angle = normalize_angle(info->player.rotation_angle);
 	new_x = info->player.x + (cos(info->player.rotation_angle)
 			* info->player.move_speed * info->player.walk_direction)
