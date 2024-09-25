@@ -27,7 +27,7 @@ t_type	hit(t_info *info, double x, double y)
 
 	j = (int)(x / T_SIZE);
 	i = (int)(y / T_SIZE);
-	if (x < 0 || x > info->width || y < 0 || y > info->height)
+	if (x < 0 || x >= info->width || y < 0 || y >= info->height)
 		return (WALL);
 	if (info->map.grid[i][j] == '1')
 		return (WALL);
