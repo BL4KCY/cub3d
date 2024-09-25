@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:28:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/22 04:39:14 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/25 17:52:00 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,38 @@ bool	ft_check_if_d(char **new_map, t_queue *front, int *x, int *y)
 
 bool	breadth_first_search(char **new_map, t_condition *game_condition)
 {
-	t_queue	*front;
-	t_queue	*rear;
-	int		x;
-	int		y;
-
+	t_queue *(front), *(rear);
+	int (x), (y);
 	front = NULL;
 	rear = NULL;
 	ft_find_direction(new_map, &x, &y, game_condition);
 	ft_enqueue(x, y, &front, &rear);
-	while (front)
+	return (bfs_main_loop(new_map, &front, &rear));
+}
+
+bool	bfs_main_loop(char **new_map, t_queue **front, t_queue **rear)
+{
+	int	directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+	int (nx), (ny), (x), (y), (i);
+	while (*front)
 	{
-		if (ft_check_if_d(new_map, front, &x, &y) == false)
+		if (!ft_check_if_d(new_map, *front, &x, &y))
 			return (false);
-		if (!x || (new_map[x - 1][y] == '0' && (new_map[x - 1][y] = '1')))
-			ft_enqueue(x - 1, y, &front, &rear);
-		if (new_map[x + 1][y] == '0' && (new_map[x + 1][y] = '1'))
-			ft_enqueue(x + 1, y, &front, &rear);
-		if (new_map[x][y - 1] == '0' && (new_map[x][y - 1] = '1'))
-			ft_enqueue(x, y - 1, &front, &rear);
-		if (new_map[x][y + 1] == '0' && (new_map[x][y + 1] = '1'))
-			ft_enqueue(x, y + 1, &front, &rear);
+		i = 0;
+		while (i < 4)
+		{
+			nx = x + directions[i][0];
+			ny = y + directions[i][1];
+			if (nx >= 0 && ny >= 0 && new_map[nx][ny] == '0')
+			{
+				new_map[nx][ny] = '1';
+				ft_enqueue(nx, ny, front, rear);
+			}
+			i++;
+		}
 		new_map[x][y] = '1';
-		ft_dequeue(&front, &rear);
+		ft_dequeue(front, rear);
 	}
 	return (true);
 }
@@ -104,25 +113,4 @@ bool	check_if_wall_can_exist(char **new_map)
 		}
 	}
 	return (true);
-}
-
-bool	ft_to_do_map(t_list *node, t_condition *game_condition)
-{
-	int	n_direction;
-
-	(void)node;
-	if (!game_condition->map)
-		return (false);
-	fill_modified_map(game_condition);
-	if (ft_check_up(game_condition->map[0]) == false
-		|| ft_check_up(game_condition->map[ft_n_columns_2d(game_condition->map)
-				- 1]) == false)
-		return (false);
-	if (!(ft_check_start_end(game_condition->map, &n_direction, 0) == 0
-			&& n_direction == 1))
-		return (false);
-	if (breadth_first_search(game_condition->pure_map, game_condition)
-		&& check_for_dead_ends(game_condition->pure_map))
-		return (true);
-	return (false);
 }
