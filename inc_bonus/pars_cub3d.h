@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_cub3d.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:29:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/22 04:02:57 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/25 18:54:00 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ void 				ft_node_colors(t_list *node, t_condition *condition);
 bool                ft_to_do_map_bonus(t_list *node, t_condition *game_condition);
 bool	            move_on_if_map_valid_bonus(t_condition *condition);
 void 				ft_print_queue(t_queue *front);
+int					ft_contain_only_digit(char *str);
+bool				bfs_main_loop(char **new_map, t_queue **front, t_queue **rear);
 
 #endif
