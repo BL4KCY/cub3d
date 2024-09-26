@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 04:15:35 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/25 17:53:32 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/26 22:23:57 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,6 @@ bool	ft_grep_to_pars_if(char ch, t_condition *condition, bool (*f)(t_list *,
 	else if (ch == ',')
 		return (f(c_flor, condition));
 	else
-	{
-		if (f(map, condition) != true)
-			return (false);
-	}
+		return (f(map, condition));
 	return (true);
 }

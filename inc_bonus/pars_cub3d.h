@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:29:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/26 18:31:21 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/26 22:26:45 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,8 @@ bool	ft_to_do_map_bonus(t_list *node, t_condition *game_condition);
 bool	move_on_if_map_valid_bonus(t_condition *condition);
 void	ft_print_queue(t_queue *front);
 t_queue	*fill_directions(void);
+void	ft_costom_map(t_condition *cnd);
+bool	valid(t_condition *condition, int x, int y);
+void	scale_size_of_map(t_condition *condition, int *new_hight,
+			int *new_width);
 #endif
