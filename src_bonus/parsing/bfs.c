@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 17:28:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/25 17:52:00 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/26 18:31:03 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,24 @@ bool	breadth_first_search(char **new_map, t_condition *game_condition)
 
 bool	bfs_main_loop(char **new_map, t_queue **front, t_queue **rear)
 {
-	int	directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+	t_queue	*direction;
 
-	int (nx), (ny), (x), (y), (i);
+	direction = fill_directions();
+	int (nx), (ny), (x), (y);
 	while (*front)
 	{
 		if (!ft_check_if_d(new_map, *front, &x, &y))
 			return (false);
-		i = 0;
-		while (i < 4)
+		while (direction)
 		{
-			nx = x + directions[i][0];
-			ny = y + directions[i][1];
+			nx = x + direction->x;
+			ny = y + direction->y;
 			if (nx >= 0 && ny >= 0 && new_map[nx][ny] == '0')
 			{
 				new_map[nx][ny] = '1';
 				ft_enqueue(nx, ny, front, rear);
 			}
-			i++;
+			direction = direction->next;
 		}
 		new_map[x][y] = '1';
 		ft_dequeue(front, rear);

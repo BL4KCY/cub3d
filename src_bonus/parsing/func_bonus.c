@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 04:17:08 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/25 18:03:50 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/26 18:31:39 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,31 @@ bool	move_on_if_map_valid_bonus(t_condition *condition)
 		return (false);
 	}
 	return (true);
+}
+
+t_queue	*fill_directions(void)
+{
+	t_queue	*front_direction;
+	t_queue	*rear_direction;
+	int		directions[4][2];
+	int		i;
+
+	front_direction = NULL;
+	rear_direction = NULL;
+	directions[0][0] = -1;
+	directions[0][1] = 0;
+	directions[1][0] = 1;
+	directions[1][1] = 0;
+	directions[2][0] = 0;
+	directions[2][1] = -1;
+	directions[3][0] = 0;
+	directions[3][1] = 1;
+	i = 0;
+	while (i < 4)
+	{
+		ft_enqueue(directions[i][0], directions[i][1], &front_direction,
+			&rear_direction);
+		i++;
+	}
+	return (front_direction);
 }
