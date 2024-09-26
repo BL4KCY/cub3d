@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:51:32 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/26 22:25:07 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/26 22:36:11 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,6 @@ int	main(int argc, char **argv)
 	game_condition.substr = ft_create_two_dimensional_array(argv);
 	if (move_on_if_map_valid_bonus(&game_condition) == false)
 		return (EXIT_FAILURE);
-	if (game_condition.height_of_map < 9 || game_condition.width_of_map < 9)
-		ft_costom_map(&game_condition);
-	printf("w %d | h %d\n", game_condition.width_of_map,
-		game_condition.height_of_map);
-	ft_print_substr(game_condition.pure_map);
 	info = (t_info *)get_info();
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");

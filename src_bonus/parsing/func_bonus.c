@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 04:17:08 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/26 18:31:39 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/26 22:35:53 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ bool	move_on_if_map_valid_bonus(t_condition *condition)
 		ft_hunt_leak();
 		return (false);
 	}
+	if (condition->height_of_map < 9 || condition->width_of_map < 9)
+		ft_costom_map(condition);
 	return (true);
 }
 
