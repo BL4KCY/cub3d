@@ -1,6 +1,6 @@
 #______command and their flags______#
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g #-Ofast
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address#-Ofast
 MLXFLAGS = -lmlx -lXext -lX11 -lm 
 
 #______directories______#
@@ -24,7 +24,7 @@ FILES_PARS := main.c bfs.c helper_functions.c pars_map_holdercd.c enqueue.c\
 		pars_texturs.c get_next_line.c pars_c_floor_utils.c scan_map_holder.c \
 		helper_functions2.c pars_c_floor_utils2.c enqueue_helper.c
 #______bonus files______#
-FILES_EXEC_BNS := $(FILES_EXEC)
+FILES_EXEC_BNS := $(FILES_EXEC) firstPerson.c
 FILES_PARS_BNS := $(FILES_PARS) func_bonus.c
 
 #______patterns and substitutions______#
@@ -79,6 +79,8 @@ $(LIB)/%.a:
 
 re: fclean all
 
+rebonus: fclean
+	@$(MAKE) bonus
 
 run: $(NAME)
 	./$< maps/mandatory/library.cub
