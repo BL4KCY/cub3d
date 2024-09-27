@@ -1,6 +1,16 @@
 #ifndef MACROS_H
 # define MACROS_H
 
+// events 
+// events masks
+# define KEYPRESSMASK 1
+# define KEYRELEASEMASK 2
+# define BUTTONPRESSMASK 4
+# define BUTTONRELEASEMASK 8
+// events codes
+# define ON_MOUSEMOVE 6
+# define ON_MOUSEDOWN 4
+# define ON_MOUSEUP 5
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3
 # define ON_DESTROY 17
@@ -8,6 +18,7 @@
 # define KEYRELEASEMASK 2
 // keycodes
 # define ESC 65307
+# define R 114
 # define M 109
 # define W 119
 # define S 115
@@ -18,6 +29,9 @@
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
+# define LEFT_CLICK 1
+# define RIGHT_CLICK 3
+
 
 // resolution
 #define HEIGHT 500
@@ -33,6 +47,7 @@
 #define FOV_ANGLE 60
 #define COLLISION_OFFSET 10
 #define DOOR_RANGE_DIST 120
+#define W_FRAMES 8
 
 // colors
 #define RED 0x00FF0000

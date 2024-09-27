@@ -3,6 +3,7 @@
 # include <stdbool.h>
 # include <stdint.h>
 # include "enums.h"
+# include "macros.h"
 // Image
 typedef struct
 {
@@ -132,6 +133,26 @@ typedef struct
 	int		ceiling_pcolor;
 }	t_tex;
 
+typedef struct 
+{
+	t_coor	coor;
+	bool	left_click;
+	bool	right_click;
+	bool	settings;
+	bool	speed;
+	bool	sensitivity;
+	bool	about;
+	bool	quit;
+}	t_menu;
+
+typedef struct
+{
+	t_img		*img;
+	uint16_t	n_frames;
+	bool		is_aiming;
+	bool		is_shooting;
+	bool		is_reloading;
+}	t_weapon;
 
 typedef struct
 {
@@ -143,6 +164,7 @@ typedef struct
 	t_player	player;
 	t_coor		mouse;
 	t_tex		tex;
+	t_weapon	weapon;
 }	t_info;
 
 // parsing

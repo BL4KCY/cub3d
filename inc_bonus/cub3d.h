@@ -8,6 +8,7 @@
 # include <errno.h>
 # include <stdio.h>
 # include <limits.h>
+# include <time.h>
 # include <math.h>
 # include "libft.h"
 # include "structs.h"
@@ -30,6 +31,7 @@ void			rect(t_data *data, t_rect rect);
 void			rect_cir(t_data *data, t_rect_cir rect_cir);
 void			draw_cir(t_data *data, t_cir cir);
 void			draw_line(t_data *data, t_line line);
+void			draw_img(t_data *data, t_img img, int x, int y);
 void			line_in_cir(t_data *data, t_line line, t_cir cir);
 double			deg_to_rad(double deg);
 double			rad_to_deg(double rad);
@@ -48,6 +50,10 @@ double			distence_ray(t_info *info, double x ,double y);
 void			set_vertical_intersection(t_info *info, t_intersec *intersec, int id, int type_hit);
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
 void            door_key(t_info *info);
+int	            mousepress(int button, int x, int y, t_info *info);
+int             mouserelease(int button, int x, int y, t_info *info);
+void	        first_person_view(t_info *info);
+void			init_first_person_view(t_info *info);
 
 #endif
 
