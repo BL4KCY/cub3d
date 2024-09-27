@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 03:52:24 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/22 03:53:44 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/26 18:40:49 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,32 +72,31 @@ void	ft_process_game_condition(t_list *textures, t_list *c_flor, t_list *map,
 	game_condition->map = ft_buffer_to_two_d_array(map, ft_lstsize(map), 0);
 }
 
-bool	ft_grep_to_pars_if(char ch, t_condition *game_condition,
-		bool (*f)(t_list *, t_condition *condition))
+bool	ft_grep_to_pars_if(char ch, t_condition *condition, bool (*f)(t_list *,
+			t_condition *condition))
 {
-	t_list (*textures), (*c_flor), (*map);
+	t_list *(textures), *(c_flor), *(map);
 	textures = NULL;
 	c_flor = NULL;
 	map = NULL;
-	ft_process_game_condition(textures, c_flor, map, game_condition);
-	game_condition->width_of_map = ft_find_longest_line(game_condition->map,
-			&game_condition->height_of_map);
-	textures = ft_add_substrings_to_linked_list(textures,
-			game_condition->textures, 0);
-	game_condition->pure_texture = ft_buffer_to_two_d_array(textures,
-			ft_lstsize(textures), 1);
-	fill_modified_map(game_condition);
-	ft_find_direction(game_condition->pure_map, &game_condition->y_player,
-		&game_condition->x_player, game_condition);
-	c_flor = ft_add_substrings_to_linked_list(c_flor, game_condition->c_flor,
+	ft_process_game_condition(textures, c_flor, map, condition);
+	condition->width_of_map = ft_find_longest_line(condition->map,
+			&condition->height_of_map);
+	textures = ft_add_substrings_to_linked_list(textures, condition->textures,
 			0);
+	condition->pure_texture = ft_buffer_to_two_d_array(textures,
+			ft_lstsize(textures), 1);
+	fill_modified_map(condition);
+	ft_find_direction(condition->pure_map, &condition->y_player,
+		&condition->x_player, condition);
+	c_flor = ft_add_substrings_to_linked_list(c_flor, condition->c_flor, 0);
 	if (ch == '.')
-		return (f(textures, game_condition));
+		return (f(textures, condition));
 	else if (ch == ',')
-		return (f(c_flor, game_condition));
+		return (f(c_flor, condition));
 	else
 	{
-		if (f(map, game_condition) != true)
+		if (f(map, condition) != true)
 			return (false);
 	}
 	return (true);

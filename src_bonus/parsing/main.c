@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/25 17:51:32 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/27 09:28:55 by melfersi         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cub3d.h"
 
 void	*get_info(void)
@@ -55,7 +43,6 @@ int	main(int argc, char **argv)
 	game_condition.substr = ft_create_two_dimensional_array(argv);
 	if (move_on_if_map_valid_bonus(&game_condition) == false)
 		return (EXIT_FAILURE);
-	ft_print_substr(game_condition.pure_map);
 	info = (t_info *)get_info();
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");

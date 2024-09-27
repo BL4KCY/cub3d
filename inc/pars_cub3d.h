@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 17:29:24 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/25 17:07:09 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/26 22:29:42 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,9 @@ bool	move_on_if_map_valid(t_condition *condition);
 int		ft_contain_only_digit(char *str);
 int		ft_may_contain_digit(char *str);
 bool	bfs_main_loop(char **new_map, t_queue **front, t_queue **rear);
+t_queue	*fill_directions(void);
+void	ft_costom_map(t_condition *cnd);
+bool	valid(t_condition *condition, int x, int y);
+void	scale_size_of_map(t_condition *condition, int *new_hight,
+			int *new_width);
 #endif

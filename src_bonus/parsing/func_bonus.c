@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   func_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/22 04:17:08 by mmad              #+#    #+#             */
+/*   Updated: 2024/09/27 15:33:13 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 
@@ -47,5 +59,34 @@ bool	move_on_if_map_valid_bonus(t_condition *condition)
 		ft_hunt_leak();
 		return (false);
 	}
+	if (condition->height_of_map < 9 || condition->width_of_map < 9)
+		ft_costom_map(condition);
 	return (true);
+}
+
+t_queue	*fill_directions(void)
+{
+	t_queue	*front_direction;
+	t_queue	*rear_direction;
+	int		directions[4][2];
+	int		i;
+
+	front_direction = NULL;
+	rear_direction = NULL;
+	directions[0][0] = -1;
+	directions[0][1] = 0;
+	directions[1][0] = 1;
+	directions[1][1] = 0;
+	directions[2][0] = 0;
+	directions[2][1] = -1;
+	directions[3][0] = 0;
+	directions[3][1] = 1;
+	i = 0;
+	while (i < 4)
+	{
+		ft_enqueue(directions[i][0], directions[i][1], &front_direction,
+			&rear_direction);
+		i++;
+	}
+	return (front_direction);
 }
