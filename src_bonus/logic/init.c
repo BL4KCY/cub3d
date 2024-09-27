@@ -43,6 +43,38 @@ void	init_player(t_info *info, t_condition *condition)
 	info->player.ray = ft_malloc(sizeof(t_ray) * NUM_RAYS);
 }
 
+void	init_first_person_view(t_info *info)
+{
+	int	i;
+
+	info->weapon.is_shooting = false;
+	info->weapon.is_aiming = false;
+	info->weapon.is_reloading = false;
+	info->weapon.n_frames = W_FRAMES;
+	info->weapon.img = ft_malloc(sizeof(t_img) * (info->weapon.n_frames + 1));
+	info->weapon.img[0].path = "textures/firstPerson/attack-pistol/1.xpm";
+	info->weapon.img[1].path = "textures/firstPerson/attack-pistol/2.xpm";
+	info->weapon.img[2].path = "textures/firstPerson/attack-pistol/3.xpm";
+	info->weapon.img[3].path = "textures/firstPerson/attack-pistol/4.xpm";
+	info->weapon.img[4].path = "textures/firstPerson/attack-pistol/5.xpm";
+	info->weapon.img[5].path = "textures/firstPerson/attack-pistol/6.xpm";
+	info->weapon.img[6].path = "textures/firstPerson/attack-pistol/7.xpm";
+	info->weapon.img[7].path = "textures/firstPerson/attack-pistol/8.xpm";
+
+	i = -1;
+	while (++i < info->weapon.n_frames)
+	{
+		info->weapon.img[i].data.img = mlx_xpm_file_to_image(info->mlx,
+			info->weapon.img[i].path,
+			&info->weapon.img[i].width,
+			&info->weapon.img[i].height);
+		info->weapon.img[i].data.addr = mlx_get_data_addr(info->weapon.img[i].data.img,
+			&info->weapon.img[i].data.bits_per_pixel,
+			&info->weapon.img[i].data.line_length,
+			&info->weapon.img[i].data.endian);
+	}
+}
+
 void	init_img_data(t_info *info)
 {
 	t_data	data;
