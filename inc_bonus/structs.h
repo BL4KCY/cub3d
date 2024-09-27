@@ -192,6 +192,8 @@ typedef struct
 	uint32_t		floor_color;
 	uint32_t		ceiling_color;
 	float			r_ang;
+	int				hight_padding;
+	int				width_padding;
 	t_queue			*queue;
 }					t_condition;
 

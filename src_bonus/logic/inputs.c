@@ -38,6 +38,8 @@ int	keyrelease(int keycode, t_info *info)
 
 int	mousepress(int button, int x, int y, t_info *info)
 {
+	(void)x;
+	(void)y;
 	if (button == LEFT_CLICK)
 		info->weapon.is_shooting = true;
 	if (button == RIGHT_CLICK)
@@ -47,6 +49,8 @@ int	mousepress(int button, int x, int y, t_info *info)
 
 int	mouserelease(int button, int x, int y, t_info *info)
 {
+	(void)x;
+	(void)y;
 	if (button == LEFT_CLICK)
 		info->weapon.is_shooting = false;
 	if (button == RIGHT_CLICK)
