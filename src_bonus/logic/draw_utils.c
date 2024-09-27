@@ -116,3 +116,22 @@ void	line_in_cir(t_data *data, t_line line, t_cir cir)
 		i++;
 	}
 }
+
+void	draw_img(t_data *data, t_img img, int x, int y)
+{
+	int	i;
+	int	j;
+	int	color;
+
+	i = -1;
+	while (++i < img.height)
+	{
+		j = -1;
+		while (++j < img.width)
+		{
+			color = my_mlx_pixel_get(&img.data, j, i);
+			if (!(color >> 24))
+				my_mlx_pixel_set(data, x + j, y + i, color);
+		}
+	}
+}
