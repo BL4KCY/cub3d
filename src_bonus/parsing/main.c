@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 17:51:32 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/25 17:51:33 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/27 09:28:55 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,12 @@ int	main(int argc, char **argv)
 	mlx_hook(info->win, ON_DESTROY, KEYPRESSMASK, ft_exit, info);
 	mlx_hook(info->win, ON_KEYDOWN, KEYPRESSMASK, keypress, info);
 	mlx_hook(info->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, info);
+	mlx_hook(info->win, ON_MOUSEDOWN, BUTTONPRESSMASK, mousepress, info);
+	mlx_hook(info->win, ON_MOUSEUP, BUTTONRELEASEMASK, mouserelease, info);
 	init_map(info, &game_condition);
 	init_player(info, &game_condition);
 	init_texture(info, &game_condition);
+	init_first_person_view(info);
 	mlx_loop_hook(info->mlx, rendering, info);
 	mlx_loop(info->mlx);
 	ft_hunt_leak();
