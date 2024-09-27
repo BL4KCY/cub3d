@@ -51,6 +51,7 @@ int	main(int argc, char **argv)
 	mlx_hook(info->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, info);
 	mlx_hook(info->win, ON_MOUSEDOWN, BUTTONPRESSMASK, mousepress, info);
 	mlx_hook(info->win, ON_MOUSEUP, BUTTONRELEASEMASK, mouserelease, info);
+	mlx_hook(info->win, MOTIONNOTIFY, MOTIONNOTIFYMASK, mousemove, info);
 	init_map(info, &game_condition);
 	init_player(info, &game_condition);
 	init_texture(info, &game_condition);

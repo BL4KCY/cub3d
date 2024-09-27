@@ -3,7 +3,7 @@
 
 void	start_end_strip(t_info *info, int *wall_top, int *wall_bottom, int id)
 {
-	*wall_top = (HEIGHT / 2) - (info->player.ray[id].strip_height / 2);
+	*wall_top = info->view_center - (info->player.ray[id].strip_height / 2);
 	*wall_top = (*wall_top >= 0) * *wall_top;
 	*wall_bottom = *wall_top + info->player.ray[id].strip_height;
 	*wall_bottom = (*wall_bottom <= HEIGHT) * *wall_bottom + (*wall_bottom > HEIGHT) * HEIGHT;
@@ -31,7 +31,7 @@ void	set_wall_tex_pixel(t_info *info, int x, int y)
 	uint32_t	color;
 
 	direction = check_direction(info, x);
-	dis_from_top = y + (info->player.ray[x].strip_height / 2) - (HEIGHT / 2);
+	dis_from_top = y + (info->player.ray[x].strip_height / 2) - info->view_center;
 	info->tex.offset_y = dis_from_top
 		* (info->tex.img[direction].height / info->player.ray[x].strip_height);
 	info->tex.offset_x = ((int)info->player.ray[x].hit_y % T_SIZE) * (info->tex.img[direction].width / T_SIZE);

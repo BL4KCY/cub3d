@@ -160,6 +160,7 @@ typedef struct
 	void		*win;
 	int			height;
 	int			width;
+	double		view_center;
 	t_map		map;
 	t_player	player;
 	t_coor		mouse;

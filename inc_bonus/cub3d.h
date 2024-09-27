@@ -52,6 +52,7 @@ unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
 void            door_key(t_info *info);
 int	            mousepress(int button, int x, int y, t_info *info);
 int             mouserelease(int button, int x, int y, t_info *info);
+int             mousemove(int x, int y, t_info *info);
 void	        first_person_view(t_info *info);
 void			init_first_person_view(t_info *info);
 bool			bfs_main_loop(char **new_map, t_queue **front, t_queue **rear);

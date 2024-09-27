@@ -12,6 +12,21 @@ void	update_player_status(t_info *info, int indx)
 	draw_img(&info->map.data, info->weapon.img[indx], start_x, start_y);
 }
 
+void	shooting(int *idx)
+{
+	if (*idx < 6)
+		*idx = 6;
+	else
+		*idx = 3;
+}
+
+void	aiming(int *idx)
+{
+	if (*idx < 2)
+		(*idx)++;
+	else
+		*idx = 2;
+}
 
 void	first_person_view(t_info *info)
 {
@@ -21,30 +36,13 @@ void	first_person_view(t_info *info)
 
 	current_time = clock();
 	double diff_time = (double)(current_time - last_time) / CLOCKS_PER_SEC * 1000;
-	// if (info->weapon.is_shooting)
-	// 	shoot(info);
-	// if (info->weapon.is_aiming)
-	// 	printf("Aiming\n");
-	// if (info->weapon.is_reloading)
-	// 	printf("Reloading\n");
 	if (diff_time > 40)
 	{
 		last_time = current_time;
 		if (info->weapon.is_shooting)
-		{
-			if (idx < 6)
-				idx++;
-			else
-				idx = 3;
-		}
+			shooting(&idx);
 		else if (info->weapon.is_aiming)
-		{
-
-			if (idx < 2)
-				idx++;
-			else
-				idx = 2;
-		}
+			aiming(&idx);
 		else
 			idx = 0;
 	}

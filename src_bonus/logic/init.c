@@ -21,6 +21,7 @@ void	init_map(t_info *info, t_condition *condition)
 	info->height = info->map.n_row * T_SIZE;
 	info->map.data.img = NULL;
 	set_walls(info, condition->queue);
+	mlx_mouse_move(info->mlx, info->win, WIDTH / 2, HEIGHT / 2);
 	mlx_mouse_hide(info->mlx, info->win);
 }
 

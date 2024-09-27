@@ -57,3 +57,30 @@ int	mouserelease(int button, int x, int y, t_info *info)
 		info->weapon.is_aiming = false;
 	return (0);
 }
+
+int	mousemove(int x, int y, t_info *info)
+{
+	if (x > WIDTH / 2)
+	{
+		mlx_mouse_move(info->mlx, info->win, WIDTH / 2, HEIGHT / 2);
+		info->player.rotation_angle += MOUSE_X_SENSITIVITY;
+	}
+	if (x < WIDTH / 2)
+	{
+		mlx_mouse_move(info->mlx, info->win, WIDTH / 2, HEIGHT / 2);
+		info->player.rotation_angle -= MOUSE_X_SENSITIVITY;
+	}
+	if (y > HEIGHT / 2)
+	{
+		mlx_mouse_move(info->mlx, info->win, WIDTH / 2, HEIGHT / 2);
+		info->view_center -= MOUSE_Y_SENSITIVITY
+			* ((info->view_center - MOUSE_Y_SENSITIVITY) >= 0);
+	}
+	if (y < HEIGHT / 2)
+	{
+		mlx_mouse_move(info->mlx, info->win, WIDTH / 2, HEIGHT / 2);
+		info->view_center += MOUSE_Y_SENSITIVITY
+			* ((info->view_center + MOUSE_Y_SENSITIVITY) < HEIGHT);
+	}
+	return (0);
+}

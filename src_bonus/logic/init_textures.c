@@ -22,4 +22,5 @@ void	init_texture(t_info *info, t_condition *condition)
 	}
 	info->tex.floor_pcolor = condition->floor_color;
 	info->tex.ceiling_pcolor = condition->ceiling_color;
+	info->view_center = HEIGHT / 2;
 }
