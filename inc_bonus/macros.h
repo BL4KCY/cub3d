@@ -20,6 +20,10 @@
 # define KEYRELEASEMASK 2
 // keycodes
 # define ESC 65307
+# define NUM_1 49
+# define NUM_2 50
+# define NUM_3 51
+# define NUM_4 52
 # define R 114
 # define M 109
 # define W 119
@@ -27,22 +31,27 @@
 # define A 97
 # define D 100
 # define E 101
+# define G 103
+# define Q 113
 # define UP 65362
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
 # define LEFT_CLICK 1
 # define RIGHT_CLICK 3
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
+# define SCROLL_CLICK 2
 
 
 // resolution
-#define HEIGHT 500
+#define HEIGHT 400
 #define WIDTH 800
 // textures
 #define T_SIZE 64
 #define MM_RAD 100
 #define MINIMAP_SCALE_FAC 0.5
-#define MOUSE_X_SENSITIVITY 0.05
+#define MOUSE_X_SENSITIVITY 0.02
 #define MOUSE_Y_SENSITIVITY 4
 #define STRIP_WIDTH 1
 #define NUM_RAYS WIDTH / STRIP_WIDTH
@@ -51,6 +60,9 @@
 #define COLLISION_OFFSET 10
 #define DOOR_RANGE_DIST 120
 #define W_FRAMES 8
+#define PISTOL_FRAMES 13
+#define KNIFE_FRAMES 5
+#define N_WEAPONS 4
 
 // colors
 #define RED 0x00FF0000

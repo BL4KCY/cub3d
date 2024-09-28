@@ -57,6 +57,7 @@ void	        first_person_view(t_info *info);
 void			init_first_person_view(t_info *info);
 bool			bfs_main_loop(char **new_map, t_queue **front, t_queue **rear);
 int				ft_contain_only_digit(char *str);
+t_weapon		init_weapon(t_weapon_type type);
 
 #endif
 

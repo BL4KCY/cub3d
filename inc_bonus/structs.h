@@ -150,8 +150,20 @@ typedef struct
 	t_img		*img;
 	uint16_t	n_frames;
 	bool		is_aiming;
+	int			aiming_frame;
+	int			aiming_frame_max;
 	bool		is_shooting;
-	bool		is_reloading;
+	int			shooting_frame;
+	int			shooting_frame_max;
+	bool		is_whiping;
+	int			whiping_frame;
+	int			whiping_frame_max;
+	short		delay_frame;
+	bool		is_kneeling;
+	int			kneeling_frame;
+	int			kneeling_frame_max;
+	bool		is_guarding;
+
 }	t_weapon;
 
 typedef struct
@@ -160,12 +172,12 @@ typedef struct
 	void		*win;
 	int			height;
 	int			width;
-	double		view_center;
 	t_map		map;
 	t_player	player;
 	t_coor		mouse;
 	t_tex		tex;
-	t_weapon	weapon;
+	t_weapon	weapon[N_WEAPONS];
+	short		active_weapon_id;
 }	t_info;
 
 // parsing

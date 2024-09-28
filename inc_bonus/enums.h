@@ -17,4 +17,12 @@ typedef enum
 	O_DOOR = 8
 }	t_type;
 
+typedef enum
+{
+	PISTOL,
+	KNIFE,
+	HAND,
+	MACHINEGUN
+}	t_weapon_type;
+
 #endif
