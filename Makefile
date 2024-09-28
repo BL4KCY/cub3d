@@ -24,7 +24,7 @@ FILES_PARS := main.c bfs.c helper_functions.c pars_map_holdercd.c enqueue.c\
 		pars_texturs.c get_next_line.c pars_c_floor_utils.c scan_map_holder.c \
 		helper_functions2.c pars_c_floor_utils2.c enqueue_helper.c
 #______bonus files______#
-FILES_EXEC_BNS := $(FILES_EXEC) firstPerson.c
+FILES_EXEC_BNS := $(FILES_EXEC) firstPerson.c firstPerson_init.c
 FILES_PARS_BNS := $(FILES_PARS) func_bonus.c
 
 #______patterns and substitutions______#
