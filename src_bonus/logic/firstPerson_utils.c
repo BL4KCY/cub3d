@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 10:24:08 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/29 10:28:26 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:07:25 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	shooting(int *idx, t_weapon weapon)
 		(*idx)++;
 	else
 		*idx = weapon.shooting_frame;
-	if (*idx > weapon.n_frames - 1)
-		(*idx) = 0;
 }
 
 void	aiming(int *idx, t_weapon weapon)
@@ -32,8 +30,6 @@ void	aiming(int *idx, t_weapon weapon)
 		(*idx)++;
 	else
 		*idx = weapon.aiming_frame;
-	if (*idx > weapon.n_frames - 1)
-		(*idx) = 0;
 }
 
 void	whiping(int *idx, t_weapon weapon)
@@ -46,15 +42,6 @@ void	whiping(int *idx, t_weapon weapon)
 	}
 	else
 		*idx = weapon.whiping_frame;
-	if (*idx > weapon.n_frames - 1)
-		(*idx) = 0;
-}
-
-void	guarding(int *idx, t_weapon weapon)
-{
-	*idx = 17;
-	if (*idx > weapon.n_frames - 1)
-		(*idx) = 0;
 }
 
 void	kneeling(int *idx, t_weapon weapon)
@@ -65,6 +52,4 @@ void	kneeling(int *idx, t_weapon weapon)
 		(*idx)++;
 	else
 		*idx = weapon.kneeling_frame;
-	if (*idx > weapon.n_frames - 1)
-		(*idx) = 0;
 }

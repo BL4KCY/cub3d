@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 10:24:08 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/29 10:30:34 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/29 18:08:05 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	update_player_status(t_info *info, int indx)
 	int		start_x;
 	int		start_y;
 
+	if (info->weapon[info->active_weapon_id].n_frames <= indx)
+		indx = 0;
 	start_x = (WIDTH / 2)
 		- (info->weapon[info->active_weapon_id].img[indx].width / 2);
 	start_y = HEIGHT - info->weapon[info->active_weapon_id].img[indx].height;
@@ -26,7 +28,6 @@ void	update_player_status(t_info *info, int indx)
 void	shooting(int *idx, t_weapon weapon);
 void	aiming(int *idx, t_weapon weapon);
 void	whiping(int *idx, t_weapon weapon);
-void	guarding(int *idx, t_weapon weapon);
 void	kneeling(int *idx, t_weapon weapon);
 
 void	first_person_view(t_info *info)
@@ -48,7 +49,7 @@ void	first_person_view(t_info *info)
 		else if (info->weapon[info->active_weapon_id].is_whiping)
 			whiping(&idx, info->weapon[info->active_weapon_id]);
 		else if (info->weapon[info->active_weapon_id].is_guarding)
-			guarding(&idx, info->weapon[info->active_weapon_id]);
+			idx = 17;
 		else if (info->weapon[info->active_weapon_id].is_kneeling)
 			kneeling(&idx, info->weapon[info->active_weapon_id]);
 		else
