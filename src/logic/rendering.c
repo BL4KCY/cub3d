@@ -55,7 +55,7 @@ int	rendering(t_info *info)
 	// full_map(info);
 	// render_rays(info);
 	// update_minimap(info);
-	// update_player(info);
+	// update_minimap_player(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
 	return (0);
 }

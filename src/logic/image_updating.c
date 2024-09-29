@@ -96,7 +96,7 @@ void	render_rays(t_info *info)
 	}
 }
 
-void	update_player(t_info *info)
+void	update_minimap_player(t_info *info)
 {
 	int	x2;
 	int	y2;
