@@ -33,7 +33,6 @@ void			draw_cir(t_data *data, t_cir cir);
 void			draw_line(t_data *data, t_line line);
 void			draw_img(t_data *data, t_img img, int x, int y);
 double			deg_to_rad(double deg);
-double			rad_to_deg(double rad);
 uint32_t		rgb_int(int r, int g, int b);
 uint32_t		argb(uint32_t src_color, uint32_t bg_color, float alpha);
 void			raycasting(t_info *info);

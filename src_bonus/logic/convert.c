@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 10:05:48 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/29 11:34:51 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:59:42 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 double	deg_to_rad(double deg)
 {
 	return (deg * (M_PI / 180));
-}
-
-double	rad_to_deg(double rad)
-{
-	return (rad * (180 / M_PI));
 }
 
 uint32_t	rgb_int(int r, int g, int b)

@@ -20,6 +20,8 @@
 # define KEYRELEASEMASK 2
 // keycodes
 # define ESC 65307
+# define LEFT_SHIFT 65505
+# define SPACE 32
 # define NUM_1 49
 # define NUM_2 50
 # define NUM_3 51
@@ -48,10 +50,13 @@
 #define HEIGHT 400
 #define WIDTH 800
 // textures
+#define MOVE_SPEED 3
+#define ROTATION_SPEED 1.5
+#define PLAYER_RADIUS 9
 #define T_SIZE 64
 #define MM_RAD 100
 #define MINIMAP_SCALE_FAC 0.5
-#define MOUSE_X_SENSITIVITY 0.02
+#define MOUSE_X_SENSITIVITY 0.04
 #define MOUSE_Y_SENSITIVITY 4
 #define STRIP_WIDTH 1
 #define NUM_RAYS WIDTH / STRIP_WIDTH

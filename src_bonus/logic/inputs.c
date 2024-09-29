@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_keyboard.c                                   :+:      :+:    :+:   */
+/*   inputs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 11:10:46 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/29 11:14:58 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/29 15:22:18 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	keypress_player(int keycode, t_info *info)
 		info->player.move_rightleft = -1;
 	if (keycode == D)
 		info->player.move_rightleft = 1;
+	if (keycode == LEFT_SHIFT)
+		info->player.move_speed = MOVE_SPEED * 2;
 }
 
 int	keypress(int keycode, t_info *info)
@@ -62,5 +64,7 @@ int	keyrelease(int keycode, t_info *info)
 		info->weapon[info->active_weapon_id].is_guarding = false;
 	if (keycode == Q)
 		info->weapon[info->active_weapon_id].is_kneeling = false;
+	if (keycode == LEFT_SHIFT)
+		info->player.move_speed = MOVE_SPEED;
 	return (0);
 }
