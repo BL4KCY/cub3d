@@ -1,12 +1,16 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rendering.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/29 11:31:05 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/29 11:36:21 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-double	normalize_angle(double angle)
-{
-	angle = remainder(angle, (M_PI * 2));
-	if (angle <= 0)
-		angle += (M_PI * 2);
-	return (angle);
-}
+#include "cub3d.h"
 
 void	update_player_pos_in_full_map(t_info *info)
 {
@@ -48,18 +52,26 @@ void	full_map(t_info *info)
 	update_player_pos_in_full_map(info);
 }
 
+void	set_intersec(t_info *info, t_intersec *intersec)
+{
+	set_horizonal_intersection(info, intersec,
+		(int)MID_ANG_ID, C_DOOR | O_DOOR | WALL);
+	set_vertical_intersection(info, intersec,
+		(int)MID_ANG_ID, C_DOOR | O_DOOR | WALL);
+}
+
 void	door_key(t_info *info)
 {
 	t_intersec	intersec;
 	int			x;
 	int			y;
 
-	set_horizonal_intersection(info, &intersec, (int)MID_ANG_ID, C_DOOR | O_DOOR | WALL);
-	set_vertical_intersection(info, &intersec, (int)MID_ANG_ID, C_DOOR | O_DOOR | WALL);
+	set_intersec(info, &intersec);
 	if (intersec.h_dis < intersec.v_dis)
 	{
 		x = (int)intersec.h.x / T_SIZE;
-		y = (int)(intersec.h.y - info->player.ray[(int)MID_ANG_ID].is_ray_up) / T_SIZE;
+		y = (int)(intersec.h.y - info->player.ray[(int)MID_ANG_ID].is_ray_up)
+			/ T_SIZE;
 		if (intersec.h_hit == C_DOOR && intersec.h_dis <= DOOR_RANGE_DIST)
 			info->map.grid[y][x] = 'b';
 		if (intersec.h_hit == O_DOOR && intersec.h_dis <= DOOR_RANGE_DIST)
@@ -67,7 +79,8 @@ void	door_key(t_info *info)
 	}
 	else
 	{
-		x = (int)(intersec.v.x - info->player.ray[(int)MID_ANG_ID].is_ray_left) / T_SIZE; 
+		x = (int)(intersec.v.x - info->player.ray[(int)MID_ANG_ID].is_ray_left)
+			/ T_SIZE;
 		y = (int)intersec.v.y / T_SIZE;
 		if (intersec.v_hit == C_DOOR && intersec.v_dis <= DOOR_RANGE_DIST)
 			info->map.grid[y][x] = 'b';
@@ -86,7 +99,7 @@ int	rendering(t_info *info)
 	// render_rays(info);
 	first_person_view(info);
 	update_minimap(info);
-	update_player(info);
+	update_minimap_player(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
 	return (0);
 }

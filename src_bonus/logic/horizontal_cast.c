@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   horizontal_cast.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/29 10:31:22 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/29 10:32:45 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-bool	update_intersec_hor(t_info *info, t_intersec *intersec, int id, int type_hit)
+bool	update_intersec_hor(t_info *info, t_intersec *intersec,
+							int id, int type_hit)
 {
 	static double	start = 0;
 	double			next_x;
@@ -18,7 +31,8 @@ bool	update_intersec_hor(t_info *info, t_intersec *intersec, int id, int type_hi
 	return (true);
 }
 
-void	set_horizonal_intersection(t_info *info, t_intersec *intersec, int id, int type_hit)
+void	set_horizonal_intersection(t_info *info, t_intersec *intersec,
+									int id, int type_hit)
 {
 	intersec->h.y = floor(info->player.y / T_SIZE) * T_SIZE;
 	if (info->player.ray[id].is_ray_down)

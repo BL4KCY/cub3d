@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   vertical_cast.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/29 11:28:20 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/29 11:30:08 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-bool	update_intersec_ver(t_info *info, t_intersec *intersec, int id, int type_hit)
+bool	update_intersec_ver(t_info *info, t_intersec *intersec,
+							int id, int type_hit)
 {
 	static double	start = 0;
 	double			next_x;
@@ -10,7 +23,8 @@ bool	update_intersec_ver(t_info *info, t_intersec *intersec, int id, int type_hi
 	next_y = intersec->v.y + (intersec->step.y * start);
 	intersec->v.x = next_x;
 	intersec->v.y = next_y;
-	intersec->v_hit = hit(info, intersec->v.x - info->player.ray[id].is_ray_left,
+	intersec->v_hit = hit(info,
+			intersec->v.x - info->player.ray[id].is_ray_left,
 			intersec->v.y);
 	if (intersec->v_hit & type_hit)
 		return (start = 0, false);
@@ -18,7 +32,8 @@ bool	update_intersec_ver(t_info *info, t_intersec *intersec, int id, int type_hi
 	return (true);
 }
 
-void	set_vertical_intersection(t_info *info, t_intersec *intersec, int id, int type_hit)
+void	set_vertical_intersection(t_info *info, t_intersec *intersec,
+								int id, int type_hit)
 {
 	intersec->v.x = floor(info->player.x / T_SIZE) * T_SIZE;
 	if (info->player.ray[id].is_ray_right)
