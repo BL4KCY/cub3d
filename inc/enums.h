@@ -2,10 +2,10 @@
 # define ENUMS_H
 typedef enum e_texture_direction
 {
-	NORTH,
-	SOUTH,
-	EAST,
-	WEST
+	NORTH_ID,
+	SOUTH_ID,
+	EAST_ID,
+	WEST_ID,
 }	t_texture_direction;
 
 #endif

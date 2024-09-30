@@ -1,5 +1,16 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_textures.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 11:55:58 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 11:56:39 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "cub3d.h"
 
 void	init_texture(t_info *info, t_condition *condition)
 {
@@ -13,11 +24,14 @@ void	init_texture(t_info *info, t_condition *condition)
 	while (++i < 4)
 	{
 		info->tex.img[i].data.img = mlx_xpm_file_to_image(info->mlx,
-			info->tex.img[i].path, &info->tex.img[i].width, &info->tex.img[i].height);
-		info->tex.img[i].data.addr = mlx_get_data_addr(info->tex.img[i].data.img,
-			&info->tex.img[i].data.bits_per_pixel,
-			&info->tex.img[i].data.line_length,
-			&info->tex.img[i].data.endian);
+				info->tex.img[i].path,
+				&info->tex.img[i].width,
+				&info->tex.img[i].height);
+		info->tex.img[i].data.addr = mlx_get_data_addr(
+				info->tex.img[i].data.img,
+				&info->tex.img[i].data.bits_per_pixel,
+				&info->tex.img[i].data.line_length,
+				&info->tex.img[i].data.endian);
 	}
 	info->tex.floor_pcolor = condition->floor_color;
 	info->tex.ceiling_pcolor = condition->ceiling_color;

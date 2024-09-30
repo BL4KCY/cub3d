@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 11:44:51 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 11:45:15 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 // drawing a rectangle
@@ -68,7 +80,7 @@ void	draw_line(t_data *data, t_line line)
 	int	dx;
 	int	dy;
 	int	i;
-	
+
 	dx = line.x2 - line.x1;
 	dy = line.y2 - line.y1;
 	if (abs(dx) > abs(dy))
