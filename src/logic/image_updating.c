@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 11:52:21 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 11:55:22 by melfersi         ###   ########.fr       */
+/*   Created: 2024/09/29 10:33:11 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 13:08:39 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ bool	check_intersec_wall(t_info *info, double i, double j)
 	y_inc = (int)j / T_SIZE - (int)info->player.y / T_SIZE;
 	if (1 == abs(x_inc) && 1 == abs(y_inc))
 	{
-		if (hit_wall(info, info->player.x + x_inc * T_SIZE, info->player.y)
-			&& hit_wall(info, info->player.x, info->player.y + y_inc * T_SIZE))
+		if (hit(info, info->player.x + x_inc * T_SIZE, info->player.y)
+			&& hit(info, info->player.x, info->player.y + y_inc * T_SIZE))
 			return (true);
 	}
 	return (false);
@@ -30,9 +30,9 @@ bool	check_intersec_wall(t_info *info, double i, double j)
 
 void	wall_collision(t_info *info, double new_x, double new_y)
 {
-	if (!hit_wall(info, new_x, info->player.y))
+	if (!hit(info, new_x, info->player.y))
 		info->player.x = new_x;
-	if (!hit_wall(info, info->player.x, new_y))
+	if (!hit(info, info->player.x, new_y))
 		info->player.y = new_y;
 }
 
@@ -52,7 +52,7 @@ void	update_player_position(t_info *info)
 			* info->player.move_speed * info->player.walk_direction)
 		+ (sin(info->player.rotation_angle + M_PI_2) * info->player.move_speed
 			* info->player.move_rightleft);
-	if (!hit_wall(info, new_x, new_y)
+	if ((!hit(info, new_x, new_y))
 		&& !check_intersec_wall(info, new_x, new_y))
 	{
 		info->player.x = new_x;
@@ -61,3 +61,26 @@ void	update_player_position(t_info *info)
 	else
 		wall_collision(info, new_x, new_y);
 }
+
+// void	render_rays(t_info *info)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while (i < NUM_RAYS)
+// 	{
+// 		draw_line(&info->map.data, (t_line){
+// 			MINIMAP_SCALE_FAC * info->player.x,
+// 			MINIMAP_SCALE_FAC * info->player.y,
+// 			MINIMAP_SCALE_FAC * info->player.ray[i].hit_x,
+// 			MINIMAP_SCALE_FAC * info->player.ray[i].hit_y,
+// 			CYAN, 0, 0, 0});
+// 		i++;
+// 	}
+// 	// i = MID_ANG_ID;
+// 	// draw_line(&info->map.data, (t_line){
+// 	// 	MINIMAP_SCALE_FAC * info->player.x, MINIMAP_SCALE_FAC * info->player.y,
+// 	// 	MINIMAP_SCALE_FAC * info->player.ray[i].hit_x,
+// 	// 	MINIMAP_SCALE_FAC * info->player.ray[i].hit_y,
+// 	// 	CYAN, 0, 0, 0});
+// }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 13:17:11 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 13:18:43 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 # include <stdlib.h>
@@ -15,8 +27,7 @@
 # include "pars_cub3d.h"
 # include "macros.h"
 
-
-int		        ft_exit(t_info *mlx);
+int				ft_exit(t_info *mlx);
 void			*get_info(void);
 int				keypress(int keycode, t_info *mlx);
 int				keyrelease(int keycode, t_info *mlx);
@@ -36,15 +47,15 @@ uint32_t		argb(uint32_t src_color, uint32_t bg_color, float alpha);
 void			raycasting(t_info *info);
 void			update_3d(t_info *info);
 void			render_rays(t_info *mlx);
-int				update_minimap(t_info *info);
 void			update_player_position(t_info *info);
 void			update_minimap_player(t_info *info);
 double			normalize_angle(double angle);
-void			set_horizonal_intersection(t_info *info, t_intersec *intersec, int id);
-bool			hit_wall(t_info *info, double x, double y);
-double			distence_ray(t_info *info, double x ,double y);
-void			set_vertical_intersection(t_info *info, t_intersec *intersec, int id);
+void			set_horizonal_intersection(t_info *info, t_intersec *intersec,
+					int id, int type_hit);
+void			set_vertical_intersection(t_info *info, t_intersec *intersec,
+					int id, int type_hit);
+t_type			hit(t_info *info, double x, double y);
+double			distence_ray(t_info *info, double x, double y);
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
 
 #endif
-

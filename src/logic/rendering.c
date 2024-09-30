@@ -5,20 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 12:09:28 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 12:09:50 by melfersi         ###   ########.fr       */
+/*   Created: 2024/09/29 11:31:05 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 13:01:54 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-double	normalize_angle(double angle)
-{
-	angle = remainder(angle, (M_PI * 2));
-	if (angle <= 0)
-		angle += (M_PI * 2);
-	return (angle);
-}
 
 void	update_player_pos_in_full_map(t_info *info)
 {

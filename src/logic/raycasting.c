@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 12:07:20 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 12:13:02 by melfersi         ###   ########.fr       */
+/*   Created: 2024/09/29 11:20:21 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 13:08:19 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,18 @@ void	create_rays(t_info *info)
 	}
 }
 
-bool	hit_wall(t_info *info, double x, double y)
+t_type	hit(t_info *info, double x, double y)
 {
-	return (info->map.grid[(int)(y / T_SIZE)][(int)(x / T_SIZE)] == '1');
+	int		j;
+	int		i;
+
+	j = (int)(x / T_SIZE);
+	i = (int)(y / T_SIZE);
+	if (x < 0 || x >= info->width || y < 0 || y >= info->height)
+		return (WALL);
+	if (info->map.grid[i][j] == '1')
+		return (WALL);
+	return (EMPTY);
 }
 
 double	distence_ray(t_info *info, double x, double y)
@@ -52,6 +61,7 @@ void	set_closest_ray(t_info *info, int i, t_intersec intersec)
 		info->player.ray[i].is_hor = true;
 		info->player.ray[i].hit_x = intersec.h.x;
 		info->player.ray[i].hit_y = intersec.h.y;
+		info->player.ray[i].hit = intersec.h_hit;
 	}
 	else
 	{
@@ -59,6 +69,7 @@ void	set_closest_ray(t_info *info, int i, t_intersec intersec)
 		info->player.ray[i].is_hor = false;
 		info->player.ray[i].hit_x = intersec.v.x;
 		info->player.ray[i].hit_y = intersec.v.y;
+		info->player.ray[i].hit = intersec.v_hit;
 	}
 }
 
@@ -72,8 +83,8 @@ void	raycasting(t_info *info)
 	i = -1;
 	while (++i < NUM_RAYS)
 	{
-		set_horizonal_intersection(info, &intersec, i);
-		set_vertical_intersection(info, &intersec, i);
+		set_horizonal_intersection(info, &intersec, i, WALL);
+		set_vertical_intersection(info, &intersec, i, WALL);
 		set_closest_ray(info, i, intersec);
 		correct_ray_dis = info->player.ray[i].ray_dis
 			* cos(info->player.ray[i].ray_ang - info->player.rotation_angle);

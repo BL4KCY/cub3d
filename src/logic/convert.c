@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 11:43:26 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 11:44:38 by melfersi         ###   ########.fr       */
+/*   Created: 2024/09/29 10:05:48 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/29 15:59:42 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@ double	deg_to_rad(double deg)
 uint32_t	rgb_int(int r, int g, int b)
 {
 	return ((r << 16) | (g << 8) | b);
+}
+
+double	normalize_angle(double angle)
+{
+	angle = remainder(angle, (M_PI * 2));
+	if (angle <= 0)
+		angle += (M_PI * 2);
+	return (angle);
 }
 
 t_argb	to_argb(uint32_t color)
@@ -46,6 +54,6 @@ uint32_t	argb(uint32_t src_color, uint32_t bg_color, float alpha)
 	src_argb.r = (uint8_t)((alpha * src_argb.r) + ((1 - alpha) * bg_argb.r));
 	src_argb.g = (uint8_t)((alpha * src_argb.g) + ((1 - alpha) * bg_argb.g));
 	src_argb.b = (uint8_t)((alpha * src_argb.b) + ((1 - alpha) * bg_argb.b));
-	return ((src_argb.a << 24) | (src_argb.r << 16)
-		| (src_argb.g << 8) | src_argb.b);
+	return ((src_argb.a << 24)
+		| (src_argb.r << 16) | (src_argb.g << 8) | src_argb.b);
 }

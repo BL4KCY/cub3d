@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 12:05:34 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 12:06:40 by melfersi         ###   ########.fr       */
+/*   Created: 2024/09/29 11:05:42 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 13:00:10 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	init_player(t_info *info, t_condition *condition)
 {
 	info->player.x = (condition->x_player * T_SIZE) + (T_SIZE / 2);
 	info->player.y = (condition->y_player * T_SIZE) + (T_SIZE / 2);
-	info->player.radius = 8;
+	info->player.radius = PLAYER_RADIUS;
 	info->player.turn_direction = 0;
 	info->player.walk_direction = 0;
 	info->player.move_updown = 0;
 	info->player.move_rightleft = 0;
 	info->player.rotation_angle = condition->r_ang;
-	info->player.move_speed = 4;
-	info->player.rotation_speed = 3 * (M_PI / 180);
+	info->player.move_speed = MOVE_SPEED;
+	info->player.rotation_speed = ROTATION_SPEED * (M_PI / 180);
 	info->player.plane_dis = (WIDTH / 2) / tan(deg_to_rad(FOV_ANGLE) / 2);
 	info->player.ray = ft_malloc(sizeof(t_ray) * NUM_RAYS);
 }

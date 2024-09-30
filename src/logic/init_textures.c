@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/30 11:55:58 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 11:56:39 by melfersi         ###   ########.fr       */
+/*   Created: 2024/09/29 11:09:01 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 12:59:01 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	init_texture(t_info *info, t_condition *condition)
 {
 	int		i;
 
-	info->tex.img[NORTH].path = condition->pure_texture[0];
-	info->tex.img[SOUTH].path = condition->pure_texture[1];
-	info->tex.img[WEST].path = condition->pure_texture[2];
-	info->tex.img[EAST].path = condition->pure_texture[3];
+	info->tex.img[NORTH_ID].path = condition->pure_texture[0];
+	info->tex.img[SOUTH_ID].path = condition->pure_texture[1];
+	info->tex.img[WEST_ID].path = condition->pure_texture[2];
+	info->tex.img[EAST_ID].path = condition->pure_texture[3];
 	i = -1;
 	while (++i < 4)
 	{
