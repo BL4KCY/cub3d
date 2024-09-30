@@ -6,12 +6,11 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 04:17:08 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/27 15:33:13 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/30 09:59:57 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 bool	ft_to_do_map_bonus(t_list *node, t_condition *game_condition)
 {
