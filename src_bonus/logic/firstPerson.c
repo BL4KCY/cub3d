@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 10:24:08 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/29 18:08:05 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/30 10:55:58 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	kneeling(int *idx, t_weapon weapon);
 void	first_person_view(t_info *info)
 {
 	static int		idx = 0;
-	static clock_t	last_time;
+	static clock_t	last_time = 0;
 	clock_t			current_time;
 	double			diff_time;
 
