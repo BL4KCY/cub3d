@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:34:10 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/22 04:21:56 by mmad             ###   ########.fr       */
+/*   Updated: 2024/09/30 21:59:47 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,14 @@ bool	ft_to_do_c_floor(t_list *node, t_condition *condition)
 		if (ft_spin((char *)temp->content) == true)
 			temp = temp->next;
 		else
-			return (false);
+			return (printf(RED_W "Invalid Floor Celling\n" RESET), false);
 	}
 	if (ft_lstsize(node) != 2)
-		return (false);
+		return (printf(RED_W "Invalid Floor Celling\n" RESET), false);
 	if (ft_duplicates(node) == false)
-		return (false);
+		return (printf(RED_W "Invalid Floor Celling\n" RESET), false);
 	if (ft_pars_colors(node) == false)
-		return (false);
+		return (printf(RED_W "Invalid Floor Celling\n" RESET), false);
 	ft_node_colors(node, condition);
 	return (true);
 }

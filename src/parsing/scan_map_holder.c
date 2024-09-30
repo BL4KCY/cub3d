@@ -16,7 +16,8 @@ bool	move_on_if_map_valid(t_condition *condition)
 {
 	if (condition->substr == NULL)
 	{
-		printf(RED_W "[Invalid]\n" RESET);
+		printf(RED_W "Line in the map\n" RESET);
+		printf(RED_W "[Error Parsing]\n" RESET);
 		ft_hunt_leak();
 		return (false);
 	}

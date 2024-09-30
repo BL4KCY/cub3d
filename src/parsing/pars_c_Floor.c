@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_c_Floor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammedmad <mohammedmad@student.42.fr>    +#+  +:+       +#+        */
+/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:34:10 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/30 21:26:32 by mohammedmad      ###   ########.fr       */
+/*   Updated: 2024/09/30 21:46:11 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,14 @@ bool	ft_to_do_c_floor(t_list *node, t_condition *condition)
 		if (ft_spin((char *)temp->content) == true)
 			temp = temp->next;
 		else
-			return (printf(RED, "Invalid Floor Celing\n" RESET), false);
+			return (printf(RED_W "Invalid Floor Celling\n" RESET), false);
 	}
 	if (ft_lstsize(node) != 2)
-		return (printf(RED, "Invalid Floor Celing\n" RESET), false);
+		return (printf(RED_W "Invalid Floor Celling\n" RESET), false);
 	if (ft_duplicates(node) == false)
-		return (printf(RED, "Invalid Floor Celing\n" RESET), false);
+		return (printf(RED_W "Invalid Floor Celling\n" RESET), false);
 	if (ft_pars_colors(node) == false)
-		return (printf(RED, "Invalid Floor Celing\n" RESET), false);
+		return (printf(RED_W "Invalid Floor Celling\n" RESET), false);
 	ft_node_colors(node, condition);
 	return (true);
 }
