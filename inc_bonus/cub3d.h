@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 14:55:53 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 14:57:57 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 # include <stdlib.h>
@@ -16,8 +28,7 @@
 # include "pars_cub3d.h"
 # include "macros.h"
 
-
-int		        ft_exit(t_info *mlx);
+int				ft_exit(t_info *mlx);
 void			*get_info(void);
 int				keypress(int keycode, t_info *mlx);
 int				keyrelease(int keycode, t_info *mlx);
@@ -42,20 +53,21 @@ void			update_minimap(t_info *info);
 void			update_player_position(t_info *info);
 void			update_minimap_player(t_info *info);
 double			normalize_angle(double angle);
-void			set_horizonal_intersection(t_info *info, t_intersec *intersec, int id, int type_hit);
+void			set_horizonal_intersection(t_info *info, t_intersec *intersec,
+					int id, int type_hit);
+void			set_vertical_intersection(t_info *info, t_intersec *intersec,
+					int id, int type_hit);
 t_type			hit(t_info *info, double x, double y);
-double			distence_ray(t_info *info, double x ,double y);
-void			set_vertical_intersection(t_info *info, t_intersec *intersec, int id, int type_hit);
+double			distence_ray(t_info *info, double x, double y);
 unsigned int	my_mlx_pixel_get(t_data *data, int x, int y);
-void            door_key(t_info *info);
-int	            mousepress(int button, int x, int y, t_info *info);
-int             mouserelease(int button, int x, int y, t_info *info);
-int             mousemove(int x, int y, t_info *info);
-void	        first_person_view(t_info *info);
+void			door_key(t_info *info);
+int				mousepress(int button, int x, int y, t_info *info);
+int				mouserelease(int button, int x, int y, t_info *info);
+int				mousemove(int x, int y, t_info *info);
+void			first_person_view(t_info *info);
 void			init_first_person_view(t_info *info);
 bool			bfs_main_loop(char **new_map, t_queue **front, t_queue **rear);
 int				ft_contain_only_digit(char *str);
 t_weapon		init_weapon(t_weapon_type type);
 
 #endif
-

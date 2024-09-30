@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   macros.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 14:59:08 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 15:01:07 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MACROS_H
 # define MACROS_H
 
@@ -45,42 +57,41 @@
 # define SCROLL_DOWN 5
 # define SCROLL_CLICK 2
 
-
 // resolution
-#define HEIGHT 400
-#define WIDTH 800
+# define HEIGHT 400
+# define WIDTH 800
 // textures
-#define MOVE_SPEED 3
-#define ROTATION_SPEED 1.5
-#define PLAYER_RADIUS 9
-#define T_SIZE 64
-#define MM_RAD 100
-#define MINIMAP_SCALE_FAC 0.5
-#define MOUSE_X_SENSITIVITY 0.04
-#define MOUSE_Y_SENSITIVITY 4
-#define STRIP_WIDTH 1
-#define NUM_RAYS WIDTH / STRIP_WIDTH
-#define MID_ANG_ID NUM_RAYS / 2
-#define FOV_ANGLE 60
-#define COLLISION_OFFSET 10
-#define DOOR_RANGE_DIST 120
-#define W_FRAMES 8
-#define PISTOL_FRAMES 13
-#define KNIFE_FRAMES 5
-#define N_WEAPONS 4
+# define MOVE_SPEED 3
+# define ROTATION_SPEED 1.5
+# define PLAYER_RADIUS 9
+# define T_SIZE 64
+# define MM_RAD 100
+# define MINIMAP_SCALE_FAC 0.5
+# define MOUSE_X_SENSITIVITY 0.04
+# define MOUSE_Y_SENSITIVITY 4
+# define STRIP_WIDTH 1
+# define NUM_RAYS WIDTH
+# define MID_ANG_ID 400
+# define FOV_ANGLE 60
+# define COLLISION_OFFSET 10
+# define DOOR_RANGE_DIST 120
+# define W_FRAMES 8
+# define PISTOL_FRAMES 13
+# define KNIFE_FRAMES 5
+# define N_WEAPONS 4
 
 // colors
-#define RED 0x00FF0000
-#define WHITE 0x00FFFFFF
-#define BROWN 0x00820421
-#define DARK_BROWN 0x0041393c
-#define CYAN 0x0000FFFF
-#define GREEN 0x0000FF00
+# define RED 0x00FF0000
+# define WHITE 0x00FFFFFF
+# define BROWN 0x00820421
+# define DARK_BROWN 0x0041393c
+# define CYAN 0x0000FFFF
+# define GREEN 0x0000FF00
 
 // player directions
-# define NORTH_P (M_PI * 3 / 2)
-# define EAST_P (M_PI * 2)
-# define SOUTH_P (M_PI / 2)
-# define WEST_P (M_PI)
+# define NORTH_P 4.712389
+# define EAST_P 0.0
+# define SOUTH_P 1.570796
+# define WEST_P 3.141593
 
 #endif

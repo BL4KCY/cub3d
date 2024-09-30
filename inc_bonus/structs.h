@@ -1,11 +1,23 @@
-#ifndef STRCT_H
-# define STRCT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/30 15:02:06 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 15:04:14 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef STRUCTS_H
+# define STRUCTS_H
 # include <stdbool.h>
 # include <stdint.h>
 # include "enums.h"
 # include "macros.h"
 // Image
-typedef struct
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -15,7 +27,7 @@ typedef struct
 }				t_data;
 
 // Shape
-typedef struct
+typedef struct s_rect
 {
 	float	x;
 	float	y;
@@ -24,7 +36,7 @@ typedef struct
 	float	color;
 }	t_rect;
 
-typedef struct
+typedef struct s_cir
 {
 	float	x;
 	float	y;
@@ -32,7 +44,7 @@ typedef struct
 	float	color;
 }	t_cir;
 
-typedef struct
+typedef struct s_line
 {
 	float	x1;
 	float	y1;
@@ -44,7 +56,7 @@ typedef struct
 	int		step;
 }			t_line;
 
-typedef struct
+typedef struct s_rect_cir
 {
 	float	x;
 	float	y;
@@ -56,14 +68,13 @@ typedef struct
 	int		color;
 }	t_rect_cir;
 
-
-typedef struct
+typedef struct s_coor
 {
 	double	x;
 	double	y;
 }			t_coor;
 
-typedef struct
+typedef struct s_intersec
 {
 	t_coor	h;
 	t_coor	v;
@@ -75,7 +86,7 @@ typedef struct
 	t_type	h_hit;
 }			t_intersec;
 
-typedef struct
+typedef struct s_ray
 {
 	double	ray_ang;
 	double	ray_dis;
@@ -90,7 +101,7 @@ typedef struct
 	bool	is_ray_right;
 }	t_ray;
 
-typedef struct
+typedef struct s_player
 {
 	double	x;
 	double	y;
@@ -107,7 +118,7 @@ typedef struct
 	bool	open_door;
 }	t_player;
 
-typedef struct
+typedef struct s_map
 {
 	char	**grid;
 	t_data	data;
@@ -115,8 +126,7 @@ typedef struct
 	int		n_cols;
 }	t_map;
 
-
-typedef struct
+typedef struct s_img
 {
 	t_data	data;
 	char	*path;
@@ -124,7 +134,7 @@ typedef struct
 	int		height;
 }	t_img;
 
-typedef struct
+typedef struct s_tex
 {
 	t_img	img[5];
 	int		offset_x;
@@ -133,19 +143,7 @@ typedef struct
 	int		ceiling_pcolor;
 }	t_tex;
 
-typedef struct 
-{
-	t_coor	coor;
-	bool	left_click;
-	bool	right_click;
-	bool	settings;
-	bool	speed;
-	bool	sensitivity;
-	bool	about;
-	bool	quit;
-}	t_menu;
-
-typedef struct
+typedef struct s_weapon
 {
 	t_img		*img;
 	uint16_t	n_frames;
@@ -166,7 +164,7 @@ typedef struct
 
 }	t_weapon;
 
-typedef struct
+typedef struct s_info
 {
 	void		*mlx;
 	void		*win;
@@ -188,7 +186,7 @@ typedef struct s_queue
 	struct s_queue	*next;
 }					t_queue;
 
-typedef struct
+typedef struct s_condition
 {
 	char			*name;
 	char			**substr;
@@ -210,8 +208,7 @@ typedef struct
 	t_queue			*queue;
 }					t_condition;
 
-
-typedef	struct
+typedef struct s_argb
 {
 	uint8_t		a;
 	uint8_t		b;
@@ -219,7 +216,7 @@ typedef	struct
 	uint8_t		r;
 }	t_argb;
 
-typedef struct
+typedef struct s_exit
 {
 	t_info	*info;
 	char	*message;

@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 11:05:42 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/29 15:17:15 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:41:30 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	set_walls(t_info *info, t_queue *door_coor)
 	while (door_coor)
 	{
 		info->map.grid[door_coor->x][door_coor->y] = 'B';
-		printf("x: %d, y: %d\n", door_coor->x, door_coor->y);
 		door_coor = door_coor->next;
 	}
 }

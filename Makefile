@@ -1,3 +1,14 @@
+#______colors______#
+RED = \033[0;31m
+GREEN = \033[0;32m
+YELLOW = \033[0;33m
+BLUE = \033[0;34m
+MAGENTA = \033[0;35m
+PURPLE = \033[0;35m
+PINK = \033[0;35m
+CYAN = \033[0;36m
+RESET = \033[0m
+
 #______command and their flags______#
 RM = rm -rf
 CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=address#-Ofast
@@ -50,37 +61,43 @@ LIB = libft
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIB)/libft.a
-	$(CC) $(CFLAGS) $^ -I$(INCLUDES) -I$(LIB_INCLUDES) $(MLXFLAGS) -o $@
+	@$(CC) $(CFLAGS) $^ -I$(INCLUDES) -I$(LIB_INCLUDES) $(MLXFLAGS) -o $@
+	@echo "$(GREEN)$(NAME) Compiled !$(RESET)"
 
 # impicit rule for logic mandatory
 $(OBJ_DIR)/%.o: $(SRC_LGC_DIR)/%.c $(HEADERS)
+	@echo "$(CYAN)Compiling {$(MAGENTA)$< to $@$(CYAN)}$(RESET)"
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDES) -I$(LIB_INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INCLUDES) -I$(LIB_INCLUDES) -c $< -o $@
 # impicit rule for parsing mandatory
 $(OBJ_DIR)/%.o: $(SRC_PARS_DIR)/%.c $(HEADERS)
+	@echo "$(CYAN)Compiling {$(MAGENTA)$< to $@$(CYAN)}$(RESET)"
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -I$(INCLUDES) -I$(LIB_INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INCLUDES) -I$(LIB_INCLUDES) -c $< -o $@
 #______bonus______#
 $(BONUS_NAME): $(OBJECTS_BNS) $(LIB)/libft.a
-	$(CC) $(CFLAGS) $^ -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) $(MLXFLAGS) -o $@
+	@$(CC) $(CFLAGS) $^ -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) $(MLXFLAGS) -o $@
+	@echo "$(GREEN)$(BONUS_NAME) Compiled !$(RESET)"
 
 # impicit rule for logic bonus
 $(OBJ_DIR_BNS)/%.o: $(SRC_LGC_DIR_BNS)/%.c $(HEADERS_BNS)
+	@echo "$(CYAN)Compiling {$(MAGENTA)$< to $@$(CYAN)}$(RESET)"
 	@mkdir -p $(OBJ_DIR_BNS)
-	$(CC) $(CFLAGS) -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) -c $< -o $@
 # impicit rule for parsing bonus
 $(OBJ_DIR_BNS)/%.o: $(SRC_PARS_DIR_BNS)/%.c $(HEADERS_BNS)
+	@echo "$(CYAN)Compiling {$(MAGENTA)$< to $@$(CYAN)}$(RESET)"
 	@mkdir -p $(OBJ_DIR_BNS)
-	$(CC) $(CFLAGS) -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) -I$(INCLUDES_BNS) -I$(LIB_INCLUDES) -c $< -o $@
 
 $(LIB)/%.a:
-	@echo "Compiling libft"
+	@echo "$(YELLOW)Compiling libft$(RESET)"
 	@$(MAKE) all -C $(LIB)
-	@echo "Compiled libft"
 
 re: fclean all
 
 rebonus: fclean
+	@echo "$(YELLOW)Recompiling bonus$(RESET)"
 	@$(MAKE) bonus
 
 run: $(NAME)
@@ -91,13 +108,16 @@ runbonus: $(BONUS_NAME)
 bonus: $(BONUS_NAME)
 #______cleaning______#
 clean:
+	@echo "$(RED)Cleaning$(RESET)"
 	@$(RM) $(OBJ_DIR)
 	@$(RM) $(OBJ_DIR_BNS)
-	@$(MAKE) -C $(LIB) fclean
-	@echo "cleaned"
+	@$(MAKE) -C $(LIB) clean
+	@echo "$(RED)Cleaned$(RESET)"
 fclean: clean
+	@echo "$(RED)fcleaning$(RESET)"
 	@$(RM) $(NAME)
 	@$(RM) $(BONUS_NAME)
-	@echo "fcleaned"
+	@$(MAKE) -C $(LIB) fclean
+	@echo "$(RED)fcleaned$(RESET)"
 
-.SECONDARY:
+.SECONDARY: $(OBJECTS) $(OBJECTS_BNS)

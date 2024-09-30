@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 11:31:05 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/29 11:36:21 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/30 15:04:58 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,11 @@ int	rendering(t_info *info)
 	update_player_position(info);
 	raycasting(info);
 	update_3d(info);
-	// full_map(info);
-	// render_rays(info);
 	first_person_view(info);
 	update_minimap(info);
 	update_minimap_player(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
 	return (0);
 }
+// full_map(info);
+// render_rays(info);

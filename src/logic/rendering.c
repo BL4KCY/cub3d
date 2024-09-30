@@ -1,12 +1,16 @@
-#include "cub3d.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rendering.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/29 11:31:05 by melfersi          #+#    #+#             */
+/*   Updated: 2024/09/30 13:01:54 by melfersi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-double	normalize_angle(double angle)
-{
-	angle = remainder(angle, (M_PI * 2));
-	if (angle <= 0)
-		angle += (M_PI * 2);
-	return (angle);
-}
+#include "cub3d.h"
 
 void	update_player_pos_in_full_map(t_info *info)
 {
@@ -52,10 +56,11 @@ int	rendering(t_info *info)
 	update_player_position(info);
 	raycasting(info);
 	update_3d(info);
-	// full_map(info);
-	// render_rays(info);
-	// update_minimap(info);
-	// update_minimap_player(info);
 	mlx_put_image_to_window(info->mlx, info->win, info->map.data.img, 0, 0);
 	return (0);
 }
+
+// full_map(info);
+// render_rays(info);
+// update_minimap(info);
+// update_minimap_player(info);

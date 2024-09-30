@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 10:19:35 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/29 10:22:14 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/09/30 11:01:28 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ t_weapon	init_pistol(void)
 	set_pistol_path(&weapon);
 	weapon.is_aiming = false;
 	weapon.is_shooting = false;
-	weapon.is_whiping = false;
 	weapon.is_kneeling = false;
+	weapon.is_whiping = false;
+	weapon.is_guarding = false;
 	weapon.whiping_frame = 9;
 	weapon.whiping_frame_max = 12;
 	weapon.shooting_frame = 2;
@@ -48,6 +49,9 @@ t_weapon	init_knife(void)
 	set_knife_path(&weapon);
 	weapon.is_aiming = false;
 	weapon.is_shooting = false;
+	weapon.is_kneeling = false;
+	weapon.is_whiping = false;
+	weapon.is_guarding = false;
 	weapon.shooting_frame = 2;
 	weapon.shooting_frame_max = 3;
 	weapon.aiming_frame = 2;
@@ -67,8 +71,9 @@ t_weapon	init_hand(void)
 	set_hand_path(&weapon);
 	weapon.is_aiming = false;
 	weapon.is_shooting = false;
-	weapon.is_whiping = false;
 	weapon.is_kneeling = false;
+	weapon.is_whiping = false;
+	weapon.is_guarding = false;
 	weapon.shooting_frame = 1;
 	weapon.shooting_frame_max = 5;
 	weapon.aiming_frame = 6;
@@ -93,6 +98,7 @@ t_weapon	init_machinegun(void)
 	weapon.is_aiming = false;
 	weapon.is_shooting = false;
 	weapon.is_kneeling = false;
+	weapon.is_whiping = false;
 	weapon.is_guarding = false;
 	weapon.shooting_frame = 2;
 	weapon.shooting_frame_max = 16;
