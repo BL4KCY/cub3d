@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 11:25:38 by melfersi          #+#    #+#             */
-/*   Updated: 2024/10/01 09:39:09 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/10/01 12:23:22 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ void	set_wall_tex_pixel(t_info *info, int x, int y)
 	info->tex.offset_y = dis_from_top
 		* (info->tex.img[direction].height / info->player.ray[x].strip_height);
 	info->tex.offset_x = offset_x(info, direction, x);
-	if (direction == EAST_ID)
-		printf("offset_x: %d\n", info->tex.offset_x);
 	color = my_mlx_pixel_get(&info->tex.img[direction].data,
 			info->tex.offset_x, info->tex.offset_y);
 	alpha = (170 / info->player.ray[x].ray_dis);
