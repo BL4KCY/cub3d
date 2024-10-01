@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 10:19:08 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 11:25:43 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:09:24 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,11 @@ int	ft_exit(t_info *info)
 	i = -1;
 	weapon_id = -1;
 	mlx_destroy_window(info->mlx, info->win);
-	mlx_destroy_image(info->mlx, info->map.data.img);
+	if (info->map.data.img)
+	{
+		mlx_destroy_image(info->mlx, info->map.data.img);
+		info->map.data.img = NULL;
+	}
 	while (++i < 5)
 		mlx_destroy_image(info->mlx, info->tex.img[i].data.img);
 	while (++weapon_id < N_WEAPONS)

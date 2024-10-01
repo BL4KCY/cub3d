@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 13:19:53 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 14:53:00 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/10/01 08:49:44 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,10 @@
 # define ROTATION_SPEED 1.5
 # define PLAYER_RADIUS 9
 # define T_SIZE 64
-# define MM_RAD 100
 # define MINIMAP_SCALE_FAC 0.5
 # define STRIP_WIDTH 1
 # define NUM_RAYS WIDTH
 # define FOV_ANGLE 60
-# define COLLISION_OFFSET 10
 
 // colors
 # define RED 0x00FF0000
@@ -81,9 +79,9 @@
 # define GREEN 0x0000FF00
 
 // player directions
-# define NORTH_P 4.712389
+# define NORTH_P 1.570796
 # define EAST_P 0.0
-# define SOUTH_P 1.570796
+# define SOUTH_P 4.712389
 # define WEST_P 3.141593
 
 #endif

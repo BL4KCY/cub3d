@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:59:08 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 15:01:07 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/10/01 10:02:09 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@
 # define GREEN 0x0000FF00
 
 // player directions
-# define NORTH_P 4.712389
+# define NORTH_P 1.570796
 # define EAST_P 0.0
-# define SOUTH_P 1.570796
+# define SOUTH_P 4.712389
 # define WEST_P 3.141593
 
 #endif

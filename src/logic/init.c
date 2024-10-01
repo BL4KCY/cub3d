@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 11:05:42 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 13:00:10 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:04:00 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	init_map(t_info *info, t_condition *condition)
 	info->height = info->map.n_row * T_SIZE;
 	info->map.data.img = NULL;
 }
-
-// double	get_red
 
 void	init_player(t_info *info, t_condition *condition)
 {
@@ -46,7 +44,10 @@ void	init_img_data(t_info *info)
 	t_data	data;
 
 	if (info->map.data.img)
+	{
 		mlx_destroy_image(info->mlx, info->map.data.img);
+		info->map.data.img = NULL;
+	}
 	data.img = mlx_new_image(info->mlx, WIDTH, HEIGHT);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel,
 			&data.line_length, &data.endian);
