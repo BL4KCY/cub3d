@@ -6,7 +6,7 @@
 /*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/29 11:05:42 by melfersi          #+#    #+#             */
-/*   Updated: 2024/10/01 11:26:33 by melfersi         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:04:00 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	init_img_data(t_info *info)
 	t_data	data;
 
 	if (info->map.data.img)
+	{
 		mlx_destroy_image(info->mlx, info->map.data.img);
+		info->map.data.img = NULL;
+	}
 	data.img = mlx_new_image(info->mlx, WIDTH, HEIGHT);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel,
 			&data.line_length, &data.endian);

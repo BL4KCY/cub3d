@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammedmad <mohammedmad@student.42.fr>    +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 14:54:00 by melfersi          #+#    #+#             */
-/*   Updated: 2024/09/30 20:57:46 by mohammedmad      ###   ########.fr       */
+/*   Updated: 2024/10/01 16:29:05 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,6 @@ typedef struct s_condition
 	int				hight_padding;
 	int				width_padding;
 	t_queue			*queue;
-	int			reason_error;
 }					t_condition;
 typedef struct s_argb
 {

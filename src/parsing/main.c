@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohammedmad <mohammedmad@student.42.fr>    +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 03:52:02 by mmad              #+#    #+#             */
-/*   Updated: 2024/09/30 21:07:02 by mohammedmad      ###   ########.fr       */
+/*   Updated: 2024/10/01 15:10:14 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	main(int argc, char **argv)
 	info = (t_info *)get_info();
 	info->mlx = mlx_init();
 	info->win = mlx_new_window(info->mlx, WIDTH, HEIGHT, "cub3d");
-	mlx_hook(info->win, ON_DESTROY, KEYPRESSMASK, ft_exit, info);
-	mlx_hook(info->win, ON_KEYDOWN, KEYPRESSMASK, keypress, info);
-	mlx_hook(info->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, info);
 	init_map(info, &game_condition);
 	init_player(info, &game_condition);
 	init_texture(info, &game_condition);
 	mlx_loop_hook(info->mlx, rendering, info);
+	mlx_hook(info->win, ON_DESTROY, KEYPRESSMASK, ft_exit, info);
+	mlx_hook(info->win, ON_KEYDOWN, KEYPRESSMASK, keypress, info);
+	mlx_hook(info->win, ON_KEYUP, KEYRELEASEMASK, keyrelease, info);
 	mlx_loop(info->mlx);
 	ft_hunt_leak();
 	return (EXIT_SUCCESS);
