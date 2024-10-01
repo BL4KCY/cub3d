@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_c_Floor.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:34:10 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/10/01 11:48:32 by mmad             ###   ########.fr       */
+/*   Updated: 2024/10/01 12:20:18 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,14 +113,14 @@ bool	ft_to_do_c_floor(t_list *node, t_condition *condition)
 			temp = temp->next;
 		else
 		{
-			printf(RED_W "[Error]\nInvalid Floor Celling\n" RESET);
+			printf(RED_W "Error\nInvalid Floor Celling\n" RESET);
 			return (false);
 		}
 	}
 	if (ft_lstsize(node) != 2 || ft_duplicates(node) == false
 		|| ft_pars_colors(node) == false)
 	{
-		printf(RED_W "[Error]\nInvalid Floor Celling\n" RESET);
+		printf(RED_W "Error\nInvalid Floor Celling\n" RESET);
 		return (false);
 	}
 	ft_node_colors(node, condition);
