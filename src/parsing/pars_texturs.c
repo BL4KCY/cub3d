@@ -6,7 +6,7 @@
 /*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:30:56 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/09/30 21:42:45 by mmad             ###   ########.fr       */
+/*   Updated: 2024/10/01 11:39:01 by mmad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,16 @@ bool	ft_to_do_textures(t_list *node, t_condition *condition)
 		if (ft_pars_each_node(temp, condition) == true)
 			temp = temp->next;
 		else
-			return (printf(RED_W "Invalid texture\n" RESET), false);
+		{
+			printf(RED_W "[Error]\nInvalid texture\n" RESET);
+			return (false);
+		}
 	}
-	if (ft_lstsize(node) != 4)
-		return (printf(RED_W "Invalid texture\n" RESET), false);
-	if (ft_duplicates(node) == false)
-		return (printf(RED_W "Invalid texture\n" RESET), false);
-	if (ft_loop_on_files(node) == 1)
-		return (printf(RED_W "Invalid texture\n" RESET), false);
+	if (ft_lstsize(node) != 4 || ft_duplicates(node) == false
+		|| ft_loop_on_files(node) == 1)
+	{
+		printf(RED_W "[Error]\nInvalid texture\n" RESET);
+		return (false);
+	}
 	return (true);
 }
