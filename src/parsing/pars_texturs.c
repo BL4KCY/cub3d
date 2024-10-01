@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pars_texturs.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmad <mmad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: melfersi <melfersi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 13:30:56 by mohammedmad       #+#    #+#             */
-/*   Updated: 2024/10/01 11:39:01 by mmad             ###   ########.fr       */
+/*   Updated: 2024/10/01 12:20:18 by melfersi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,14 @@ bool	ft_to_do_textures(t_list *node, t_condition *condition)
 			temp = temp->next;
 		else
 		{
-			printf(RED_W "[Error]\nInvalid texture\n" RESET);
+			printf(RED_W "Error\nInvalid texture\n" RESET);
 			return (false);
 		}
 	}
 	if (ft_lstsize(node) != 4 || ft_duplicates(node) == false
 		|| ft_loop_on_files(node) == 1)
 	{
-		printf(RED_W "[Error]\nInvalid texture\n" RESET);
+		printf(RED_W "Error\nInvalid texture\n" RESET);
 		return (false);
 	}
 	return (true);
